@@ -7,6 +7,7 @@
 #include "main.h"
 #include "menu_impl.h"
 #include "uart.h"
+void SetOutLevelFromFreq();
 //////////////////////////////////////////////////////////////////////////
 void KeySelect(unsigned char a){//эту функцию следует перенести в класс меню
 	switch (a){
@@ -36,6 +37,7 @@ void WriteFreqToPrk(uchar* freq){
 	Write_Controll(0x07F4, &Instr[0]);
 	delay_us(100);
 	while(!GET_ALTERA_BUSY);
+	SetOutLevelFromFreq();
 }
 //////////////////////////////////////////////////////////////////////////
 void ChangeModePrk(STATEOFPLATE* state){
@@ -45,6 +47,24 @@ void ChangeModePrk(STATEOFPLATE* state){
 			else
 				state->C_R[1][3] = ((state->C_R[1][3])& 0xF8) + 6;
 		Write_Controll(0x07FE, state->C_R[1]);	
+}
+//////////////////////////////////////////////////////////////////////////
+// »зменение выходного напр€жени€ платы
+/////////////////////////////////
+//от 1,5 до 28,5 через 0,5 ћ√ц
+void SetOutLevel(uchar lvl){
+	lvl = lvl & 0x7F;
+	Read_Controll(0x0FFD, g_plateState.C_R[2]);
+		g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | lvl;
+	Write_Controll(0x07FD, g_plateState.C_R[2]);
+}
+//вычисление адреса частоты дл€ установки 1 вольта на выходе
+unsigned int SolveFreqIndCorrCoef(){
+	return (g_plateState.freq[0]*100 + g_plateState.freq[1] *10 + g_plateState.freq[2] - 15) /5;
+}
+void SetOutLevelFromFreq(){
+	g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | g_plateState.corr_coef[SolveFreqIndCorrCoef()];
+	Write_Controll(0x07FD, g_plateState.C_R[2]);
 }
 //////////////////////////////////////////////////////////////////////////
 void InitPrk(){

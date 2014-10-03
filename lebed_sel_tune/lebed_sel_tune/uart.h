@@ -82,6 +82,11 @@ void InitUart(){
 #define ERASEFLASH 0x92//стирание флешпамяти >[HEAD ENDL] <[OK ENDL]
 	#define ERASEFLASH_L 0
 
+#define SETCOEF 0x95//установка коэффициента для 1 В на выходе >[HEAD C C ENDL] <[OK ENDL]
+	#define SETCOEF_L 2
+#define SAVECOEF 0x96//запись коэффициента в EEPROM
+	#define SAVECOEF_L 0
+
 #define COMOK 0x06
 #define ERR 0x16
 #define ENDL 0x03
@@ -99,13 +104,15 @@ extern  void ReadAllFlash(unsigned char*);
 extern  void WriteData2Flash(unsigned char*);
 extern  void WriteEraseFlash(unsigned char*);
 extern  void ReadAmpl(unsigned char*);
+extern  void SetCoef(unsigned char*);
+extern  void SaveCoef(unsigned char*);
 //массив кодов команд
-const unsigned char g_comandList[] PROGMEM = {WRF,WRFLCA,WRLCA,WRA,SETMODE,SETOTP,READALLFLASH,WRITEDATATOFLASH,ERASEFLASH,READA};
+const unsigned char g_comandList[] PROGMEM = {WRF,WRFLCA,WRLCA,WRA,SETMODE,SETOTP,READALLFLASH,WRITEDATATOFLASH,ERASEFLASH,READA,SETCOEF,SAVECOEF};
 //массив количества байт в команде
-const unsigned char g_comandLengthList[] PROGMEM = {WRF_L,WRFLCA_L,WRLCA_L,WRA_L,SETMODE_L,SETOTP_L,READALLFLASH_L,WRITEDATATOFLASH_L,ERASEFLASH_L,READA_L};
+const unsigned char g_comandLengthList[] PROGMEM = {WRF_L,WRFLCA_L,WRLCA_L,WRA_L,SETMODE_L,SETOTP_L,READALLFLASH_L,WRITEDATATOFLASH_L,ERASEFLASH_L,READA_L,SETCOEF_L,SAVECOEF_L};
 //массив указателей на функции соответствующие каждой команде
 void  (* const g_commandFunc[])(unsigned char*)  PROGMEM = {WriteFFunc,WriteFLCAFunc,WriteLCAFunc,WriteAFunc,WriteMode,WriteOtp,
-	  ReadAllFlash,WriteData2Flash,WriteEraseFlash,ReadAmpl};
+	  ReadAllFlash,WriteData2Flash,WriteEraseFlash,ReadAmpl,SetCoef,SaveCoef};
 
 
 #define COM_BUFF_SIZE 32
@@ -185,6 +192,7 @@ ISR (USART1_RX_vect)
 	extern void WriteFreqToPrk(unsigned char* F);
 	extern unsigned int CharFtoInd(uchar* f);
 	extern void SetnOTP(char val);
+	extern void SetOutLevel(uchar lvl);
 	/*функции и переменные из файла меню*/
 	extern STATEOFPLATE g_plateState;
 	extern unsigned int  g_C1,g_C2;
@@ -317,13 +325,30 @@ void WriteEraseFlash(unsigned char * data)//пока заглушка
 
 void ReadAmpl( unsigned char* )//чтение амплитуды на входе ацп
 {
-	uchar ampl = read_adc(ADC_UPAS_OUT_PIN);
-	uchar out[4];
+	uchar ampl = read_adc(ADC_UPAS_IN_PIN);
+	uchar out[6];
 	out[0] = READA;
 	out[1] = (uchar)((ampl & 0xf0) >> 4) + 0x30;
 	out[2] = ((ampl & 0x0F)) + 0x30;
-	out[3] = ENDL;
-	SendCOMBytes(out,4);
+	ampl = read_adc(ADC_UPAS_OUT_PIN);
+	out[3] = (uchar)((ampl & 0xf0) >> 4) + 0x30;
+	out[4] = ((ampl & 0x0F)) + 0x30;
+	out[5] = ENDL;
+	SendCOMBytes(out,6);
 }
+extern unsigned int SolveFreqIndCorrCoef();
+ void SetCoef(unsigned char* data){
+	 uchar coef;
+	 coef = (data[1] & 0x0F)*16 + (data[2] & 0x0F);
+	 SetOutLevel(coef);
 
+	 
+	 g_plateState.corr_coef[SolveFreqIndCorrCoef()] = coef;
+	 SendOk();
+ }
+
+void SaveCoef(unsigned char* data){
+	SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);
+	 SendOk();
+}
 #endif

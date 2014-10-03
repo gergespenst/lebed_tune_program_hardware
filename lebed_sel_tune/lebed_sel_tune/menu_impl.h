@@ -40,6 +40,7 @@ typedef struct StateOfPlate{
 	uchar freq[7];
 	uchar C_R[4][4];
 	unsigned int outLCA[3];
+	unsigned char corr_coef[57];//коэффициенты коррекции уровн€ платы от 1,5 ћ√ц до 29,5 ћ√ц через 0,5 ћ√ц
 } STATEOFPLATE;
  STATEOFPLATE g_plateState;
  //требуетс€ прописать в свойствах проекта дл€ секции с++  -std=c++11
