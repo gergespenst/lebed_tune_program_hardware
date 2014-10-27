@@ -61,9 +61,6 @@ void InitUart(){
 #define WRLCA 0x85		//запись LCA [ HEAD C1 C1 C1 L1 L1 C2 C2 C2 L2 L2 A A ENDL] <[OK ENDL]
 	#define WRLCA_L 12
 	
-#define WRL  0x82 
-#define WRC  0x83
-
 #define WRA  0x84		//установка аттенюатора [ HEAD A A ENDL] <[OK ENDL]
 	#define WRA_L 2
 	
@@ -84,8 +81,16 @@ void InitUart(){
 
 #define SETCOEF 0x95//установка коэффициента для 1 В на выходе >[HEAD C C ENDL] <[OK ENDL]
 	#define SETCOEF_L 2
+	
 #define SAVECOEF 0x96//запись коэффициента в EEPROM
 	#define SAVECOEF_L 0
+	
+#define SAVEDETCOEF 0x97//сохранение калибровочного коэффичиента детектора в память
+	#define SAVEDETCOEF_L 0
+
+#define ID "LSP0" //идентификатор устройства
+#define FINDDEVICE 0xFF
+	#define FINDDEVICE_L 0
 
 #define COMOK 0x06
 #define ERR 0x16
@@ -106,13 +111,20 @@ extern  void WriteEraseFlash(unsigned char*);
 extern  void ReadAmpl(unsigned char*);
 extern  void SetCoef(unsigned char*);
 extern  void SaveCoef(unsigned char*);
+extern  void SaveDetectorCoef(unsigned char*);
+extern  void FindDevice(unsigned char*);
 //массив кодов команд
-const unsigned char g_comandList[] PROGMEM = {WRF,WRFLCA,WRLCA,WRA,SETMODE,SETOTP,READALLFLASH,WRITEDATATOFLASH,ERASEFLASH,READA,SETCOEF,SAVECOEF};
+const unsigned char g_comandList[] PROGMEM = {WRF,WRFLCA,WRLCA,WRA,SETMODE,SETOTP,READALLFLASH,
+											WRITEDATATOFLASH,ERASEFLASH,READA,SETCOEF,SAVECOEF,SAVEDETCOEF,
+											FINDDEVICE};
 //массив количества байт в команде
-const unsigned char g_comandLengthList[] PROGMEM = {WRF_L,WRFLCA_L,WRLCA_L,WRA_L,SETMODE_L,SETOTP_L,READALLFLASH_L,WRITEDATATOFLASH_L,ERASEFLASH_L,READA_L,SETCOEF_L,SAVECOEF_L};
+const unsigned char g_comandLengthList[] PROGMEM = {WRF_L,WRFLCA_L,WRLCA_L,WRA_L,SETMODE_L,SETOTP_L,READALLFLASH_L,
+											WRITEDATATOFLASH_L,ERASEFLASH_L,READA_L,SETCOEF_L,SAVECOEF_L,SAVEDETCOEF_L,
+											FINDDEVICE_L};
 //массив указателей на функции соответствующие каждой команде
 void  (* const g_commandFunc[])(unsigned char*)  PROGMEM = {WriteFFunc,WriteFLCAFunc,WriteLCAFunc,WriteAFunc,WriteMode,WriteOtp,
-	  ReadAllFlash,WriteData2Flash,WriteEraseFlash,ReadAmpl,SetCoef,SaveCoef};
+	  ReadAllFlash,WriteData2Flash,WriteEraseFlash,ReadAmpl,SetCoef,SaveCoef,SaveDetectorCoef,
+	  FindDevice};
 
 
 #define COM_BUFF_SIZE 32
@@ -307,11 +319,11 @@ void WriteData2Flash(unsigned char * data)//пока заглушка
 	
 	WriteLCAout2Flash(ind,(uchar*)g_plateState.outLCA)	;//пишем во флешку 
 //	SendCOMBytes((uchar*)g_plateState.outLCA,6);
-//	_delay_ms(10);
+//	_delay_ms(20);
 	unsigned char a[6]={0,0,0,0,0,0};
 	ReadDataInFlashIIC(&ind,a,6);
-//	SendCOMBytes(a,6);
-	if (strcmp((char*)a,(char*)g_plateState.outLCA))
+//SendCOMBytes(a,6);
+	if (memcmp((void*)a,(void*)g_plateState.outLCA,6) == 0)
 		SendOk();
 		else
 			SendERR();
@@ -350,5 +362,21 @@ extern unsigned int SolveFreqIndCorrCoef();
 void SaveCoef(unsigned char* data){
 	SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);
 	 SendOk();
+}
+//////////////////////////////////////////////////////////////////////////
+extern void SaveDetCoef();
+
+void SaveDetectorCoef(unsigned char* data){
+	SaveDetCoef();
+	SendOk();
+}
+
+void FindDevice(unsigned char*){
+	unsigned char end = FINDDEVICE;
+	SendCOMBytes(&end,1);
+	SendCOMBytes((unsigned char*)ID,4);
+	end = 0x03;
+	SendCOMBytes(&end,1);
+	
 }
 #endif

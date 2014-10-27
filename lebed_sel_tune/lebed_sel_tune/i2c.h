@@ -30,7 +30,7 @@
 
 #define IICData               _BV(IICDataPin)                /*линия DATA*/
 #define IICClc                _BV(IICCcPip)                /*линия CLC*/
-#define IICPause				100					/*длительность импульсов в мкс*/
+#define IICPause				3					/*длительность импульсов в мкс*/
 
 void IICInit(void);
 void IICStart (void);

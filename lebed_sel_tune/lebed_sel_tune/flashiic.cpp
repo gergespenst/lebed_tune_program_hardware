@@ -87,13 +87,13 @@ void WriteLCAout2Flash(unsigned int addr,uchar *data){//обертка для записи данны
 }
 //////////////////////////////////////////////////////////////////////////
 //Функция записи калибровочного коэффициента
-void WriteDetCal( unsigned int addr,uchar* data )
+void WriteDetCal2Flash( unsigned int addr,uchar* data )
 {
 	unsigned int shift_addr = addr + DETCAL_START_ADDR;
 	WriteData2FlashIIC(shift_addr,data,1);
 }
 //Функция чтения калибровочного коэффициента
-void ReadDetCal( unsigned int addr,uchar* data )
+void ReadDetCalInFlash( unsigned int addr,uchar* data )
 {
 	unsigned int shift_addr = addr + DETCAL_START_ADDR;
 	ReadDataInFlashIIC(&shift_addr,data,1);

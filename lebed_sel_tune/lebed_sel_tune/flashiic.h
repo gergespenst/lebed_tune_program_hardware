@@ -24,8 +24,8 @@ void WriteData2FlashIIC(unsigned int startAddr,uchar *data,uchar numOfDataBytes)
 void ReadDataInFlashIIC(unsigned int* startAddr,uchar *data,uchar numOfDataBytes);
 void ReadLCAoutFromFlash(unsigned int addr,uchar *data);
 void WriteLCAout2Flash(unsigned int addr,uchar *data);
-void ReadDetCal(unsigned int addr,uchar* data);
-void WriteDetCal(unsigned int addr,uchar* data);
+void ReadDetCalInFlash(unsigned int addr,uchar* data);
+void WriteDetCal2Flash(unsigned int addr,uchar* data);
 unsigned int IndOfF(unsigned int f);
 unsigned int CharFtoInd(unsigned char* f);
 

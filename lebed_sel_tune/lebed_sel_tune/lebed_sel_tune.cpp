@@ -67,6 +67,59 @@ void SetOutLevelFromFreq(){
 	Write_Controll(0x07FD, g_plateState.C_R[2]);
 }
 //////////////////////////////////////////////////////////////////////////
+/************************************************************************/
+/* Функции для чтения записи калибровочной кривой детектора селектора   */
+/************************************************************************/
+//Вычисление индекса частоты в массиве коэффициентов калибровки
+//Разбиение частотоного диапазона	//[1,5 - 3) [3 - 4) [4 - 5) ... [29 - 30] 
+//Точки измерения					//    2.5     3.5     4.5         29.5	  
+//Индексы в массиве					//	   0		1		2
+
+unsigned char DetFreqInd(unsigned char* freq){
+	if (freq[0]*10 + freq[1] == 30)
+		return 29;
+	if (freq[0]*10 + freq[1] == 1)
+		return 0;
+	return (freq[0]*10 + freq[1]) - 2;	
+}
+//////////////////////////////////////////////////////////////////////////
+void SaveDetCoef(){
+	upas_out = read_adc(ADC_UPAS_OUT_PIN);
+	WriteDetCal2Flash(DetFreqInd(g_plateState.freq),&upas_out);
+}
+//////////////////////////////////////////////////////////////////////////
+unsigned char ReadDetCoef(){
+	uchar temp_coef;
+	ReadDetCalInFlash(DetFreqInd(g_plateState.freq),&temp_coef);
+	return temp_coef;
+}
+/************************************************************************/
+//////////////////////////////////////////////////////////////////////////
+//Функция подстройки уровня
+void TuneLvlSel(){
+	SetSelFreqInFlash();
+	uchar normalLvl = ReadDetCoef();
+	upas_out = read_steady_adc(ADC_UPAS_OUT_PIN);
+	uchar delta = 2;
+	uchar maxA = 63;
+	while ( abs((char)upas_out - (char)normalLvl) > delta)
+	{
+		if (((char)upas_out - (char)normalLvl) > 0)
+			g_A += 1;
+		else 
+			g_A -= 1;
+		if ( (g_A == 0) || (g_A == maxA)) break;
+		LCA2out(g_C1,g_L1,g_C2,g_L2,g_A,g_plateState.outLCA);//записываем в EEPROM
+		SendA((unsigned int*)g_plateState.outLCA);
+		if (!(g_A & 0x20))
+			_delay_us(500);
+			else
+			_delay_us(100);
+		upas_out = read_steady_adc(ADC_UPAS_OUT_PIN);
+	}
+		
+}
+//////////////////////////////////////////////////////////////////////////
 void InitPrk(){
 	ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
 	InitAltera();

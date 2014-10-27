@@ -40,6 +40,7 @@ typedef struct StateOfPlate{
 	uchar freq[7];
 	uchar C_R[4][4];
 	unsigned int outLCA[3];
+	unsigned char detCoef;
 	unsigned char corr_coef[57];//коэффициенты коррекции уровня платы от 1,5 МГц до 29,5 МГц через 0,5 МГц
 } STATEOFPLATE;
  STATEOFPLATE g_plateState;
@@ -57,7 +58,7 @@ typedef struct StateOfPlate{
 	 eeprom_read_block(state,eepromPointer,sizeof(STATEOFPLATE));
  }
 //////////////////////////////////////////////////////////////////////////
-
+uchar upas_in, upas_out;
 
 /************************************************************************/
 /*  Функции общие для всех пунктов***************************************/
@@ -105,6 +106,12 @@ void escFunc(CMenuItem* item){
 	g_plateState.freq[5] = (datatmp[6] & 0x0F) ;
 	g_plateState.freq[6] = (datatmp[7] & 0xF0) >> 4;
 	//
+	 upas_in = read_adc(ADC_UPAS_IN_PIN);
+	 upas_out = read_adc(ADC_UPAS_OUT_PIN);
+	 
+	 			 g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
+	 			 _delay_ms(1500);
+	 
 	g_currentItem->draw();
 }
 
@@ -156,6 +163,7 @@ uchar Mode[2][3] ={"1T","2T"};
 extern void WriteFreqToPrk(uchar* freq);//функция установки частоты в предкорректор, должна быть определена в другом месте
 extern void ChangeModePrk(STATEOFPLATE*);//функция смены режима с одного тона на два
 extern void outLCA2LCA(unsigned int *C1,unsigned char *L1,unsigned int *C2,unsigned char *L2,unsigned char *A,unsigned int* IN);
+extern unsigned char ReadDetCoef();
 // extern unsigned int CharFtoInd(unsigned char* f);
 // extern void ReadLCAoutFromFlash(unsigned int addr,uchar *data);
 // extern void SendLCA2Sel(unsigned char* LCAout);
@@ -173,11 +181,10 @@ void SetSelFreqInFlash(){
 
 }
 
-uchar upas_in, upas_out;
+
 //////////////////////////////////////////////////////////////////////////
 void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
- upas_in = read_adc(ADC_UPAS_IN_PIN);
- upas_out = read_adc(ADC_UPAS_OUT_PIN);
+
 	 if (1 == item->getCurRow())
 	 {
 		 if (item->getCurPos() < NASTR_POS)
@@ -187,15 +194,18 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 			 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
 			 WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
 			 SetSelFreqInFlash();//устанавливается частота селектора
+			g_plateState.detCoef = ReadDetCoef();
 			 g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
 			 _delay_ms(1500);
+
 		 }
 	 
 		 if (item->getCurPos() == NASTR_POS)
 		 {
 			 //TODO :: Здесь должна быть функция настройки на частоту
 			 		
-			  
+			 extern void TuneLvlSel() ;
+			 TuneLvlSel();
 		 }
 	 }
 	if (2 == item->getCurRow())
@@ -427,7 +437,7 @@ void downFuncPrkMenu(CMenuItem* item){
 /************************************************************************/
 void drawFuncLCAMenu(CMenuItem* item);
 
-CMenuItem g_lcaMenuItem((char*)"@A=XX@L1=XX@C1=XXX@@",(char*)"@@@@@@L2=XX@C2=XXX@@",
+CMenuItem g_lcaMenuItem((char*)"@A=XX@L1=XX@C1=XXX@@",(char*)"DC=XX@L2=XX@C2=XXX@@",
 &g_mainMenuItem,
 {{&g_mainMenuItem},1},
 0,0,drawFuncLCAMenu,0,0,0,0,
@@ -497,7 +507,10 @@ void drawFuncLCAMenu(CMenuItem* item){
 		TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_C1 & 0x0F00) >> 8] ;
 		TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_C1 & 0x00F0) >>4] ;
 		TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_C1 & 0x000F) ] ;
-		
+		//
+		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.detCoef & 0xF0) >>4] ;
+		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.detCoef & 0x0F) ] ;
+		//
 		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_L2 & 0xF0) >>4] ;
 		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_L2 & 0x0F) ] ;
 				

@@ -56,4 +56,6 @@
 #define ADC_UPAS_IN_PIN 7
 #include "adc.h"
 
+#include <stdlib.h>
+
 #endif /* MAIN_H_ */

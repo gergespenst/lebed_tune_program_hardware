@@ -120,6 +120,7 @@ void LCD_WriteData (unsigned char Data)
 void Init_LCD(void)
 {
 	char k;
+	ddr_lcd = 0xFF;
 	for (k=0;k<3;k++)
 	{
 		_delay_ms(15);
