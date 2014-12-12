@@ -195,15 +195,17 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 			 WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
 			 SetSelFreqInFlash();//устанавливается частота селектора
 			g_plateState.detCoef = ReadDetCoef();
-			 g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
-			 _delay_ms(1500);
+			g_currentItem = &g_lcaMenuItem;
+			 //g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
+			 //_delay_ms(1500);
 
 		 }
 	 
 		 if (item->getCurPos() == NASTR_POS)
 		 {
 			 //TODO :: Здесь должна быть функция настройки на частоту
-			 		
+			 		 
+					 
 			 extern void TuneLvlSel() ;
 			 TuneLvlSel();
 		 }
@@ -436,13 +438,22 @@ void downFuncPrkMenu(CMenuItem* item){
 /* Меню отображения параметров селектора                                */
 /************************************************************************/
 void drawFuncLCAMenu(CMenuItem* item);
-
+void escFuncLCA(CMenuItem* item);
 CMenuItem g_lcaMenuItem((char*)"@A=XX@L1=XX@C1=XXX@@",(char*)"DC=XX@L2=XX@C2=XXX@@",
 &g_mainMenuItem,
 {{&g_mainMenuItem},1},
-0,0,drawFuncLCAMenu,0,0,0,0,
+0,escFuncLCA,drawFuncLCAMenu,0,0,0,0,
 {{1},0},
 {{1},0});
+	
+	
+	void escFuncLCA( CMenuItem* item )
+	{
+		g_currentItem = item->getParent();
+		g_currentItem->draw();
+	}
+
+
 //////////////////////////////////////////////////////////////////////////
 // Функции для работы с селектором
 
