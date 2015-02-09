@@ -34,7 +34,7 @@
  for (m=0;m<8;m++)
  {   
 
- SET_ALTERA_SDI((DATA&tmp[m])==tmp[m]); 
+ SET_ALTERA_SDI(((DATA&tmp[m])==tmp[m])); 
    SET_ALTERA_SCLK(1);
  delay_us(4); //скважность около 2
    SET_ALTERA_SCLK(0); 

@@ -9,7 +9,7 @@
 #ifndef MENU_IMPL_H_
 #define MENU_IMPL_H_
 
-#include <main.h>
+#include "main.h"
 #include "CMenuItem.h"
 #include <avr/eeprom.h>
 CMenuItem *g_currentItem;
@@ -142,12 +142,14 @@ void drawFuncMainMenu(CMenuItem* item);
 void upFuncMainMenu(CMenuItem* item);
 void downFuncMainMenu(CMenuItem* item);
 
-CMenuItem g_mainMenuItem((char*)"F=XXXXX,XX кГц Настр",(char*)"XXX MOD:XX Уст XX XX",
-&g_mainMenuItem,
-{{&g_prkSettingMenuItem},1},
-okFuncMainMenu,escFunc,drawFuncMainMenu,leftFunc,rightFunc,upFuncMainMenu,downFuncMainMenu,
-{{3,4,5,6,7,9,10,16},8},
-{{1,9,12},3});
+#ifndef BOOTLOAD_VER
+	CMenuItem g_mainMenuItem((char*)"F=XXXXX,XX кГц Настр",(char*)"XXX MOD:XX Уст XX XX",
+	&g_mainMenuItem,
+	{{&g_prkSettingMenuItem},1},
+	okFuncMainMenu,escFunc,drawFuncMainMenu,leftFunc,rightFunc,upFuncMainMenu,downFuncMainMenu,
+	{{3,4,5,6,7,9,10,16},8},
+	{{1,9,12},3});
+#endif
 //////////////////////////////////////////////////////////////////////////
 //переменные для данного пункта меню
 #define SETTING_POS 2//индекс меню настроек на экране
@@ -306,13 +308,14 @@ void escFuncPrkMenu(CMenuItem* item);
 // void rightFuncPrkItem(CMenuItem *item);
 // void leftFuncPrkItem(CMenuItem *item);	
 
-
-CMenuItem g_prkSettingMenuItem((char*)"#X@C_XR@XX@XX@XX@XX@",(char*)"@@@C_XR@XX@XX@XX@XX@",
-&g_mainMenuItem,
-{{&g_prkSettingMenuItem},1},
-okFuncPrkMenu,escFuncPrkMenu,drawFuncPrkMenu,leftFunc,rightFunc,upFuncPrkMenu,downFuncPrkMenu,
-{{1,9,10,12,13,15,16,18,19},9},
-{{9,10,12,13,15,16,18,19},8});
+#ifndef BOOTLOAD_VER
+	CMenuItem g_prkSettingMenuItem((char*)"#X@C_XR@XX@XX@XX@XX@",(char*)"@@@C_XR@XX@XX@XX@XX@",
+	&g_mainMenuItem,
+	{{&g_prkSettingMenuItem},1},
+	okFuncPrkMenu,escFuncPrkMenu,drawFuncPrkMenu,leftFunc,rightFunc,upFuncPrkMenu,downFuncPrkMenu,
+	{{1,9,10,12,13,15,16,18,19},9},
+	{{9,10,12,13,15,16,18,19},8});
+#endif
 //////////////////////////////////////////////////////////////////////////
 //Переменные для данного пункта меню
 #define NUM_OF_PRK_DISP 2 //количество экранов с регистрами	
@@ -439,13 +442,15 @@ void downFuncPrkMenu(CMenuItem* item){
 /************************************************************************/
 void drawFuncLCAMenu(CMenuItem* item);
 void escFuncLCA(CMenuItem* item);
-CMenuItem g_lcaMenuItem((char*)"@A=XX@L1=XX@C1=XXX@@",(char*)"DC=XX@L2=XX@C2=XXX@@",
-&g_mainMenuItem,
-{{&g_mainMenuItem},1},
-0,escFuncLCA,drawFuncLCAMenu,0,0,0,0,
-{{1},0},
-{{1},0});
-	
+
+#ifndef BOOTLOAD_VER
+	CMenuItem g_lcaMenuItem((char*)"@A=XX@L1=XX@C1=XXX@@",(char*)"DC=XX@L2=XX@C2=XXX@@",
+	&g_mainMenuItem,
+	{{&g_mainMenuItem},1},
+	0,escFuncLCA,drawFuncLCAMenu,0,0,0,0,
+	{{1},0},
+	{{1},0});
+#endif
 	
 	void escFuncLCA( CMenuItem* item )
 	{
@@ -476,8 +481,8 @@ void LCA2out(unsigned int C1,unsigned char L1,unsigned int C2,unsigned char L2,u
 	
 	OUT[0] = (C1 & 0x0FFF) + (((unsigned int)(L1 & 0x07)) << 13);
 	OUT[1] = ((unsigned int)(L1 & 0x78) >> 3)+ ((C2 & 0x0FFF) << 4);
-	A ^= _BV(5); //инверсия 6 бита для включения RZ
-	OUT[2] = (((unsigned int)L2) << 1) + (((unsigned int)~A) << 8);
+	A ^= _BV(5); //инверсия 6 бита для включения RZ					//эта часть записывает копию бита RZ для серийной платы селектора
+	OUT[2] = (((unsigned int)L2) << 1) + (((unsigned int)~A) << 8) + ((((unsigned int)~A) & _BV(5)) >> 5);
 	
 	//переписываем для хранения OUT в EEPROM
 	//eeprom_update_word(&OUT[0],(C1 & 0x0FFF) + (((unsigned int)(L1 & 0x07)) << 13));

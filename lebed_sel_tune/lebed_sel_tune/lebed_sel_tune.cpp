@@ -21,50 +21,59 @@ void KeySelect(unsigned char a){//эту функцию следует перенести в класс меню
 }
 //////////////////////////////////////////////////////////////////////////
 void WriteFreqToPrk(uchar* freq){
-	uchar datatmp[13]={0x00,0x00,0x00,0x00,
-						freq[0]*16 + freq[1],
-						freq[2]*16 +  freq[3],
-						freq[4]*16 +  freq[5],
-						freq[6]*16,
-						0x00,0x00,0x00,0x00,0x00};
+	#ifdef PRK_VER
+		uchar datatmp[13]={0x00,0x00,0x00,0x00,
+							freq[0]*16 + freq[1],
+							freq[2]*16 +  freq[3],
+							freq[4]*16 +  freq[5],
+							freq[6]*16,
+							0x00,0x00,0x00,0x00,0x00};
 	
-	Write_Controll(0x07F7, &datatmp[0]);
-	Write_Controll(0x07F6, &datatmp[4]);
-	Write_Controll(0x07F5, &datatmp[8]);
+		Write_Controll(0x07F7, &datatmp[0]);
+		Write_Controll(0x07F6, &datatmp[4]);
+		Write_Controll(0x07F5, &datatmp[8]);
 
-	uchar Instr[4] = {0x04,0,0,0};
+		uchar Instr[4] = {0x04,0,0,0};
 
-	Write_Controll(0x07F4, &Instr[0]);
-	delay_us(100);
-	while(!GET_ALTERA_BUSY);
-	SetOutLevelFromFreq();
+		Write_Controll(0x07F4, &Instr[0]);
+		delay_us(100);
+		while(!GET_ALTERA_BUSY);
+		SetOutLevelFromFreq();
+	#endif
 }
 //////////////////////////////////////////////////////////////////////////
 void ChangeModePrk(STATEOFPLATE* state){
+	#ifdef PRK_VER
 		Read_Controll(0x0FFE, state->C_R[1]);
 		if (state->mode == 0)
 				state->C_R[1][3] = ((state->C_R[1][3])& 0xF8) + 4;
 			else
 				state->C_R[1][3] = ((state->C_R[1][3])& 0xF8) + 6;
 		Write_Controll(0x07FE, state->C_R[1]);	
+	#endif
 }
 //////////////////////////////////////////////////////////////////////////
 // »зменение выходного напр€жени€ платы
 /////////////////////////////////
 //от 1,5 до 28,5 через 0,5 ћ√ц
 void SetOutLevel(uchar lvl){
-	lvl = lvl & 0x7F;
-	Read_Controll(0x0FFD, g_plateState.C_R[2]);
-		g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | lvl;
-	Write_Controll(0x07FD, g_plateState.C_R[2]);
+	#ifdef PRK_VER
+		lvl = lvl & 0x7F;
+		Read_Controll(0x0FFD, g_plateState.C_R[2]);
+			g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | lvl;
+		Write_Controll(0x07FD, g_plateState.C_R[2]);
+	#endif
 }
 //вычисление адреса частоты дл€ установки 1 вольта на выходе
 unsigned int SolveFreqIndCorrCoef(){
 	return (g_plateState.freq[0]*100 + g_plateState.freq[1] *10 + g_plateState.freq[2] - 15) /5;
 }
 void SetOutLevelFromFreq(){
-	g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | g_plateState.corr_coef[SolveFreqIndCorrCoef()];
-	Write_Controll(0x07FD, g_plateState.C_R[2]);
+	#ifdef PRK_VER
+		g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | g_plateState.corr_coef[SolveFreqIndCorrCoef()];
+	
+		Write_Controll(0x07FD, g_plateState.C_R[2]);
+	#endif
 }
 //////////////////////////////////////////////////////////////////////////
 /************************************************************************/
@@ -159,23 +168,29 @@ void SetOTPLines(){
 //////////////////////////////////////////////////////////////////////////
 int main(void)
 {
-	Init_LCD();
-	LCD_Clear();
-	LCD_DisplayStringRus(0,0,"      «ј√–”« ј      ");
+#ifdef PRK_VER
 	InitKeyboard();
 	InitPrk();
+#endif
 	InitSelPort();
 	IICInit();
 	InitUart();
-	g_currentItem = &g_mainMenuItem;
-	g_currentItem->draw();
 	
+	#ifndef BOOTLOAD_VER
+		Init_LCD();
+		LCD_Clear();
+		LCD_DisplayStringRus(0,0,"      «ј√–”« ј      ");
+		g_currentItem = &g_mainMenuItem;
+		g_currentItem->draw();
+	#endif
 	SendCOMBytes((uchar*)"REBOOT",7);
 	DDRB |= _BV(7);
 	
     while(1)
     {
-      ScanKeyboard(KeySelect);
+		#ifndef BOOTLOAD_VER
+		      ScanKeyboard(KeySelect);
+		#endif
 	
     }
 }

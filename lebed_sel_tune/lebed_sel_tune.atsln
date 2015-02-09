@@ -5,12 +5,18 @@ Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "lebed_sel_tune", "lebed_sel
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		boot_ver|AVR = boot_ver|AVR
 		Debug|AVR = Debug|AVR
+		prk_ver|AVR = prk_ver|AVR
 		Release|AVR = Release|AVR
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.boot_ver|AVR.ActiveCfg = boot_ver|AVR
+		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.boot_ver|AVR.Build.0 = boot_ver|AVR
 		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.Debug|AVR.ActiveCfg = Debug|AVR
 		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.Debug|AVR.Build.0 = Debug|AVR
+		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.prk_ver|AVR.ActiveCfg = prk_ver|AVR
+		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.prk_ver|AVR.Build.0 = prk_ver|AVR
 		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.Release|AVR.ActiveCfg = Release|AVR
 		{5A3ED81D-BA33-4C6B-BD32-871C88DB2EAA}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
