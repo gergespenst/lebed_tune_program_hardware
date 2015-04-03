@@ -237,6 +237,17 @@ void WriteFLCAFunc(unsigned char * data)//запись частоты с чтением из памяти >[ 
 	ReadLCAoutFromFlash(CharFtoInd(g_plateState.freq),(uchar*)g_plateState.outLCA);//читаем из флешки комбинацию
 	SendLCA2Sel((uchar*)g_plateState.outLCA);// отправляем в селектор
 	SendOk();
+	_delay_ms(5);
+	//запись LCA [ HEAD C1 C1 C1 L1 L1 C2 C2 C2 L2 L2 A A ENDL] <[OK ENDL]
+	outLCA2LCA(&g_C1,&g_L1,&g_C2,&g_L2,&g_A,g_plateState.outLCA);
+	unsigned char reply[] = {WRLCA,
+							((g_C1 & 0xF00) >> 8 ) + 0x30,((g_C1 & 0x0F0) >> 4 ) + 0x30,((g_C1 & 0x00F)) + 0x30,
+							((g_L1 & 0xF0) >> 4 ) + 0x30,((g_L1 & 0x0F)) + 0x30,
+							((g_C2 & 0xF00) >> 8 ) + 0x30,((g_C2 & 0x0F0) >> 4 ) + 0x30,((g_C2 & 0x00F)) + 0x30,
+							((g_L2 & 0xF0) >> 4 ) + 0x30,((g_L2 & 0x0F)) + 0x30,
+							((g_A & 0xF0) >> 4 ) + 0x30,((g_A & 0x0F)) + 0x30,
+							ENDL};
+							SendCOMBytes(reply,14);
 }
 
 	

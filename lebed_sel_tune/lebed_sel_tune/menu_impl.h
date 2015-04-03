@@ -476,8 +476,8 @@ void LCA2out(unsigned int C1,unsigned char L1,unsigned int C2,unsigned char L2,u
 	
 	OUT[0] = (C1 & 0x0FFF) + (((unsigned int)(L1 & 0x07)) << 13);
 	OUT[1] = ((unsigned int)(L1 & 0x78) >> 3)+ ((C2 & 0x0FFF) << 4);
-	A ^= _BV(5); //инверсия 6 бита для включения RZ
-	OUT[2] = (((unsigned int)L2) << 1) + (((unsigned int)~A) << 8);
+	A ^= _BV(5); //инверсия 6 бита для включения RZ					//эта часть записывает копию бита RZ для серийной платы селектора
+	OUT[2] = (((unsigned int)L2) << 1) + (((unsigned int)~A) << 8) + ((((unsigned int)~A) & _BV(5)) >> 5);
 	
 	//переписываем для хранения OUT в EEPROM
 	//eeprom_update_word(&OUT[0],(C1 & 0x0FFF) + (((unsigned int)(L1 & 0x07)) << 13));
