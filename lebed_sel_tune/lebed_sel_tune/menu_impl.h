@@ -536,4 +536,26 @@ for (unsigned char i = 0; i < strlen(TempStr1); i++){// выводим во временную стр
 		Str2DrawStr((uchar*)TempStr1,(uchar*)TempStr2,g_drawingString);
 		DrawOnLCD(g_drawingString);
 }
+
+/************************************************************************/
+/***************  Меню параметров селектора захарова ********************/
+/************************************************************************/
+/************************************************************************/
+// void okFuncZselMenu(CMenuItem* item);
+// void drawFuncZselMenu(CMenuItem* item);
+// void upFuncZselMenu(CMenuItem* item);
+// void downFuncZselMenu(CMenuItem* item);
+// void escFuncZselMenu(CMenuItem* item);
+// // void rightFuncPrkItem(CMenuItem *item);
+// // void leftFuncPrkItem(CMenuItem *item);
+// 
+// 
+// CMenuItem g_prkSettingMenuItem((char*)"#X@C_XR@XX@XX@XX@XX@",(char*)"@@@C_XR@XX@XX@XX@XX@",
+// &g_mainMenuItem,
+// {{&g_prkSettingMenuItem},1},
+// okFuncPrkMenu,escFuncPrkMenu,drawFuncPrkMenu,leftFunc,rightFunc,upFuncPrkMenu,downFuncPrkMenu,
+// {{1,9,10,12,13,15,16,18,19},9},
+// {{9,10,12,13,15,16,18,19},8});
+
+
 #endif /* MENU_IMPL_H_ */
