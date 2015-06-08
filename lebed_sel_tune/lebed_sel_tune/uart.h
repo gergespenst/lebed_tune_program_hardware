@@ -247,6 +247,7 @@ void WriteFLCAFunc(unsigned char * data)//запись частоты с чтением из памяти >[ 
 							((g_L2 & 0xF0) >> 4 ) + 0x30,((g_L2 & 0x0F)) + 0x30,
 							((g_A & 0xF0) >> 4 ) + 0x30,((g_A & 0x0F)) + 0x30,
 							ENDL};
+							_delay_ms(10);
 							SendCOMBytes(reply,14);
 }
 
