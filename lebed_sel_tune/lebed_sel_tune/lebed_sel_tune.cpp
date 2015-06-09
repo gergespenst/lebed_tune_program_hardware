@@ -96,8 +96,8 @@ unsigned char ReadDetCoef(){
 /************************************************************************/
 //////////////////////////////////////////////////////////////////////////
 //Функция подстройки уровня
-void TuneLvlSel(){
-	SetSelFreqInFlash();
+void TuneLvlLebedSel(){
+	SetLebedSelFreqInFlash();
 	uchar normalLvl = ReadDetCoef();
 	upas_out = read_steady_adc(ADC_UPAS_OUT_PIN);
 	uchar delta = 2;
@@ -167,7 +167,8 @@ int main(void)
 	InitSelPort();
 	IICInit();
 	InitUart();
-	g_currentItem = &g_mainMenuItem;
+	//g_currentItem = &g_mainMenuItem;
+	g_currentItem = & g_zselSettingMenuItem;
 	g_currentItem->draw();
 	
 	SendCOMBytes((uchar*)"REBOOT",7);

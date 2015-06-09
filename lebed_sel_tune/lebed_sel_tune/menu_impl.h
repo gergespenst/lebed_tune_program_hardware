@@ -11,6 +11,7 @@
 
 #include <main.h>
 #include "CMenuItem.h"
+
 #include <avr/eeprom.h>
 CMenuItem *g_currentItem;
 
@@ -18,6 +19,7 @@ CMenuItem *g_currentItem;
 extern CMenuItem g_mainMenuItem;
 //extern CMenuItem g_settingsMenuItem;
 extern CMenuItem g_prkSettingMenuItem;
+extern CMenuItem g_zselSettingMenuItem;
 extern CMenuItem g_lcaMenuItem;
 //строка для вывода
 uchar g_drawingString[NUM_OF_CHARS_PER_STR*2+1] = {"testovaja figna fghj kjhgdfsertyuhnmklfd"};
@@ -32,17 +34,30 @@ unsigned int g_C2 = 0x66D;
 unsigned char g_L1 = 0x65;
 unsigned char g_L2 = 0x4B;
 unsigned char g_A = 0x29;
-	
+// структура для хранения параметров селектора захарова
+typedef struct{
+	char L;
+	char C;
+	char link;
+	char A;
+	int cap1;
+	int cap2;
+} ZSELPARAM;
+enum SelType {LEBED_TYPE,ZAH_TYPE};	// именя типов селектора
 //структура хранящая состояние платы
 typedef struct StateOfPlate{
 	bool output;
 	bool mode;
+	
 	uchar freq[7];
 	uchar C_R[4][4];
 	unsigned int outLCA[3];
 	unsigned char detCoef;
 	unsigned char corr_coef[57];//коэффициенты коррекции уровня платы от 1,5 МГц до 29,5 МГц через 0,5 МГц
+	uchar selType;
+	ZSELPARAM zSelParam;		
 } STATEOFPLATE;
+
  STATEOFPLATE g_plateState;
  //требуется прописать в свойствах проекта для секции с++  -std=c++11
  STATEOFPLATE EEMEM g_eepromPlateState = {bool(0),bool(0),{1,0,0,0,0,0,0}, 
@@ -50,7 +65,8 @@ typedef struct StateOfPlate{
 												{0x14,0x00,0xB3,0xC4},
 												{0x07,0x00,0x00,0x30},
 												{0x36,0x10,0x19,0x04}},
-												{0,0,0}};
+												{0,0,0}, 0, {0,0},
+												bool(0)	,{0x12,0x34,0x56,0x78,0x9ABC,0xBEEF}};
  void SaveStateToEEPROM(STATEOFPLATE* state, void* eepromPointer){
 	 eeprom_update_block(state,eepromPointer,sizeof(STATEOFPLATE)); 
  }
@@ -106,11 +122,15 @@ void escFunc(CMenuItem* item){
 	g_plateState.freq[5] = (datatmp[6] & 0x0F) ;
 	g_plateState.freq[6] = (datatmp[7] & 0xF0) >> 4;
 	//
-	 upas_in = read_adc(ADC_UPAS_IN_PIN);
+	 upas_in = 0;// read_adc(ADC_UPAS_IN_PIN);
 	 upas_out = read_adc(ADC_UPAS_OUT_PIN);
 	 
-	 			 g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
-	 			 _delay_ms(1500);
+	 if (g_plateState.selType == LEBED_TYPE)
+	 {
+		 	 			 g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
+		 	 			 _delay_ms(1500);
+	 }
+
 	 
 	g_currentItem->draw();
 }
@@ -142,23 +162,26 @@ void drawFuncMainMenu(CMenuItem* item);
 void upFuncMainMenu(CMenuItem* item);
 void downFuncMainMenu(CMenuItem* item);
 
-CMenuItem g_mainMenuItem((char*)"F=XXXXX,XX кГц Настр",(char*)"XXX MOD:XX Уст XX XX",
+CMenuItem g_mainMenuItem((char*)"F=XXXXX,XX кГц Настр",(char*)"XXX MOD:XX Уст S:X ",
 &g_mainMenuItem,
-{{&g_prkSettingMenuItem},1},
+{{&g_zselSettingMenuItem},1},
 okFuncMainMenu,escFunc,drawFuncMainMenu,leftFunc,rightFunc,upFuncMainMenu,downFuncMainMenu,
 {{3,4,5,6,7,9,10,16},8},
-{{1,9,12},3});
+{{1,9,12,18},4});
 //////////////////////////////////////////////////////////////////////////
 //переменные для данного пункта меню
 #define SETTING_POS 2//индекс меню настроек на экране
 #define NASTR_POS 7//индекс настройки на экране
 #define FREQ_POS 0//индекс частоты ан экране
+#define SELTYPE_POS 3//индекс типа селектора на экране
 
 //строки для вывода отпирания запирания
 uchar OnOff[2][4] ={"ОТП","ЗАП"};
 
 //строки для вывода режима
 uchar Mode[2][3] ={"1T","2T"};
+//строки для типа селектора
+uchar Seltype[2] = {'L','Z'};
 //////////////////////////////////////////////////////////////////////////
 extern void WriteFreqToPrk(uchar* freq);//функция установки частоты в предкорректор, должна быть определена в другом месте
 extern void ChangeModePrk(STATEOFPLATE*);//функция смены режима с одного тона на два
@@ -168,7 +191,7 @@ extern unsigned char ReadDetCoef();
 // extern void ReadLCAoutFromFlash(unsigned int addr,uchar *data);
 // extern void SendLCA2Sel(unsigned char* LCAout);
 //////////////////////////////////////////////////////////////////////////
-void SetSelFreqInFlash(){
+void SetLebedSelFreqInFlash(){
 	CharFtoInd(g_plateState.freq);
 	ReadLCAoutFromFlash(CharFtoInd(g_plateState.freq),(uchar*)g_plateState.outLCA);//читаем из флешки комбинацию
 	
@@ -193,21 +216,35 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 			 //TODO :: Здесь должна быть функция установки частоты
 			 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
 			 WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
-			 SetSelFreqInFlash();//устанавливается частота селектора
-			g_plateState.detCoef = ReadDetCoef();
-			g_currentItem = &g_lcaMenuItem;
-			 //g_lcaMenuItem.draw();//отображаются прочитанные из флеш значения LCA
-			 //_delay_ms(1500);
+			
+			if (g_plateState.selType == LEBED_TYPE)
+			{
+				 SetLebedSelFreqInFlash();//устанавливается частота селектора
+				g_plateState.detCoef = ReadDetCoef();
+				g_currentItem = &g_lcaMenuItem;				 
+			}
+			if (g_plateState.selType == ZAH_TYPE)
+			{
+				//TODO: вписать сюда установку частоты селектора захарова
+			}		
+			
 
 		 }
 	 
 		 if (item->getCurPos() == NASTR_POS)
 		 {
-			 //TODO :: Здесь должна быть функция настройки на частоту
-			 		 
+			extern void TuneLvlLebedSel() ;
+			if (g_plateState.selType == LEBED_TYPE)
+			{
+				TuneLvlLebedSel();			 
+			}
+			if (g_plateState.selType == ZAH_TYPE)
+			{
+				//TODO: вписать сюда настройку уровня селектора захарова
+			}			 
 					 
-			 extern void TuneLvlSel() ;
-			 TuneLvlSel();
+			 
+			 
 		 }
 	 }
 	if (2 == item->getCurRow())
@@ -233,6 +270,10 @@ void upFuncMainMenu(CMenuItem* item){
 								g_plateState.mode = !(g_plateState.mode);
 								ChangeModePrk(&g_plateState);
 		}
+		if ( (item->getCurRow() == 2) && (item->getCurPos() == SELTYPE_POS) ){
+			g_plateState.selType = !(g_plateState.selType);
+			 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);	
+		}		
 		if ( (item->getCurRow() == 1) && (item->getFirstStr()[item->getCursorPosition().column - 1] == 'X') )
 				(g_plateState.freq[item->getCurPos() - FREQ_POS] < 9)?
 					(g_plateState.freq[item->getCurPos() - FREQ_POS]++)
@@ -252,7 +293,10 @@ void downFuncMainMenu(CMenuItem* item){
 						g_plateState.mode = !(g_plateState.mode);
 						ChangeModePrk(&g_plateState);
 						}
-						
+		if ( (item->getCurRow() == 2) && (item->getCurPos() == SELTYPE_POS) ){
+			g_plateState.selType = !(g_plateState.selType);
+			 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);
+		}						
 		if ( (item->getCurRow() == 1) && (item->getFirstStr()[item->getCursorPosition().column - 1] == 'X') )
 					(g_plateState.freq[item->getCurPos() - FREQ_POS] > 0)?
 						(g_plateState.freq[item->getCurPos() - FREQ_POS]--)
@@ -278,12 +322,16 @@ void drawFuncMainMenu(CMenuItem* item){
 			OutStrPos++;
 		}
 	}
-	
-	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_in & 0xF0)>>4];
-	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_in & 0x0F)];
-
-	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_out & 0xF0)>>4];
-	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_out & 0x0F)];
+// 		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_in & 0xF0)>>4];
+// 		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_in & 0x0F)];
+	if (g_plateState.selType == 0)
+		memcpy(strchr(TempStr2,'X') ,(void*)&Seltype[0],1)	;
+	else memcpy(strchr(TempStr2,'X') ,(void*)&Seltype[1],1)	;
+// 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_in & 0xF0)>>4];
+// 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_in & 0x0F)];
+// 
+// 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_out & 0xF0)>>4];
+// 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(upas_out & 0x0F)];
 	
 	Str2DrawStr((uchar*)TempStr1,(uchar*)TempStr2,g_drawingString);
 	
@@ -541,21 +589,188 @@ for (unsigned char i = 0; i < strlen(TempStr1); i++){// выводим во временную стр
 /***************  Меню параметров селектора захарова ********************/
 /************************************************************************/
 /************************************************************************/
-// void okFuncZselMenu(CMenuItem* item);
-// void drawFuncZselMenu(CMenuItem* item);
-// void upFuncZselMenu(CMenuItem* item);
-// void downFuncZselMenu(CMenuItem* item);
-// void escFuncZselMenu(CMenuItem* item);
-// // void rightFuncPrkItem(CMenuItem *item);
-// // void leftFuncPrkItem(CMenuItem *item);
-// 
-// 
-// CMenuItem g_prkSettingMenuItem((char*)"#X@C_XR@XX@XX@XX@XX@",(char*)"@@@C_XR@XX@XX@XX@XX@",
-// &g_mainMenuItem,
-// {{&g_prkSettingMenuItem},1},
-// okFuncPrkMenu,escFuncPrkMenu,drawFuncPrkMenu,leftFunc,rightFunc,upFuncPrkMenu,downFuncPrkMenu,
-// {{1,9,10,12,13,15,16,18,19},9},
-// {{9,10,12,13,15,16,18,19},8});
+void okFuncZselMenu(CMenuItem* item);
+void drawFuncZselMenu(CMenuItem* item);
+void upFuncZselMenu(CMenuItem* item);
+void downFuncZselMenu(CMenuItem* item);
+void escFuncZselMenu(CMenuItem* item);
+void rightFuncZselItem(CMenuItem *item);
+void leftFuncZselItem(CMenuItem *item);
 
+
+CMenuItem g_zselSettingMenuItem((char*)"L=XX@C=XX@Li=XX@A=XX",(char*)"C1=XXXX@@@@@@@@@@@@@",
+&g_mainMenuItem,
+{{&g_zselSettingMenuItem},1},
+okFuncZselMenu,escFuncZselMenu,drawFuncZselMenu,leftFuncZselItem,rightFuncZselItem,upFuncZselMenu,downFuncZselMenu,
+{{3,4,8,9,14,15,19,20},8},
+{{4,5,6,7},4});
+//перенесено в начало
+// typedef struct{
+// 	char L;
+// 	char C;
+// 	char link;
+// 	char A;
+// 	int cap1;
+// 	int cap2;
+// 	} ZSELPARAM;
+// ZSELPARAM zSelParam;
+void * str1Params[4] = {&g_plateState.zSelParam.L,&g_plateState.zSelParam.C,&g_plateState.zSelParam.link,&g_plateState.zSelParam.A};
+void * str2Params[2] = {&g_plateState.zSelParam.cap1,&g_plateState.zSelParam.cap2};
+void  (*  str1Func[])(char) = {SetZselL,SetZselCap,SetZselLink,SetZselA};
+void  (*  str2Func[])(int) = {SetZselCap1,SetZselCap2};
+	
+char str1Reg[4] = {LREG,CAPREG,LINKREG,AREG};
+char str2Reg[2] = {CAP1REG,CAP2REG};
+//////////////////////////////////////////////////////////////////////////
+void okFuncZselMenu( CMenuItem* item )
+{
+	
+}
+//////////////////////////////////////////////////////////////////////////
+void drawFuncZselMenu( CMenuItem* item )
+{
+			memcpy(TempStr1,item->getFirstStr(),//копируем строку из пункта меню во временную строку
+			(strlen(item->getFirstStr()) > NUM_OF_CHARS_PER_STR)?NUM_OF_CHARS_PER_STR:strlen(item->getFirstStr()));//потенциально может скопировать мусор за пределами строки
+			memcpy(TempStr2,item->getSecondStr(),
+			(strlen(item->getSecondStr()) > NUM_OF_CHARS_PER_STR)?NUM_OF_CHARS_PER_STR:strlen(item->getSecondStr()));
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.L & 0xF0) >> 4] ;
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.L & 0x0F) ] ;
+														 
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.C & 0xF0) >> 4 ] ;
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.C & 0x0F) ] ;
+	
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.link & 0xF0) >> 4 ] ;
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.link & 0x0F) ] ;
+	
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.A & 0xF0) >> 4 ] ;
+	TempStr1[strchr(TempStr1,'X') - TempStr1] = g_hexOut[(g_plateState.zSelParam.A & 0x0F) ] ;													  
+
+														  
+	//													 
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0xF000)>> 12] ;
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0x0F00)>> 8] ;
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0x00F0)>> 4] ;
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0x000F) ] ;	
+														
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0xF000)>> 12] ;
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0x0F00)>> 8] ;
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0x00F0)>> 4] ;
+	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0x000F) ] ;	
+		
+	for (unsigned char i = 0; i < strlen(TempStr1); i++){// выводим во временную строку на позиции символов Х значения регистров
+		if ('@' == TempStr1[i] ) TempStr1[i] = ' ';
+		if ('@' == TempStr2[i] ) TempStr2[i] = ' ';
+	}	
+	
+		Str2DrawStr((uchar*)TempStr1,(uchar*)TempStr2,g_drawingString);
+		DrawOnLCD(g_drawingString);
+}
+//////////////////////////////////////////////////////////////////////////
+void upFuncZselMenu( CMenuItem* item )
+{
+	if (g_currentItem->getCurRow() == 1)
+	{
+		char temp;
+		char ind = g_currentItem->getCurPos();
+		char* param = (char*) str1Params[ind/2];
+		temp = ((*param) & ((ind%2)?(0x0F):(0xF0))) >> (4*(1 - ind%2));
+		if(temp < 15) temp++;
+			else temp = 0;
+		*param = ((*param) & ((1 - ind%2)?(0x0F):(0xF0))) + (temp << (4*(1 - ind%2)));
+		
+		str1Func[ind/2](*param);//TODO: может меняться от длины параметра
+
+	}
+	if (g_currentItem->getCurRow() == 2)
+	{
+		char temp;
+		char ind = g_currentItem->getCurPos();
+		int* param = (int*) str2Params[ind/4];
+		temp = ((*param) & (unsigned int)((0xF) << (4*(3 - ind%4)))) >> (4*(3-ind%4));
+
+  		if(temp < 15) temp++;
+  		else temp = 0;
+		  
+ 		*param = ((*param) & ~(unsigned int)((0xF) << (4*(3 - ind%4)))) + (temp << (4*(3-ind%4)));
+		str2Func[ind/4](*param);//TODO: может меняться от длины параметра
+	}	
+	 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
+	g_currentItem->draw();
+}
+//////////////////////////////////////////////////////////////////////////
+void downFuncZselMenu( CMenuItem* item )
+{
+		if (g_currentItem->getCurRow() == 1)
+		{
+			char temp;
+			char ind = g_currentItem->getCurPos();
+			char* param = (char*) str1Params[ind/2];
+			//	LCD_DisplayCharacter(g_hexOut[ind]);
+			//_delay_ms(1000);
+			temp = ((*param) & ((ind%2)?(0x0F):(0xF0))) >> (4*(1 - ind%2));
+			//LCD_DisplayCharacter(g_hexOut[*param & 0x0F]);
+			//			LCD_DisplayCharacter(g_hexOut[temp]);
+			
+			if(temp > 0) temp--;
+			else temp = 15;
+			//	LCD_DisplayCharacter(g_hexOut[temp]);
+			*param = ((*param) & ((1 - ind%2)?(0x0F):(0xF0))) + (temp << (4*(1 - ind%2)));
+			str1Func[ind/2](*param);//TODO: может меняться от длины параметра
+			// 		LCD_DisplayCharacter(g_hexOut[*param >> 4]);
+			// 		_delay_ms(1000);
+		}
+	if (g_currentItem->getCurRow() == 2)
+	{
+		char temp;
+		char ind = g_currentItem->getCurPos();
+		int* param = (int*) str2Params[ind/4];
+		temp = ((*param) & (unsigned int)((0xF) << (4*(3 - ind%4)))) >> (4*(3-ind%4));
+
+			if(temp > 0) temp--;
+			else temp = 15;
+		
+		*param = ((*param) & ~(unsigned int)((0xF) << (4*(3 - ind%4)))) + (temp << (4*(3-ind%4)));
+		str2Func[ind/4](*param);//TODO: может меняться от длины параметра
+
+	}
+	 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
+		g_currentItem->draw();
+}
+//////////////////////////////////////////////////////////////////////////
+void escFuncZselMenu( CMenuItem* item )
+{
+	if ( (item->getCurRow() == 1) && (item->getCurPos() == 0) )
+		g_currentItem = item->getParent();
+	else
+		item->resetCur();
+
+	g_currentItem->draw();	
+}
+//////////////////////////////////////////////////////////////////////////
+void rightFuncZselItem( CMenuItem *item )
+{
+	if (item->getCurRow() == 1)
+	{
+		ChangeReg(str1Reg[item->getCurPos()/2]);//TODO: может меняться от длины параметра
+	}
+		if (item->getCurRow() == 2)
+		{
+			ChangeReg(str1Reg[item->getCurPos()/4]);//TODO: может меняться от длины параметра
+		}
+	rightFunc(item);
+}
+//////////////////////////////////////////////////////////////////////////
+void leftFuncZselItem( CMenuItem *item )
+{
+		if (item->getCurRow() == 1)
+		{
+			ChangeReg(str1Reg[item->getCurPos()/2]);//TODO: может меняться от длины параметра
+		}
+		if (item->getCurRow() == 2)
+		{
+			ChangeReg(str1Reg[item->getCurPos()/4]);//TODO: может меняться от длины параметра
+		}
+	leftFunc(item);
+}
 
 #endif /* MENU_IMPL_H_ */

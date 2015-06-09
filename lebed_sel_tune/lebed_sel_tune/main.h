@@ -53,8 +53,10 @@
 #include "altera.h"
 
 #define ADC_UPAS_OUT_PIN 6
-#define ADC_UPAS_IN_PIN 7
+//#define ADC_UPAS_IN_PIN 7
 #include "adc.h"
+
+#include "ZSelControl.h"
 
 #include <stdlib.h>
 
