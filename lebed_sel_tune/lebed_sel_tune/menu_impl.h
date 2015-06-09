@@ -749,28 +749,31 @@ void escFuncZselMenu( CMenuItem* item )
 //////////////////////////////////////////////////////////////////////////
 void rightFuncZselItem( CMenuItem *item )
 {
-	if (item->getCurRow() == 1)
-	{
-		ChangeReg(str1Reg[item->getCurPos()/2]);//TODO: может меняться от длины параметра
-	}
-		if (item->getCurRow() == 2)
-		{
-			ChangeReg(str1Reg[item->getCurPos()/4]);//TODO: может меняться от длины параметра
-		}
+
 	rightFunc(item);
-}
-//////////////////////////////////////////////////////////////////////////
-void leftFuncZselItem( CMenuItem *item )
-{
 		if (item->getCurRow() == 1)
 		{
+
 			ChangeReg(str1Reg[item->getCurPos()/2]);//TODO: может меняться от длины параметра
 		}
 		if (item->getCurRow() == 2)
 		{
-			ChangeReg(str1Reg[item->getCurPos()/4]);//TODO: может меняться от длины параметра
+			ChangeReg(str2Reg[item->getCurPos()/4]);//TODO: может меняться от длины параметра
 		}
+}
+//////////////////////////////////////////////////////////////////////////
+void leftFuncZselItem( CMenuItem *item )
+{
+		
 	leftFunc(item);
+	if (item->getCurRow() == 1)
+	{
+		ChangeReg(str1Reg[item->getCurPos()/2]);//TODO: может меняться от длины параметра
+	}
+	if (item->getCurRow() == 2)
+	{
+		ChangeReg(str2Reg[item->getCurPos()/4]);//TODO: может меняться от длины параметра
+	}
 }
 
 #endif /* MENU_IMPL_H_ */

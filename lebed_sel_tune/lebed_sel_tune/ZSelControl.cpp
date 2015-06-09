@@ -34,14 +34,15 @@ void SetZselCap1( int Cap1 )
 	char i = 0;
 	
 	ChangeReg(CAP1REG);
-	SET_ZAH_CAP1_DIR(DIR_OUT);
-	SET_ZAH_CAP1_CLK(0);
+		SET_ZAH_CLKK_DIR(DIR_OUT);
+		SET_ZAH_DATA(0);
+		SET_ZAH_CLKK(0);
 	for(i = 0; i < 8; i++)	{
 		SET_ZAH_DATA(0);
 		_delay_us(ZAH_SEL_DELAY);
-		SET_ZAH_CAP1_CLK(1);
+		SET_ZAH_CLKK(1);
 		_delay_us(ZAH_SEL_DELAY);
-		SET_ZAH_CAP1_CLK(0);
+		SET_ZAH_CLKK(0);
 		_delay_us(ZAH_SEL_DELAY);
 	}
 	char g_hexOut[] = "0123456789abcdef";
@@ -49,20 +50,22 @@ void SetZselCap1( int Cap1 )
 		/*LCD_DisplayCharacter(g_hexOut[(Cap1 >> 9) & 0x0001]);*/
 		SET_ZAH_DATA( (((unsigned int)Cap1 >> (9 - i)) & 0x0001) == 0x0001);
 		_delay_us(ZAH_SEL_DELAY);
-		SET_ZAH_CAP1_CLK(1);
+		SET_ZAH_CLKK(1);
 		_delay_us(ZAH_SEL_DELAY);
-		SET_ZAH_CAP1_CLK(0);
+		SET_ZAH_CLKK(0);
 		_delay_us(ZAH_SEL_DELAY);
 	}	
 	//_delay_ms(1000);
 	for(i = 0; i < 6; i++)	{
 			SET_ZAH_DATA(0);
 			_delay_us(ZAH_SEL_DELAY);
-			SET_ZAH_CAP1_CLK(1);
+			SET_ZAH_CLKK(1);
 			_delay_us(ZAH_SEL_DELAY);
-			SET_ZAH_CAP1_CLK(0);
+			SET_ZAH_CLKK(0);
 			_delay_us(ZAH_SEL_DELAY);
 		}
+	SET_ZAH_CLKK(0);
+	ChangeReg(CAP1REG);
 }
 //////////////////////////////////////////////////////////////////////////
 void SetZselCap2( int Cap2 )
@@ -81,8 +84,10 @@ void SetZselA( char A )
 void ChangeReg( char regType)
 {
 	char i = 0;
+	SET_ZAH_CLKS_DIR(DIR_OUT);
+	SET_ZAH_DATA(0);
 	SET_ZAH_CLKS(0);
-
+_delay_us(15);
 	for (i = 0; i < regType; i++)
 	{
 		SET_ZAH_DATA(1);
@@ -92,12 +97,14 @@ void ChangeReg( char regType)
 	}
 	
 	SET_ZAH_CLKS(1);
+	SET_ZAH_DATA(0);
 }
 //////////////////////////////////////////////////////////////////////////
 void WriteByte( char data)
 {
 	
 	char i = 0;
+	SET_ZAH_CLKK_DIR(DIR_OUT);
 	SET_ZAH_DATA(0);
 	SET_ZAH_CLKK(0);
 	for(i = 0; i < 8; i++)	{
