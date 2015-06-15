@@ -8,8 +8,8 @@
 
 char read_adc(unsigned char pin) //ќпределение кода напр€жени€ Vdet c помощью ADC
 {
-	DDRB |= _BV(0);
-	PORTB |= _BV(0);
+// 	DDRB |= _BV(0);
+// 	PORTB |= _BV(0);
 	ADMUX = (1 << REFS1)|(1<< REFS0)|	//подключаем опорное к внутреннему источнику
 	(1 << ADLAR)|				//левосторнний формат вывода битов
 	(pin & 0x07);				//и утсанавливаем с какого пина читать
@@ -23,7 +23,7 @@ char read_adc(unsigned char pin) //ќпределение кода напр€жени€ Vdet c помощью AD
 			(1 << ADPS2)|(1 << ADPS1)|(0 << ADPS0);	//тактова€ частота F_CPU/64 = 172.8 kHz
 			
 	while(ADCSRA & _BV(ADSC)){_delay_us(2);};			//ждем окончани€ преобразовани€
-	PORTB &= ~_BV(0);	
+//	PORTB &= ~_BV(0);	
 	return ADCH;
 }
 

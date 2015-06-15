@@ -1,0 +1,1259 @@
+Archive member included because of file (symbol)
+
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+                              flashiic.o (__udivmodhi4)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+                              lebed_sel_tune.o (__divmodhi4)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+                              c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o (exit)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+                              altera.o (__do_copy_data)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+                              keyboard.o (__do_clear_bss)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+                              lebed_sel_tune.o (__do_global_ctors)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+                              lebed_sel_tune.o (__do_global_dtors)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+                              c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o) (__tablejump_elpm__)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
+                              lebed_sel_tune.o (memchr_P)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
+                              lebed_sel_tune.o (memcmp)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
+                              lebed_sel_tune.o (memcpy)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
+                              lebed_sel_tune.o (strchr)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+                              lebed_sel_tune.o (__eerd_block_m128)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
+                              lebed_sel_tune.o (__eeupd_block_m128)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
+                              c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o) (__eeupd_r18_m128)
+
+Discarded input sections
+
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+ .text          0x00000000        0x0 adc.o
+ .data          0x00000000        0x0 adc.o
+ .bss           0x00000000        0x0 adc.o
+ .text          0x00000000        0x0 altera.o
+ .data          0x00000000        0x0 altera.o
+ .bss           0x00000000        0x0 altera.o
+ .text          0x00000000        0x0 flashiic.o
+ .data          0x00000000        0x0 flashiic.o
+ .bss           0x00000000        0x0 flashiic.o
+ .text          0x00000000        0x0 i2c.o
+ .data          0x00000000        0x0 i2c.o
+ .bss           0x00000000        0x0 i2c.o
+ .text          0x00000000        0x0 keyboard.o
+ .data          0x00000000        0x0 keyboard.o
+ .bss           0x00000000        0x0 keyboard.o
+ .text._Z5Blinkm
+                0x00000000       0x38 keyboard.o
+ .text          0x00000000        0x0 lcd_knk.o
+ .data          0x00000000        0x0 lcd_knk.o
+ .bss           0x00000000        0x0 lcd_knk.o
+ .text._Z8LCD_Homev
+                0x00000000        0x8 lcd_knk.o
+ .text._Z20LCD_DisplayCharacterc
+                0x00000000        0x6 lcd_knk.o
+ .text._Z17LCD_DisplayStringccPc
+                0x00000000       0x22 lcd_knk.o
+ .text._Z14LCD_Cursor_Offv
+                0x00000000        0x8 lcd_knk.o
+ .text._Z15LCD_Display_Offv
+                0x00000000        0x8 lcd_knk.o
+ .text._Z14LCD_Display_Onv
+                0x00000000        0x8 lcd_knk.o
+ .text._Z26LCD_DisplayFlashLongStringPc
+                0x00000000       0x4c lcd_knk.o
+ .text          0x00000000        0x0 lebed_sel_tune.o
+ .data          0x00000000        0x0 lebed_sel_tune.o
+ .bss           0x00000000        0x0 lebed_sel_tune.o
+ .text._ZN9CMenuItemC2Ev
+                0x00000000       0x72 lebed_sel_tune.o
+ .text._ZN9CMenuItemC2EPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_cS0_cS0_
+                0x00000000       0x9c lebed_sel_tune.o
+ .text._ZN9CMenuItemC2EPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_18SPermitedPositionsS5_
+                0x00000000       0x94 lebed_sel_tune.o
+ .text._ZN9CMenuItemD2Ev
+                0x00000000        0x2 lebed_sel_tune.o
+ .text._ZN9CMenuItem11getFirstStrEv
+                0x00000000        0x8 lebed_sel_tune.o
+ .text._ZN9CMenuItem12getSecondStrEv
+                0x00000000        0x8 lebed_sel_tune.o
+ .text._ZN9CMenuItem9getParentEv
+                0x00000000        0x8 lebed_sel_tune.o
+ .text._ZN9CMenuItem8resetCurEv
+                0x00000000       0x10 lebed_sel_tune.o
+ .text._ZN9CMenuItem9setOkFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._ZN9CMenuItem11setDrawFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._ZN9CMenuItem10setEscFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._ZN9CMenuItem11setLeftFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._ZN9CMenuItem12setRightFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._ZN9CMenuItem9setUpFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._ZN9CMenuItem11setDownFuncEPFvPS_E
+                0x00000000        0xc lebed_sel_tune.o
+ .text._Z11SetOTPLinesv
+                0x00000000        0x2 lebed_sel_tune.o
+ .bss.g_comNumOfByte
+                0x00000000        0x2 lebed_sel_tune.o
+ .text          0x00000000        0x0 selector_control.o
+ .data          0x00000000        0x0 selector_control.o
+ .bss           0x00000000        0x0 selector_control.o
+ .text._Z7SetCLKKc
+                0x00000000        0xc selector_control.o
+ .text._Z7SetCLKSc
+                0x00000000        0xc selector_control.o
+ .text._Z7SetDATAc
+                0x00000000        0xc selector_control.o
+ .text          0x00000000        0x0 uart.o
+ .data          0x00000000        0x0 uart.o
+ .bss           0x00000000        0x0 uart.o
+ .debug_line    0x00000000        0x0 uart.o
+ .debug_str     0x00000000        0x0 uart.o
+ .comment       0x00000000       0x31 uart.o
+ .text          0x00000000        0x0 ZSelControl.o
+ .data          0x00000000        0x0 ZSelControl.o
+ .bss           0x00000000        0x0 ZSelControl.o
+ .text._Z8InitZselv
+                0x00000000        0xa ZSelControl.o
+ .rodata        0x00000000        0x8 ZSelControl.o
+ .text._Z8TestZselc
+                0x00000000      0x168 ZSelControl.o
+ .text          0x00000000        0x0 _StackInstrument.o
+ .data          0x00000000        0x0 _StackInstrument.o
+ .bss           0x00000000        0x0 _StackInstrument.o
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800100         0x0000ff00         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+LOAD adc.o
+LOAD altera.o
+LOAD flashiic.o
+LOAD i2c.o
+LOAD keyboard.o
+LOAD lcd_knk.o
+LOAD lebed_sel_tune.o
+LOAD selector_control.o
+LOAD uart.o
+LOAD ZSelControl.o
+LOAD _StackInstrument.o
+START GROUP
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libm.a
+END GROUP
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libm.a
+START GROUP
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libm.a
+LOAD c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a
+END GROUP
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x3744
+ *(.vectors)
+ .vectors       0x00000000       0x8c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x0000008c                . = ALIGN (0x2)
+                0x0000008c                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000008c        0x0 linker stubs
+ *(.trampolines*)
+                0x0000008c                __trampolines_end = .
+ *(.progmem*)
+ .progmem.data._ZL9ascii_lcd
+                0x0000008c       0x40 lcd_knk.o
+ .progmem.data._ZL13g_commandFunc
+                0x000000cc       0x1c lebed_sel_tune.o
+ .progmem.data._ZL18g_comandLengthList
+                0x000000e8        0xe lebed_sel_tune.o
+ .progmem.data._ZL12g_comandList
+                0x000000f6        0xe lebed_sel_tune.o
+                0x00000104                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000104                __ctors_start = .
+ *(.ctors)
+ .ctors         0x00000104        0x2 lebed_sel_tune.o
+                0x00000106                __ctors_end = .
+                0x00000106                __dtors_start = .
+ *(.dtors)
+ .dtors         0x00000106        0x2 lebed_sel_tune.o
+                0x00000108                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000108        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+                0x00000108                __init
+ *(.init0)
+ *(.init1)
+ .init1         0x00000108       0x2e _StackInstrument.o
+                0x00000108                _StackPaint
+ *(.init1)
+ *(.init2)
+ .init2         0x00000136        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000142       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_copy_data.o)
+                0x00000142                __do_copy_data
+ .init4         0x0000015c       0x10 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_clear_bss.o)
+                0x0000015c                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ .init6         0x0000016c       0x20 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_ctors.o)
+                0x0000016c                __do_global_ctors
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000018c        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+ *(.init9)
+ *(.text)
+ .text          0x00000194        0x2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
+                0x00000194                __vector_22
+                0x00000194                __vector_28
+                0x00000194                __vector_1
+                0x00000194                __vector_32
+                0x00000194                __vector_34
+                0x00000194                __vector_24
+                0x00000194                __vector_12
+                0x00000194                __bad_interrupt
+                0x00000194                __vector_6
+                0x00000194                __vector_31
+                0x00000194                __vector_3
+                0x00000194                __vector_23
+                0x00000194                __vector_25
+                0x00000194                __vector_11
+                0x00000194                __vector_13
+                0x00000194                __vector_17
+                0x00000194                __vector_19
+                0x00000194                __vector_7
+                0x00000194                __vector_27
+                0x00000194                __vector_5
+                0x00000194                __vector_33
+                0x00000194                __vector_4
+                0x00000194                __vector_9
+                0x00000194                __vector_2
+                0x00000194                __vector_21
+                0x00000194                __vector_15
+                0x00000194                __vector_29
+                0x00000194                __vector_8
+                0x00000194                __vector_26
+                0x00000194                __vector_14
+                0x00000194                __vector_10
+                0x00000194                __vector_16
+                0x00000194                __vector_18
+                0x00000194                __vector_20
+                0x00000196                . = ALIGN (0x2)
+ *(.text.*)
+ .text._Z8read_adch
+                0x00000196       0x1e adc.o
+                0x00000196                _Z8read_adch
+ .text._Z15read_steady_adch
+                0x000001b4       0x2e adc.o
+                0x000001b4                _Z15read_steady_adch
+ .text._Z23Write_Adress_SPI_ALTERAj
+                0x000001e2       0x72 altera.o
+                0x000001e2                _Z23Write_Adress_SPI_ALTERAj
+ .text._Z21Write_DATA_SPI_ALTERAh
+                0x00000254       0x6c altera.o
+                0x00000254                _Z21Write_DATA_SPI_ALTERAh
+ .text._Z20Read_DATA_SPI_ALTERAv
+                0x000002c0       0x70 altera.o
+                0x000002c0                _Z20Read_DATA_SPI_ALTERAv
+ .text._Z14Write_ControlljPh
+                0x00000330       0x36 altera.o
+                0x00000330                _Z14Write_ControlljPh
+ .text._Z13Read_ControlljPh
+                0x00000366       0x36 altera.o
+                0x00000366                _Z13Read_ControlljPh
+ .text._Z10InitAlterav
+                0x0000039c       0x9c altera.o
+                0x0000039c                _Z10InitAlterav
+ .text._Z6IndOfFj
+                0x00000438      0x126 flashiic.o
+                0x00000438                _Z6IndOfFj
+ .text._Z10CharFtoIndPh
+                0x0000055e       0x32 flashiic.o
+                0x0000055e                _Z10CharFtoIndPh
+ .text._Z10ErrorFlashv
+                0x00000590       0x20 flashiic.o
+                0x00000590                _Z10ErrorFlashv
+ .text._Z18WriteData2FlashIICjPhh
+                0x000005b0       0x6e flashiic.o
+                0x000005b0                _Z18WriteData2FlashIICjPhh
+ .text._Z17WriteLCAout2FlashjPh
+                0x0000061e        0x6 flashiic.o
+                0x0000061e                _Z17WriteLCAout2FlashjPh
+ .text._Z17WriteDetCal2FlashjPh
+                0x00000624        0x8 flashiic.o
+                0x00000624                _Z17WriteDetCal2FlashjPh
+ .text._Z18ReadDataInFlashIICPjPhh
+                0x0000062c       0x96 flashiic.o
+                0x0000062c                _Z18ReadDataInFlashIICPjPhh
+ .text._Z19ReadLCAoutFromFlashjPh
+                0x000006c2       0x20 flashiic.o
+                0x000006c2                _Z19ReadLCAoutFromFlashjPh
+ .text._Z17ReadDetCalInFlashjPh
+                0x000006e2       0x22 flashiic.o
+                0x000006e2                _Z17ReadDetCalInFlashjPh
+ .text._Z7IICInitv
+                0x00000704        0xe i2c.o
+                0x00000704                _Z7IICInitv
+ .text._Z8IICStartv
+                0x00000712       0x24 i2c.o
+                0x00000712                _Z8IICStartv
+ .text._Z7IICStopv
+                0x00000736       0x24 i2c.o
+                0x00000736                _Z7IICStopv
+ .text._Z6IICBitc
+                0x0000075a       0x44 i2c.o
+                0x0000075a                _Z6IICBitc
+ .text._Z12IICByteWritec
+                0x0000079e       0x12 i2c.o
+                0x0000079e                _Z12IICByteWritec
+ .text._Z11IICByteReadc
+                0x000007b0       0x2a i2c.o
+                0x000007b0                _Z11IICByteReadc
+ .text._Z12InitKeyboardv
+                0x000007da       0x2c keyboard.o
+                0x000007da                _Z12InitKeyboardv
+ .text._Z12ScanKeyboardPFvhE
+                0x00000806       0x72 keyboard.o
+                0x00000806                _Z12ScanKeyboardPFvhE
+ .text._Z8LCD_Busyv
+                0x00000878       0x42 lcd_knk.o
+                0x00000878                _Z8LCD_Busyv
+ .text._Z17LCD_Write4Controlh
+                0x000008ba       0x42 lcd_knk.o
+                0x000008ba                _Z17LCD_Write4Controlh
+ .text._Z16LCD_WriteControlh
+                0x000008fc       0x14 lcd_knk.o
+                0x000008fc                _Z16LCD_WriteControlh
+ .text._Z14LCD_Write4Datah
+                0x00000910       0x42 lcd_knk.o
+                0x00000910                _Z14LCD_Write4Datah
+ .text._Z13LCD_WriteDatah
+                0x00000952       0x1a lcd_knk.o
+                0x00000952                _Z13LCD_WriteDatah
+ .text._Z9LCD_Clearv
+                0x0000096c        0x6 lcd_knk.o
+                0x0000096c                _Z9LCD_Clearv
+ .text._Z8Init_LCDv
+                0x00000972       0x6a lcd_knk.o
+                0x00000972                _Z8Init_LCDv
+ .text._Z23LCD_DisplayCharacterRusc
+                0x000009dc       0x16 lcd_knk.o
+                0x000009dc                _Z23LCD_DisplayCharacterRusc
+ .text._Z10LCD_Cursorcc
+                0x000009f2       0x36 lcd_knk.o
+                0x000009f2                _Z10LCD_Cursorcc
+ .text._Z20LCD_DisplayStringRusccPc
+                0x00000a28       0x1e lcd_knk.o
+                0x00000a28                _Z20LCD_DisplayStringRusccPc
+ .text._Z13LCD_Cursor_Onv
+                0x00000a46        0x6 lcd_knk.o
+                0x00000a46                _Z13LCD_Cursor_Onv
+ .text._Z25LCD_DisplayDrawLongStringPc
+                0x00000a4c       0x46 lcd_knk.o
+                0x00000a4c                _Z25LCD_DisplayDrawLongStringPc
+ .text._Z11noEventMenuP9CMenuItem
+                0x00000a92        0x2 lebed_sel_tune.o
+                0x00000a92                _Z11noEventMenuP9CMenuItem
+ .text._Z9KeySelecth
+                0x00000a94       0xac lebed_sel_tune.o
+                0x00000a94                _Z9KeySelecth
+ .text._Z14okFuncZselMenuP9CMenuItem
+                0x00000b40        0xc lebed_sel_tune.o
+                0x00000b40                _Z14okFuncZselMenuP9CMenuItem
+ .text._ZN9CMenuItem9initClassEPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_cS0_cS0_
+                0x00000b4c      0x20c lebed_sel_tune.o
+                0x00000b4c                _ZN9CMenuItem9initClassEPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_cS0_cS0_
+ .text._ZN9CMenuItemC2EPcS0_PS_10SChildListPFvS1_ES4_S4_S4_S4_S4_S4_18SPermitedPositionsS5_
+                0x00000d58       0x98 lebed_sel_tune.o
+                0x00000d58                _ZN9CMenuItemC1EPcS0_PS_10SChildListPFvS1_ES4_S4_S4_S4_S4_S4_18SPermitedPositionsS5_
+                0x00000d58                _ZN9CMenuItemC2EPcS0_PS_10SChildListPFvS1_ES4_S4_S4_S4_S4_S4_18SPermitedPositionsS5_
+ .text._Z41__static_initialization_and_destruction_0ii
+                0x00000df0      0x53a lebed_sel_tune.o
+ .text._ZN9CMenuItem8getChildEv
+                0x0000132a       0x2c lebed_sel_tune.o
+                0x0000132a                _ZN9CMenuItem8getChildEv
+ .text._ZN9CMenuItem17getCursorPositionEv
+                0x00001356       0x34 lebed_sel_tune.o
+                0x00001356                _ZN9CMenuItem17getCursorPositionEv
+ .text._ZN9CMenuItem10incrCurPosEv
+                0x0000138a       0x3e lebed_sel_tune.o
+                0x0000138a                _ZN9CMenuItem10incrCurPosEv
+ .text._ZN9CMenuItem10decrCurPosEv
+                0x000013c8       0x32 lebed_sel_tune.o
+                0x000013c8                _ZN9CMenuItem10decrCurPosEv
+ .text._ZN9CMenuItem9changeRowEv
+                0x000013fa       0x3c lebed_sel_tune.o
+                0x000013fa                _ZN9CMenuItem9changeRowEv
+ .text._ZN9CMenuItem4drawEv
+                0x00001436       0x10 lebed_sel_tune.o
+                0x00001436                _ZN9CMenuItem4drawEv
+ .text._Z9rightFuncP9CMenuItem
+                0x00001446       0x4a lebed_sel_tune.o
+                0x00001446                _Z9rightFuncP9CMenuItem
+ .text._Z17rightFuncZselItemP9CMenuItem
+                0x00001490       0x4e lebed_sel_tune.o
+                0x00001490                _Z17rightFuncZselItemP9CMenuItem
+ .text._Z8leftFuncP9CMenuItem
+                0x000014de       0x24 lebed_sel_tune.o
+                0x000014de                _Z8leftFuncP9CMenuItem
+ .text._Z16leftFuncZselItemP9CMenuItem
+                0x00001502       0x4e lebed_sel_tune.o
+                0x00001502                _Z16leftFuncZselItemP9CMenuItem
+ .text._Z7escFuncP9CMenuItem
+                0x00001550       0xe4 lebed_sel_tune.o
+                0x00001550                _Z7escFuncP9CMenuItem
+ .text._Z14escFuncPrkMenuP9CMenuItem
+                0x00001634       0x72 lebed_sel_tune.o
+                0x00001634                _Z14escFuncPrkMenuP9CMenuItem
+ .text._Z13upFuncPrkMenuP9CMenuItem
+                0x000016a6       0xaa lebed_sel_tune.o
+                0x000016a6                _Z13upFuncPrkMenuP9CMenuItem
+ .text._Z15downFuncPrkMenuP9CMenuItem
+                0x00001750       0xaa lebed_sel_tune.o
+                0x00001750                _Z15downFuncPrkMenuP9CMenuItem
+ .text._Z10escFuncLCAP9CMenuItem
+                0x000017fa       0x12 lebed_sel_tune.o
+                0x000017fa                _Z10escFuncLCAP9CMenuItem
+ .text._Z15escFuncZselMenuP9CMenuItem
+                0x0000180c       0x42 lebed_sel_tune.o
+                0x0000180c                _Z15escFuncZselMenuP9CMenuItem
+ .text._Z17SaveStateToEEPROMP12StateOfPlatePv
+                0x0000184e        0xa lebed_sel_tune.o
+                0x0000184e                _Z17SaveStateToEEPROMP12StateOfPlatePv
+ .text._Z13okFuncPrkMenuP9CMenuItem
+                0x00001858       0x3c lebed_sel_tune.o
+                0x00001858                _Z13okFuncPrkMenuP9CMenuItem
+ .text._Z14upFuncZselMenuP9CMenuItem
+                0x00001894      0x15e lebed_sel_tune.o
+                0x00001894                _Z14upFuncZselMenuP9CMenuItem
+ .text._Z16downFuncZselMenuP9CMenuItem
+                0x000019f2      0x15e lebed_sel_tune.o
+                0x000019f2                _Z16downFuncZselMenuP9CMenuItem
+ .text._Z19ReadStateFromEEPROMP12StateOfPlatePv
+                0x00001b50        0xa lebed_sel_tune.o
+                0x00001b50                _Z19ReadStateFromEEPROMP12StateOfPlatePv
+ .text._Z11Str2DrawStrPhS_S_
+                0x00001b5a       0x52 lebed_sel_tune.o
+                0x00001b5a                _Z11Str2DrawStrPhS_S_
+ .text._Z9DrawOnLCDPh
+                0x00001bac       0x36 lebed_sel_tune.o
+                0x00001bac                _Z9DrawOnLCDPh
+ .text._Z16drawFuncMainMenuP9CMenuItem
+                0x00001be2      0x150 lebed_sel_tune.o
+                0x00001be2                _Z16drawFuncMainMenuP9CMenuItem
+ .text._Z15drawFuncPrkMenuP9CMenuItem
+                0x00001d32      0x1be lebed_sel_tune.o
+                0x00001d32                _Z15drawFuncPrkMenuP9CMenuItem
+ .text._Z16drawFuncZselMenuP9CMenuItem
+                0x00001ef0      0x2d4 lebed_sel_tune.o
+                0x00001ef0                _Z16drawFuncZselMenuP9CMenuItem
+ .text._Z11reverseBitsjPj
+                0x000021c4       0x4e lebed_sel_tune.o
+                0x000021c4                _Z11reverseBitsjPj
+ .text._Z7LCA2outjhjhhPj
+                0x00002212       0xd4 lebed_sel_tune.o
+                0x00002212                _Z7LCA2outjhjhhPj
+ .text._Z10outLCA2LCAPjPhS_S0_S0_S_
+                0x000022e6       0xba lebed_sel_tune.o
+                0x000022e6                _Z10outLCA2LCAPjPhS_S0_S0_S_
+ .text._Z15drawFuncLCAMenuP9CMenuItem
+                0x000023a0      0x2d8 lebed_sel_tune.o
+                0x000023a0                _Z15drawFuncLCAMenuP9CMenuItem
+ .text._Z8InitUartv
+                0x00002678       0x1c lebed_sel_tune.o
+                0x00002678                _Z8InitUartv
+ .text._Z12SendCOMBytesPhc
+                0x00002694       0x32 lebed_sel_tune.o
+                0x00002694                _Z12SendCOMBytesPhc
+ .text._Z9WriteModePh
+                0x000026c6        0x6 lebed_sel_tune.o
+                0x000026c6                _Z9WriteModePh
+ .text._Z15WriteEraseFlashPh
+                0x000026cc        0xa lebed_sel_tune.o
+                0x000026cc                _Z15WriteEraseFlashPh
+ .text._Z8ReadAmplPh
+                0x000026d6       0x42 lebed_sel_tune.o
+                0x000026d6                _Z8ReadAmplPh
+ .text._Z10FindDevicePh
+                0x00002718       0x32 lebed_sel_tune.o
+                0x00002718                _Z10FindDevicePh
+ .text._Z17CheckComandFormatic
+                0x0000274a       0x28 lebed_sel_tune.o
+                0x0000274a                _Z17CheckComandFormatic
+ .text._Z7SendERRv
+                0x00002772       0x24 lebed_sel_tune.o
+                0x00002772                _Z7SendERRv
+ .text._Z6SendOkv
+                0x00002796       0x24 lebed_sel_tune.o
+                0x00002796                _Z6SendOkv
+ .text._Z10WriteAFuncPh
+                0x000027ba       0x4e lebed_sel_tune.o
+                0x000027ba                _Z10WriteAFuncPh
+ .text._Z8SaveCoefPh
+                0x00002808        0xe lebed_sel_tune.o
+                0x00002808                _Z8SaveCoefPh
+ .text.__vector_30
+                0x00002816       0xe0 lebed_sel_tune.o
+                0x00002816                __vector_30
+ .text._Z8data2LCAPh
+                0x000028f6       0xa8 lebed_sel_tune.o
+                0x000028f6                _Z8data2LCAPh
+ .text._Z12WriteLCAFuncPh
+                0x0000299e        0xe lebed_sel_tune.o
+                0x0000299e                _Z12WriteLCAFuncPh
+ .text._Z12ReadAllFlashPh
+                0x000029ac       0x78 lebed_sel_tune.o
+                0x000029ac                _Z12ReadAllFlashPh
+ .text._Z15WriteData2FlashPh
+                0x00002a24       0x7e lebed_sel_tune.o
+                0x00002a24                _Z15WriteData2FlashPh
+ .text._Z13ChangeModePrkP12StateOfPlate
+                0x00002aa2       0x46 lebed_sel_tune.o
+                0x00002aa2                _Z13ChangeModePrkP12StateOfPlate
+ .text._Z11SetOutLevelh
+                0x00002ae8       0x2e lebed_sel_tune.o
+                0x00002ae8                _Z11SetOutLevelh
+ .text._Z20SolveFreqIndCorrCoefv
+                0x00002b16       0x3e lebed_sel_tune.o
+                0x00002b16                _Z20SolveFreqIndCorrCoefv
+ .text._Z7SetCoefPh
+                0x00002b54       0x26 lebed_sel_tune.o
+                0x00002b54                _Z7SetCoefPh
+ .text._Z19SetOutLevelFromFreqv
+                0x00002b7a       0x26 lebed_sel_tune.o
+                0x00002b7a                _Z19SetOutLevelFromFreqv
+ .text._Z14WriteFreqToPrkPh
+                0x00002ba0       0xb6 lebed_sel_tune.o
+                0x00002ba0                _Z14WriteFreqToPrkPh
+ .text._Z10WriteFFuncPh
+                0x00002c56       0x22 lebed_sel_tune.o
+                0x00002c56                _Z10WriteFFuncPh
+ .text._Z13WriteFLCAFuncPh
+                0x00002c78      0x160 lebed_sel_tune.o
+                0x00002c78                _Z13WriteFLCAFuncPh
+ .text._Z10DetFreqIndPh
+                0x00002dd8       0x48 lebed_sel_tune.o
+                0x00002dd8                _Z10DetFreqIndPh
+ .text._Z11SaveDetCoefv
+                0x00002e20       0x1c lebed_sel_tune.o
+                0x00002e20                _Z11SaveDetCoefv
+ .text._Z16SaveDetectorCoefPh
+                0x00002e3c        0x6 lebed_sel_tune.o
+                0x00002e3c                _Z16SaveDetectorCoefPh
+ .text._Z11ReadDetCoefv
+                0x00002e42       0x26 lebed_sel_tune.o
+                0x00002e42                _Z11ReadDetCoefv
+ .text._Z7InitPrkv
+                0x00002e68       0x76 lebed_sel_tune.o
+                0x00002e68                _Z7InitPrkv
+ .text._Z7SetnOTPc
+                0x00002ede       0x34 lebed_sel_tune.o
+                0x00002ede                _Z7SetnOTPc
+ .text._Z22SetLebedSelFreqInFlashv
+                0x00002f12       0x58 lebed_sel_tune.o
+                0x00002f12                _Z22SetLebedSelFreqInFlashv
+ .text._Z14okFuncMainMenuP9CMenuItem
+                0x00002f6a       0x96 lebed_sel_tune.o
+                0x00002f6a                _Z14okFuncMainMenuP9CMenuItem
+ .text._Z15TuneLvlLebedSelv
+                0x00003000       0xd6 lebed_sel_tune.o
+                0x00003000                _Z15TuneLvlLebedSelv
+ .text._Z14upFuncMainMenuP9CMenuItem
+                0x000030d6       0xf6 lebed_sel_tune.o
+                0x000030d6                _Z14upFuncMainMenuP9CMenuItem
+ .text._Z16downFuncMainMenuP9CMenuItem
+                0x000031cc       0xf8 lebed_sel_tune.o
+                0x000031cc                _Z16downFuncMainMenuP9CMenuItem
+ .text._Z8WriteOtpPh
+                0x000032c4        0xc lebed_sel_tune.o
+                0x000032c4                _Z8WriteOtpPh
+ .text.main     0x000032d0       0x44 lebed_sel_tune.o
+                0x000032d0                main
+ .text._GLOBAL__sub_I__Z11noEventMenuP9CMenuItem
+                0x00003314        0xe lebed_sel_tune.o
+ .text._GLOBAL__sub_D__Z11noEventMenuP9CMenuItem
+                0x00003322        0xe lebed_sel_tune.o
+ .text._Z11InitSelPortv
+                0x00003330       0x12 selector_control.o
+                0x00003330                _Z11InitSelPortv
+ .text._Z5SendAPj
+                0x00003342       0x4c selector_control.o
+                0x00003342                _Z5SendAPj
+ .text._Z11SendLCA2SelPh
+                0x0000338e       0xee selector_control.o
+                0x0000338e                _Z11SendLCA2SelPh
+ .text._Z9ChangeReg7regAddr
+                0x0000347c       0x36 ZSelControl.o
+                0x0000347c                _Z9ChangeReg7regAddr
+ .text._Z11SetZselCap1i
+                0x000034b2       0xa4 ZSelControl.o
+                0x000034b2                _Z11SetZselCap1i
+ .text._Z9WriteBytec
+                0x00003556       0x3c ZSelControl.o
+                0x00003556                _Z9WriteBytec
+ .text._Z12SetZselParamP9ZSELPARAM7regAddr
+                0x00003592       0x70 ZSelControl.o
+                0x00003592                _Z12SetZselParamP9ZSELPARAM7regAddr
+ .text._Z11SetZselOpenb
+                0x00003602        0xe ZSelControl.o
+                0x00003602                _Z11SetZselOpenb
+ .text.libgcc.div
+                0x00003610       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+                0x00003610                __udivmodhi4
+ .text.libgcc.div
+                0x00003638       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+                0x00003638                _div
+                0x00003638                __divmodhi4
+ .text.libgcc   0x0000365e        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+                0x0000365e                __tablejump_elpm__
+ .text.avr-libc
+                0x00003666       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
+                0x00003666                memchr_P
+ .text.avr-libc
+                0x00003680       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
+                0x00003680                memcmp
+ .text.avr-libc
+                0x0000369a       0x12 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
+                0x0000369a                memcpy
+ .text.avr-libc
+                0x000036ac       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
+                0x000036ac                strchr
+ .text.avr-libc
+                0x000036c2       0x20 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+                0x000036c2                __eerd_block_m128
+                0x000036c6                __eerd_blraw_m128
+ .text.avr-libc
+                0x000036e2       0x1e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
+                0x000036e2                __eeupd_block_m128
+ .text.avr-libc
+                0x00003700       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
+                0x00003700                __eeupd_byte_m128
+                0x00003702                __eeupd_r18_m128
+                0x00003722                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00003722        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+                0x00003722                _exit
+                0x00003722                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ .fini6         0x00003722       0x1e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_dtors.o)
+                0x00003722                __do_global_dtors
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00003740        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00003744                _etext = .
+
+.data           0x00800100      0x1c2 load address 0x00003744
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ *(.data*)
+ .data.str2Reg  0x00800100        0x2 lebed_sel_tune.o
+                0x00800100                str2Reg
+ .data.str1Reg  0x00800102        0x4 lebed_sel_tune.o
+                0x00800102                str1Reg
+ .data.str2Params
+                0x00800106        0x4 lebed_sel_tune.o
+                0x00800106                str2Params
+ .data.str1Params
+                0x0080010a        0x8 lebed_sel_tune.o
+                0x0080010a                str1Params
+ .data.Seltype  0x00800112        0x2 lebed_sel_tune.o
+                0x00800112                Seltype
+ .data.Mode     0x00800114        0x6 lebed_sel_tune.o
+                0x00800114                Mode
+ .data.OnOff    0x0080011a        0x8 lebed_sel_tune.o
+                0x0080011a                OnOff
+ .data.g_A      0x00800122        0x1 lebed_sel_tune.o
+                0x00800122                g_A
+ .data.g_L2     0x00800123        0x1 lebed_sel_tune.o
+                0x00800123                g_L2
+ .data.g_L1     0x00800124        0x1 lebed_sel_tune.o
+                0x00800124                g_L1
+ .data.g_C2     0x00800125        0x2 lebed_sel_tune.o
+                0x00800125                g_C2
+ .data.g_C1     0x00800127        0x2 lebed_sel_tune.o
+                0x00800127                g_C1
+ .data.g_hexOut
+                0x00800129       0x12 lebed_sel_tune.o
+                0x00800129                g_hexOut
+ .data.TempStr2
+                0x0080013b       0x15 lebed_sel_tune.o
+                0x0080013b                TempStr2
+ .data.TempStr1
+                0x00800150       0x15 lebed_sel_tune.o
+                0x00800150                TempStr1
+ .data.g_drawingString
+                0x00800165       0x29 lebed_sel_tune.o
+                0x00800165                g_drawingString
+ *(.rodata)
+ .rodata        0x0080018e       0x20 altera.o
+ *(.rodata*)
+ .rodata.str1.1
+                0x008001ae       0x15 flashiic.o
+ .rodata._ZL3ves
+                0x008001c3        0xe flashiic.o
+ .rodata._ZL1N  0x008001d1        0xc flashiic.o
+ .rodata._ZL2df
+                0x008001dd        0xc flashiic.o
+ .rodata._ZL2Fr
+                0x008001e9        0xc flashiic.o
+ .rodata.str1.1
+                0x008001f5       0xcd lebed_sel_tune.o
+ *(.gnu.linkonce.d*)
+                0x008002c2                . = ALIGN (0x2)
+                0x008002c2                _edata = .
+                0x008002c2                PROVIDE (__data_end, .)
+
+.bss            0x008002c2      0x1f1
+                0x008002c2                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(.bss*)
+ .bss._ZZ12ScanKeyboardPFvhEE10previosBtn
+                0x008002c2        0x1 keyboard.o
+ .bss.g_comBufCnt
+                0x008002c3        0x1 lebed_sel_tune.o
+                0x008002c3                g_comBufCnt
+ .bss.g_comBuff
+                0x008002c4       0x20 lebed_sel_tune.o
+                0x008002c4                g_comBuff
+ .bss.g_zselSettingMenuItem
+                0x008002e4       0x5a lebed_sel_tune.o
+                0x008002e4                g_zselSettingMenuItem
+ .bss.g_lcaMenuItem
+                0x0080033e       0x5a lebed_sel_tune.o
+                0x0080033e                g_lcaMenuItem
+ .bss.prk_numOfDisplay
+                0x00800398        0x1 lebed_sel_tune.o
+                0x00800398                prk_numOfDisplay
+ .bss.g_prkSettingMenuItem
+                0x00800399       0x5a lebed_sel_tune.o
+                0x00800399                g_prkSettingMenuItem
+ .bss.g_mainMenuItem
+                0x008003f3       0x5a lebed_sel_tune.o
+                0x008003f3                g_mainMenuItem
+ .bss.upas_out  0x0080044d        0x1 lebed_sel_tune.o
+                0x0080044d                upas_out
+ .bss.upas_in   0x0080044e        0x1 lebed_sel_tune.o
+                0x0080044e                upas_in
+ .bss.g_plateState
+                0x0080044f       0x62 lebed_sel_tune.o
+                0x0080044f                g_plateState
+ .bss.g_currentItem
+                0x008004b1        0x2 lebed_sel_tune.o
+                0x008004b1                g_currentItem
+ *(COMMON)
+                0x008004b3                PROVIDE (__bss_end, .)
+                0x00003744                __data_load_start = LOADADDR (.data)
+                0x00003906                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008004b3        0x0
+                0x008004b3                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008004b3                PROVIDE (__noinit_end, .)
+                0x008004b3                _end = .
+                0x008004b3                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000       0x62
+ *(.eeprom*)
+ .eeprom        0x00810000       0x62 lebed_sel_tune.o
+                0x00810000                g_eepromPlateState
+                0x00810062                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x30
+ *(.comment)
+ .comment       0x00000000       0x30 adc.o
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 altera.o
+ .comment       0x00000000       0x31 flashiic.o
+ .comment       0x00000000       0x31 i2c.o
+ .comment       0x00000000       0x31 keyboard.o
+ .comment       0x00000000       0x31 lcd_knk.o
+ .comment       0x00000000       0x31 lebed_sel_tune.o
+ .comment       0x00000000       0x31 selector_control.o
+ .comment       0x00000000       0x31 ZSelControl.o
+ .comment       0x00000000       0x31 _StackInstrument.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x5a0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x28 adc.o
+ .debug_aranges
+                0x00000028       0x48 altera.o
+ .debug_aranges
+                0x00000070       0x60 flashiic.o
+ .debug_aranges
+                0x000000d0       0x48 i2c.o
+ .debug_aranges
+                0x00000118       0x30 keyboard.o
+ .debug_aranges
+                0x00000148       0xb0 lcd_knk.o
+ .debug_aranges
+                0x000001f8      0x2f0 lebed_sel_tune.o
+ .debug_aranges
+                0x000004e8       0x48 selector_control.o
+ .debug_aranges
+                0x00000530       0x50 ZSelControl.o
+ .debug_aranges
+                0x00000580       0x20 _StackInstrument.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x828e
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x1d6 adc.o
+ .debug_info    0x000001d6      0x616 altera.o
+ .debug_info    0x000007ec      0x704 flashiic.o
+ .debug_info    0x00000ef0      0x430 i2c.o
+ .debug_info    0x00001320      0x1b7 keyboard.o
+ .debug_info    0x000014d7      0xbab lcd_knk.o
+ .debug_info    0x00002082     0x52d0 lebed_sel_tune.o
+ .debug_info    0x00007352      0x4fa selector_control.o
+ .debug_info    0x0000784c      0x945 ZSelControl.o
+ .debug_info    0x00008191       0xfd _StackInstrument.o
+
+.debug_abbrev   0x00000000     0x1586
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x166 adc.o
+ .debug_abbrev  0x00000166      0x1d6 altera.o
+ .debug_abbrev  0x0000033c      0x21d flashiic.o
+ .debug_abbrev  0x00000559      0x1c3 i2c.o
+ .debug_abbrev  0x0000071c      0x162 keyboard.o
+ .debug_abbrev  0x0000087e      0x25e lcd_knk.o
+ .debug_abbrev  0x00000adc      0x625 lebed_sel_tune.o
+ .debug_abbrev  0x00001101      0x199 selector_control.o
+ .debug_abbrev  0x0000129a      0x251 ZSelControl.o
+ .debug_abbrev  0x000014eb       0x9b _StackInstrument.o
+
+.debug_line     0x00000000     0x39b2
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x196 adc.o
+ .debug_line    0x00000196      0x389 altera.o
+ .debug_line    0x0000051f      0x38c flashiic.o
+ .debug_line    0x000008ab      0x2b9 i2c.o
+ .debug_line    0x00000b64      0x1f1 keyboard.o
+ .debug_line    0x00000d55      0x559 lcd_knk.o
+ .debug_line    0x000012ae     0x1d33 lebed_sel_tune.o
+ .debug_line    0x00002fe1      0x3c5 selector_control.o
+ .debug_line    0x000033a6      0x530 ZSelControl.o
+ .debug_line    0x000038d6       0xdc _StackInstrument.o
+
+.debug_frame    0x00000000     0x10b8
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x44 adc.o
+ .debug_frame   0x00000044       0xcc altera.o
+ .debug_frame   0x00000110      0x130 flashiic.o
+ .debug_frame   0x00000240       0x8c i2c.o
+ .debug_frame   0x000002cc       0x4c keyboard.o
+ .debug_frame   0x00000318      0x1b4 lcd_knk.o
+ .debug_frame   0x000004cc      0xa80 lebed_sel_tune.o
+ .debug_frame   0x00000f4c       0x88 selector_control.o
+ .debug_frame   0x00000fd4       0xc0 ZSelControl.o
+ .debug_frame   0x00001094       0x24 _StackInstrument.o
+
+.debug_str      0x00000000     0x1f6b
+ *(.debug_str)
+ .debug_str     0x00000000      0x1fc adc.o
+                                0x23c (size before relaxing)
+ .debug_str     0x000001fc      0x125 altera.o
+                                0x315 (size before relaxing)
+ .debug_str     0x00000321      0x24e flashiic.o
+                                0x43e (size before relaxing)
+ .debug_str     0x0000056f       0x44 i2c.o
+                                0x28c (size before relaxing)
+ .debug_str     0x000005b3       0x84 keyboard.o
+                                0x266 (size before relaxing)
+ .debug_str     0x00000637      0x2d5 lcd_knk.o
+                                0x523 (size before relaxing)
+ .debug_str     0x0000090c     0x145d lebed_sel_tune.o
+                               0x19c1 (size before relaxing)
+ .debug_str     0x00001d69       0x5d selector_control.o
+                                0x29f (size before relaxing)
+ .debug_str     0x00001dc6       0xb6 ZSelControl.o
+                                0x3fc (size before relaxing)
+ .debug_str     0x00001e7c       0xef _StackInstrument.o
+                                0x1ca (size before relaxing)
+
+.debug_loc      0x00000000     0x564f
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x158 adc.o
+ .debug_loc     0x00000158      0x2df altera.o
+ .debug_loc     0x00000437      0x7ec flashiic.o
+ .debug_loc     0x00000c23      0x255 i2c.o
+ .debug_loc     0x00000e78      0x154 keyboard.o
+ .debug_loc     0x00000fcc      0x696 lcd_knk.o
+ .debug_loc     0x00001662     0x377c lebed_sel_tune.o
+ .debug_loc     0x00004dde      0x3bb selector_control.o
+ .debug_loc     0x00005199      0x49e ZSelControl.o
+ .debug_loc     0x00005637       0x18 _StackInstrument.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000      0x5c0
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x30 adc.o
+ .debug_ranges  0x00000030       0x38 altera.o
+ .debug_ranges  0x00000068       0x50 flashiic.o
+ .debug_ranges  0x000000b8       0x38 i2c.o
+ .debug_ranges  0x000000f0       0x20 keyboard.o
+ .debug_ranges  0x00000110       0xa0 lcd_knk.o
+ .debug_ranges  0x000001b0      0x388 lebed_sel_tune.o
+ .debug_ranges  0x00000538       0x38 selector_control.o
+ .debug_ranges  0x00000570       0x40 ZSelControl.o
+ .debug_ranges  0x000005b0       0x10 _StackInstrument.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(lebed_sel_tune.elf elf32-avr)
+LOAD linker stubs

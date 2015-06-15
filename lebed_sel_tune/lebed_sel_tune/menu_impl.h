@@ -34,15 +34,7 @@ unsigned int g_C2 = 0x66D;
 unsigned char g_L1 = 0x65;
 unsigned char g_L2 = 0x4B;
 unsigned char g_A = 0x29;
-// структура для хранения параметров селектора захарова
-typedef struct{
-	char L;
-	char C;
-	char link;
-	char A;
-	int cap1;
-	int cap2;
-} ZSELPARAM;
+
 enum SelType {LEBED_TYPE,ZAH_TYPE};	// именя типов селектора
 //структура хранящая состояние платы
 typedef struct StateOfPlate{
@@ -226,6 +218,9 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 			if (g_plateState.selType == ZAH_TYPE)
 			{
 				//TODO: вписать сюда установку частоты селектора захарова
+				int freq = g_plateState.freq[0]* 1000 + g_plateState.freq[1]* 100 +g_plateState.freq [2]*10 + g_plateState.freq[3]; 
+				SetZselFreq(freq, &g_plateState.zSelParam);
+				
 			}		
 			
 
@@ -240,6 +235,7 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 			}
 			if (g_plateState.selType == ZAH_TYPE)
 			{
+				TuneZselAtten(&g_plateState.zSelParam);
 				//TODO: вписать сюда настройку уровня селектора захарова
 			}			 
 					 
@@ -598,12 +594,12 @@ void rightFuncZselItem(CMenuItem *item);
 void leftFuncZselItem(CMenuItem *item);
 
 
-CMenuItem g_zselSettingMenuItem((char*)"L=XX@C=XX@Li=XX@A=XX",(char*)"C1=XXXX@@@@@@@@@@@@@",
+CMenuItem g_zselSettingMenuItem((char*)"L=XX@C=XX@Li=XX@A=XX",(char*)"C1=XXXX+@@@@@@@@@@@@",
 &g_mainMenuItem,
 {{&g_zselSettingMenuItem},1},
 okFuncZselMenu,escFuncZselMenu,drawFuncZselMenu,leftFuncZselItem,rightFuncZselItem,upFuncZselMenu,downFuncZselMenu,
 {{3,4,8,9,14,15,19,20},8},
-{{4,5,6,7},4});
+{{4,5,6,7,8},5});
 //перенесено в начало
 // typedef struct{
 // 	char L;
@@ -616,14 +612,15 @@ okFuncZselMenu,escFuncZselMenu,drawFuncZselMenu,leftFuncZselItem,rightFuncZselIt
 // ZSELPARAM zSelParam;
 void * str1Params[4] = {&g_plateState.zSelParam.L,&g_plateState.zSelParam.C,&g_plateState.zSelParam.link,&g_plateState.zSelParam.A};
 void * str2Params[2] = {&g_plateState.zSelParam.cap1,&g_plateState.zSelParam.cap2};
-void  (*  str1Func[])(char) = {SetZselL,SetZselCap,SetZselLink,SetZselA};
-void  (*  str2Func[])(int) = {SetZselCap1,SetZselCap2};
+
 	
-char str1Reg[4] = {LREG,CAPREG,LINKREG,AREG};
-char str2Reg[2] = {CAP1REG,CAP2REG};
+regAddr str1Reg[4] = {LREG,CAPREG,LINKREG,AREG};
+regAddr str2Reg[2] = {CAP1REG,CAP2REG};
 //////////////////////////////////////////////////////////////////////////
 void okFuncZselMenu( CMenuItem* item )
 {
+	SetZselParam(&g_plateState.zSelParam,ALLREG);
+	//SetZselFreq(0, &g_plateState.zSelParam);
 	
 }
 //////////////////////////////////////////////////////////////////////////
@@ -656,7 +653,11 @@ void drawFuncZselMenu( CMenuItem* item )
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0x0F00)>> 8] ;
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0x00F0)>> 4] ;
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap2 & 0x000F) ] ;	
-		
+	
+	uchar a = read_adc(ADC_UPAS_OUT_PIN);
+	TempStr2[8] = g_hexOut[(a & 0xF0) >> 4];
+	TempStr2[9] = g_hexOut[(a & 0x0F) ];
+	
 	for (unsigned char i = 0; i < strlen(TempStr1); i++){// выводим во временную строку на позиции символов Х значения регистров
 		if ('@' == TempStr1[i] ) TempStr1[i] = ' ';
 		if ('@' == TempStr2[i] ) TempStr2[i] = ' ';
@@ -678,21 +679,28 @@ void upFuncZselMenu( CMenuItem* item )
 			else temp = 0;
 		*param = ((*param) & ((1 - ind%2)?(0x0F):(0xF0))) + (temp << (4*(1 - ind%2)));
 		
-		str1Func[ind/2](*param);//TODO: может меняться от длины параметра
+		//str1Func[ind/2](*param);
+		SetZselParam(&g_plateState.zSelParam,str1Reg[ind/2]);//TODO: может меняться от длины параметра
 
 	}
 	if (g_currentItem->getCurRow() == 2)
 	{
 		char temp;
 		char ind = g_currentItem->getCurPos();
-		int* param = (int*) str2Params[ind/4];
+		int* param = (int*) str2Params[ind/5];
 		temp = ((*param) & (unsigned int)((0xF) << (4*(3 - ind%4)))) >> (4*(3-ind%4));
+		if (ind == 4)
+		{
+			*param = ((*param) + 1);
 
+		}else{
   		if(temp < 15) temp++;
   		else temp = 0;
 		  
  		*param = ((*param) & ~(unsigned int)((0xF) << (4*(3 - ind%4)))) + (temp << (4*(3-ind%4)));
-		str2Func[ind/4](*param);//TODO: может меняться от длины параметра
+		}
+		//str2Func[ind/4](*param);//TODO: может меняться от длины параметра
+		SetZselParam(&g_plateState.zSelParam,str2Reg[ind/5]);//TODO: может меняться от длины параметра
 	}	
 	 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
 	g_currentItem->draw();
@@ -715,23 +723,28 @@ void downFuncZselMenu( CMenuItem* item )
 			else temp = 15;
 			//	LCD_DisplayCharacter(g_hexOut[temp]);
 			*param = ((*param) & ((1 - ind%2)?(0x0F):(0xF0))) + (temp << (4*(1 - ind%2)));
-			str1Func[ind/2](*param);//TODO: может меняться от длины параметра
+			//str1Func[ind/2](*param);//TODO: может меняться от длины параметра
 			// 		LCD_DisplayCharacter(g_hexOut[*param >> 4]);
 			// 		_delay_ms(1000);
+			SetZselParam(&g_plateState.zSelParam,str1Reg[ind/2]);//TODO: может меняться от длины параметра
 		}
 	if (g_currentItem->getCurRow() == 2)
 	{
 		char temp;
 		char ind = g_currentItem->getCurPos();
-		int* param = (int*) str2Params[ind/4];
+		int* param = (int*) str2Params[ind/5];
 		temp = ((*param) & (unsigned int)((0xF) << (4*(3 - ind%4)))) >> (4*(3-ind%4));
-
+		if (ind == 4)
+		{
+			*param = (*param)-1;
+		}else{
 			if(temp > 0) temp--;
 			else temp = 15;
 		
 		*param = ((*param) & ~(unsigned int)((0xF) << (4*(3 - ind%4)))) + (temp << (4*(3-ind%4)));
-		str2Func[ind/4](*param);//TODO: может меняться от длины параметра
-
+		}
+		//str2Func[ind/4](*param);//TODO: может меняться от длины параметра
+		SetZselParam(&g_plateState.zSelParam,str2Reg[ind/5]);//TODO: может меняться от длины параметра
 	}
 	 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
 		g_currentItem->draw();
@@ -741,8 +754,10 @@ void escFuncZselMenu( CMenuItem* item )
 {
 	if ( (item->getCurRow() == 1) && (item->getCurPos() == 0) )
 		g_currentItem = item->getParent();
+	
 	else
-		item->resetCur();
+		g_currentItem->resetCur();
+		//TuneZselAtten(&g_plateState.zSelParam);;
 
 	g_currentItem->draw();	
 }

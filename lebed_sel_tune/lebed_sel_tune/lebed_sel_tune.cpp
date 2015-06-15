@@ -145,7 +145,15 @@ void SetnOTP(char val){
 		}else
 			PORTB |= _BV(7);
 			
-		SET_SEL_nOTP(val);
+		if (g_plateState.selType == LEBED_TYPE)
+		{
+			SET_SEL_nOTP(val);
+		}
+		if (g_plateState.selType == ZAH_TYPE)
+		{
+			SetZselOpen(val == 0);//TODO: отпирание запирание селектора захарова
+		}		
+		
 }
 //////////////////////////////////////////////////////////////////////////
 void SetOTPLines(){
@@ -167,15 +175,20 @@ int main(void)
 	InitSelPort();
 	IICInit();
 	InitUart();
-	//g_currentItem = &g_mainMenuItem;
-	g_currentItem = & g_zselSettingMenuItem;
+	g_currentItem = &g_mainMenuItem;
+	//g_currentItem = & g_prkSettingMenuItem;
 	g_currentItem->draw();
 	
 	SendCOMBytes((uchar*)"REBOOT",7);
-	DDRB |= _BV(7);
+	DDRB |= _BV(7);//Вывод отпирания для платы предкорректора
 	
     while(1)
     {
+// 		char a = read_adc(ADC_UPAS_OUT_PIN);
+// 		LCD_DisplayCharacter(g_hexOut[(a & 0xF0) >> 4]);
+// 		LCD_DisplayCharacter(g_hexOut[(a & 0x0F) ]);
+// 		_delay_ms(100);
+// 		LCD_Clear();
       ScanKeyboard(KeySelect);
 	
     }
