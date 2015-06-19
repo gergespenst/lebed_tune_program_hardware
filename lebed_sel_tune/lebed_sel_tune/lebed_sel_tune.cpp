@@ -84,7 +84,7 @@ unsigned char DetFreqInd(unsigned char* freq){
 }
 //////////////////////////////////////////////////////////////////////////
 void SaveDetCoef(){
-	upas_out = read_adc(ADC_UPAS_OUT_PIN);
+	upas_out = read_steady_adc(ADC_UPAS_OUT_PIN);
 	WriteDetCal2Flash(DetFreqInd(g_plateState.freq),&upas_out);
 }
 //////////////////////////////////////////////////////////////////////////
@@ -175,10 +175,13 @@ int main(void)
 	InitSelPort();
 	IICInit();
 	InitUart();
-	g_currentItem = &g_mainMenuItem;
+	 g_currentItem = &g_mainMenuItem;
 	//g_currentItem = & g_prkSettingMenuItem;
+	#ifdef DDC_BOARD
+		g_currentItem = &g_zselSettingMenuItem;
+	#endif
 	g_currentItem->draw();
-	
+
 	SendCOMBytes((uchar*)"REBOOT",7);
 	DDRB |= _BV(7);//Вывод отпирания для платы предкорректора
 	

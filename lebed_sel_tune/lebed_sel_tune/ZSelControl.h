@@ -80,6 +80,8 @@ void WriteByte(char);
 void SetZselOpen(bool state);
 void SetZselFreq(int freq, ZSELPARAM *param);
 void TuneZselAtten(ZSELPARAM * param);
+void FindFreqParam(int freq, ZSELPARAM * param);
+void TuneZselCap(ZSELPARAM * param);
 
 bool TestZsel(char typeOfTest);
 

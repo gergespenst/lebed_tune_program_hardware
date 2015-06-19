@@ -355,7 +355,7 @@ void ReadAmpl( unsigned char* )//чтение амплитуды на входе ацп
 	out[0] = READA;
 	out[1] = (uchar)((ampl & 0xf0) >> 4) + 0x30;
 	out[2] = ((ampl & 0x0F)) + 0x30;*/
-	ampl = read_adc(ADC_UPAS_OUT_PIN);
+	ampl = read_steady_adc(ADC_UPAS_OUT_PIN);
 	out[3] = (uchar)((ampl & 0xf0) >> 4) + 0x30;
 	out[4] = ((ampl & 0x0F)) + 0x30;
 	out[5] = ENDL;

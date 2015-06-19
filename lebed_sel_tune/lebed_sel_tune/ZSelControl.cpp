@@ -193,102 +193,79 @@ bool TestZsel( char typeOfTest )
 }
 //////////////////////////////////////////////////////////////////////////
 char hex[] ="0123456789ABCDEF";	
-FREQGRIDBORDER freqBordersGrid[] = {{795,4,0,1},{685,4,1,1},{660,4,2,1},{600,4,4,2},{500,4,8,2},{460,4,10,2},{440,4,12,4},{400,4,15,12},{0,0,0,0}};
-void SetZselFreq( int freq, ZSELPARAM *param )
+FREQGRIDBORDER freqBordersGrid[] = {
+	{2970,1,0,1},{2500,1,1,1},{2300,1,2,1},{2120,1,4,2},{1730,1,8,4},{1620,1,9,4},{1580,1,10,4},{1560,1,10,8},{1520,1,11,8},//{1100,1,12,8},
+	{1510,2,0,1},{1300,2,1,1},{1270,2,2,1},{1150,2,4,2},{970,2,8,8},{800,2,13,8},
+	{795,4,0,1},{685,4,1,1},{660,4,2,1},{600,4,4,2},{500,4,8,2},{460,4,10,2},{440,4,12,4},{400,4,15,12},{0,0,0,0}};
+
+//////////////////////////////////////////////////////////////////////////
+void FindFreqParam( int freq, ZSELPARAM * param )
 {
-	ZSELPARAM tempParam;
 	FREQGRIDBORDER freqBorder = freqBordersGrid[0];
 	char i = 0;
-	while (freqBorder.freq != 0)
+	//Поиск сочетания L C link по частоте
+	while (freqBorder.freq != 0)//пока не достигли конца списка
 	{
-		freqBorder = freqBordersGrid[i];
-		if (freqBorder.freq >= freq)
-		{
-			
-		}else{
-			freqBorder = freqBordersGrid[i - 1];
-			break;
-		}
-		
-		i++;
+		freqBorder = freqBordersGrid[i];//получаем элемент списка частот
+		if (freqBorder.freq >= freq)//пока частота элемента больше чем установленная частота не делаем ничего
+		{}else{//как только дошли до элемента с частотой меньше чем установленная
+		if(i > 0) i = i - 1; else i = 0;//если это был нулевой элемент то берем его
+		freqBorder = freqBordersGrid[i];//если это был элемент не на краю списка то берем предыдущий и завершаем поиск
+		break;
+			}
+	i++;
 	}
-	
-	
-	tempParam.C = freqBorder.C;
-	tempParam.link = freqBorder.Link;
-	tempParam.L = freqBorder.L;
-	tempParam.A = 0x1F;
-	
-	
-	char ampStart, ampStop, ampCenter1,ampCenter2;
+
+
+	param->C = freqBorder.C;
+	param->link = freqBorder.Link;
+	param->L = freqBorder.L;
+	param->A = 0x00;
+	SetZselParam(param,ALLREG);
+}
+//////////////////////////////////////////////////////////////////////////
+
+void TuneZselCap( ZSELPARAM * param )
+{
+	char ampCenter1,ampCenter2;
 	int startC = 0x0000, stopC = 0x03FF, lengthOfDiap, indOfCenter, currentC;
-	char str[] = "C:XXX Amp:XX\n";
 	
-	//tempParam.cap1 = startC;
- 	SetZselParam(&tempParam,ALLREG);
-// 	//_delay_ms(100);
-// 	ampStart = read_steady_adc(ADC_UPAS_OUT_PIN);
-// 	
-// // 			str[2]	= hex[((startC & 0xF00) >> 8)];
-// // 			str[3]	= hex[((startC & 0x0F0) >> 4)];
-// // 			str[4]	= hex[((startC & 0x00F) >> 0)];
-// // 			str[10] = hex[((ampStart & 0xF0) >> 4)];
-// // 			str[11] = hex[((ampStart & 0x0F) >> 0)];
-// // 			extern void SendCOMBytes(unsigned char*,char);
-// // 			SendCOMBytes((unsigned char*)str,14);
-// 			
-// 	tempParam.cap1 = stopC;
-// 	SetZselParam(&tempParam,CAP1REG);
-// 	//_delay_ms(100);
-// 	ampStop =  read_steady_adc(ADC_UPAS_OUT_PIN);
-// 				str[2]	= hex[((stopC & 0xF00) >> 8)];
-// 				str[3]	= hex[((stopC & 0x0F0) >> 4)];
-// 				str[4]	= hex[((stopC & 0x00F) >> 0)];
-// 				str[10] = hex[((ampStop & 0xF0) >> 4)];
-// 				str[11] = hex[((ampStop & 0x0F) >> 0)];
-// 				extern void SendCOMBytes(unsigned char*,char);
-// 				SendCOMBytes((unsigned char*)str,14);
-#define  EPSILON 2
-	while (abs(stopC - startC) > EPSILON)
+
+	#define  EPSILON 2//точность нахождения емкости
+	while (abs(stopC - startC) > EPSILON)//поиск максимума бисекцией
 	{
 		
 		lengthOfDiap = (stopC - startC);
 		indOfCenter = lengthOfDiap/2 + startC;
 		currentC = indOfCenter;
 
-		tempParam.cap1 = indOfCenter - EPSILON;
-		
-		SetZselParam(&tempParam,CAP1REG);
-		
+		param->cap1 = indOfCenter - EPSILON;
+		SetZselParam(param,CAP1REG);
 		ampCenter1 =  read_steady_adc(ADC_UPAS_OUT_PIN);
 		
-				tempParam.cap1 = indOfCenter + EPSILON;
-				
-				SetZselParam(&tempParam,CAP1REG);
-				
-				ampCenter2 =  read_steady_adc(ADC_UPAS_OUT_PIN);
-// 		str[2]	= hex[((currentC & 0xF00) >> 8)];
-// 		str[3]	= hex[((currentC & 0x0F0) >> 4)];
-// 		str[4]	= hex[((currentC & 0x00F) >> 0)];
-// 		str[10] = hex[((ampCenter1 & 0xF0) >> 4)];
-// 		str[11] = hex[((ampCenter1 & 0x0F) >> 0)];
-// 		extern void SendCOMBytes(unsigned char*,char);
-// 		SendCOMBytes((unsigned char*)str,14);
-// 		_delay_ms(15);
-// 		 
+		param->cap1 = indOfCenter + EPSILON;
+		SetZselParam(param,CAP1REG);
+		ampCenter2 =  read_steady_adc(ADC_UPAS_OUT_PIN);
+
 		if (ampCenter1 < ampCenter2)
 		{
 			startC = indOfCenter;
-			ampStart = ampCenter1;
 		}
 		else{
 			stopC = indOfCenter;
-			ampStop = ampCenter1;
 		}
 	}
-	
-	
-	*param = tempParam;
+	param->cap1 = indOfCenter;
+	SetZselParam(param,ALLREG);
+}
+
+//////////////////////////////////////////////////////////////////////////
+void SetZselFreq( int freq, ZSELPARAM *param )
+{
+	ZSELPARAM tempParam;
+	FindFreqParam(freq,&tempParam);
+	TuneZselCap(&tempParam);	
+	*param = tempParam;//передаем полученные параметры наружу
 }
 //////////////////////////////////////////////////////////////////////////
 void TuneZselAtten( ZSELPARAM * param )
@@ -328,4 +305,5 @@ void TuneZselAtten( ZSELPARAM * param )
 	*param = tempParam;
 	
 }
+
 
