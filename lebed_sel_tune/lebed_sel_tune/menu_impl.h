@@ -268,8 +268,18 @@ void okFuncMainMenu(CMenuItem* item){ // ќбработка нажати€ ќ 
 
 		 if (item->getCurPos()  == SETTING_POS)
 		 {
-			 g_currentItem = item->getChild();
-			 g_currentItem->draw();
+			 
+			 
+			 if (g_plateState.selType == LEBED_TYPE)
+			 {
+				 
+			 }
+			 if (g_plateState.selType == ZAH_TYPE)
+			 {
+				 g_currentItem = &g_zselSettingMenuItem;
+				 g_currentItem->draw();
+			 }
+			 
 		 }
 		 
 		 
@@ -693,7 +703,11 @@ void drawFuncZselMenu( CMenuItem* item )
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0x0F00)>> 8] ;
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0x00F0)>> 4] ;
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_plateState.zSelParam.cap1 & 0x000F) ] ;	
-	uchar a = read_steady_adc(ADC_UPAS_OUT_PIN);
+	
+	
+	uchar a = read_adc(ADC_UPAS_OUT_PIN);//здесь используетс€ простое чтение значени€ ацп по тому что при двухтоновом сигнале 
+	//чтение после стабилизации зависает (из-за того что стабилизаци€ уровн€ не наступает)
+	
 	TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(a & 0xF0) >> 4];
 	TempStr2[9] = g_hexOut[(a & 0x0F) ];
 														
@@ -855,5 +869,8 @@ void leftFuncZselItem( CMenuItem *item )
 		ChangeReg(str2Reg[item->getCurPos()/4]);//TODO: может мен€тьс€ от длины параметра
 	}
 }
+
+
+
 
 #endif /* MENU_IMPL_H_ */

@@ -88,6 +88,9 @@ void InitUart(){
 #define SAVEDETCOEF 0x97//сохранение калибровочного коэффичиента детектора в память
 	#define SAVEDETCOEF_L 0
 
+#define READALLDETCOEF 0x98//чтение всех коэффициентов детектора
+	#define READALLDETCOEF_L  0
+
 #define ID "LSP0" //идентификатор устройства
 #define FINDDEVICE 0xFF
 	#define FINDDEVICE_L 0
@@ -106,25 +109,27 @@ extern  void WriteAFunc(unsigned char*);
 extern  void WriteMode(unsigned char*);
 extern  void WriteOtp(unsigned char*);
 extern  void ReadAllFlash(unsigned char*);
+
 extern  void WriteData2Flash(unsigned char*);
 extern  void WriteEraseFlash(unsigned char*);
 extern  void ReadAmpl(unsigned char*);
 extern  void SetCoef(unsigned char*);
 extern  void SaveCoef(unsigned char*);
 extern  void SaveDetectorCoef(unsigned char*);
+extern	void ReadDetectorCoef(unsigned char*);
 extern  void FindDevice(unsigned char*);
 //массив кодов команд
 const unsigned char g_comandList[] PROGMEM = {WRF,WRFLCA,WRLCA,WRA,SETMODE,SETOTP,READALLFLASH,
 											WRITEDATATOFLASH,ERASEFLASH,READA,SETCOEF,SAVECOEF,SAVEDETCOEF,
-											FINDDEVICE};
+											FINDDEVICE,READALLDETCOEF};
 //массив количества байт в команде
 const unsigned char g_comandLengthList[] PROGMEM = {WRF_L,WRFLCA_L,WRLCA_L,WRA_L,SETMODE_L,SETOTP_L,READALLFLASH_L,
 											WRITEDATATOFLASH_L,ERASEFLASH_L,READA_L,SETCOEF_L,SAVECOEF_L,SAVEDETCOEF_L,
-											FINDDEVICE_L};
+											FINDDEVICE_L,READALLDETCOEF_L};
 //массив указателей на функции соответствующие каждой команде
 void  (* const g_commandFunc[])(unsigned char*)  PROGMEM = {WriteFFunc,WriteFLCAFunc,WriteLCAFunc,WriteAFunc,WriteMode,WriteOtp,
 	  ReadAllFlash,WriteData2Flash,WriteEraseFlash,ReadAmpl,SetCoef,SaveCoef,SaveDetectorCoef,
-	  FindDevice};
+	  FindDevice,ReadDetectorCoef};
 
 
 #define COM_BUFF_SIZE 32
@@ -383,12 +388,27 @@ void SaveDetectorCoef(unsigned char* data){
 	SaveDetCoef();
 	SendOk();
 }
+//----------------------------------------
+extern void ReadDetCalInFlash( unsigned int ,uchar*  );
+void ReadDetectorCoef(unsigned char*){
+	//TODO: чтение всех коэффициентов детектора
+	
+	uchar msg = READALLDETCOEF,tempMsg;
+	SendCOMBytes(&msg,1);
+	for(char i = 0; i < 28; i++){
+	ReadDetCalInFlash((unsigned int)i,(uchar*)&msg);
+	
+	SendCOMBytes(&msg,1)	;
+	}
+	msg = ENDL;
+	SendCOMBytes(&msg,1);
+}
 
 void FindDevice(unsigned char*){
 	unsigned char end = FINDDEVICE;
 	SendCOMBytes(&end,1);
 	SendCOMBytes((unsigned char*)ID,4);
-	end = 0x03;
+	end = ENDL;
 	SendCOMBytes(&end,1);
 	
 }
