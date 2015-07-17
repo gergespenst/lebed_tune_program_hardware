@@ -198,7 +198,7 @@ void SetLebedSelFreqInFlash(){
 	
 	SetnOTP(1);//запираем выход предкорректора
 	SendLCA2Sel((uchar*)g_plateState.outLCA);// отправляем в селектор
-	SetnOTP(0);//отпираем
+	SetnOTP(g_plateState.output);//отпираем
 	
 
 }
@@ -603,7 +603,7 @@ void drawFuncLCAMenu(CMenuItem* item){
 		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_C2 & 0x00F0)>> 4] ;
 		TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(g_C2 & 0x000F) ] ;
 		
-		char a  = read_steady_adc(ADC_UPAS_OUT_PIN);
+		char a  = read_adc(ADC_UPAS_OUT_PIN);
 				TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(a & 0x00F0)>> 4] ;
 				TempStr2[strchr(TempStr2,'X') - TempStr2] = g_hexOut[(a & 0x000F) ] ;
 for (unsigned char i = 0; i < strlen(TempStr1); i++){// выводим во временную строку на позиции символов Х значения регистров

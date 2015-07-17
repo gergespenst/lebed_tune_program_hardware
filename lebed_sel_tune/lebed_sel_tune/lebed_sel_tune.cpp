@@ -83,10 +83,20 @@ unsigned char DetFreqInd(unsigned char* freq){
 	return (freq[0]*10 + freq[1]) - 2;	
 }
 //////////////////////////////////////////////////////////////////////////
+void SaveSelectorSign(){
+		//TODO: Добавляется запись константы свидетельствующей о том что селктор настроен и работает
+		unsigned int shift_addr = 0xFFF8;
+		uchar data[2] = {0x5A,0x3E};
+		WriteData2FlashIIC(shift_addr,data,2);
+}
+//////////////////////////////////////////////////////////////////////////
 void SaveDetCoef(){
 	upas_out = read_steady_adc(ADC_UPAS_OUT_PIN);
 	WriteDetCal2Flash(DetFreqInd(g_plateState.freq),&upas_out);
+	SaveSelectorSign();
+	
 }
+
 //////////////////////////////////////////////////////////////////////////
 unsigned char ReadDetCoef(){
 	uchar temp_coef;

@@ -54,6 +54,8 @@ void InitUart(){
 //Коды команд
 #define WRF 0x80		//запись частоты без чтения из памяти >[ HEAD F F F F F F F ENDL] <[OK ENDL]
 	#define WRF_L 7
+
+
 	
 #define WRFLCA 0x46		//запись частоты с чтением из памяти >[ HEAD F F F F F F F ENDL] <[OK ENDL]
 	#define WRFLCA_L 7
@@ -91,6 +93,9 @@ void InitUart(){
 #define READALLDETCOEF 0x98//чтение всех коэффициентов детектора
 	#define READALLDETCOEF_L  0
 
+#define WRFZAH 0x99		//запись частоты с настройкой селектора захарова >[ HEAD F F F F F F F ENDL] <[OK ENDL]
+	#define WRFZAH_L 7
+
 #define ID "LSP0" //идентификатор устройства
 #define FINDDEVICE 0xFF
 	#define FINDDEVICE_L 0
@@ -103,6 +108,7 @@ void InitUart(){
 
 
 extern void WriteFFunc(unsigned char *);
+extern void WriteFZahFunc(unsigned char *);
 extern  void WriteFLCAFunc(unsigned char*);
 extern  void WriteLCAFunc(unsigned char*);
 extern  void WriteAFunc(unsigned char*);
@@ -121,15 +127,15 @@ extern  void FindDevice(unsigned char*);
 //массив кодов команд
 const unsigned char g_comandList[] PROGMEM = {WRF,WRFLCA,WRLCA,WRA,SETMODE,SETOTP,READALLFLASH,
 											WRITEDATATOFLASH,ERASEFLASH,READA,SETCOEF,SAVECOEF,SAVEDETCOEF,
-											FINDDEVICE,READALLDETCOEF};
+											FINDDEVICE,READALLDETCOEF,WRFZAH};
 //массив количества байт в команде
 const unsigned char g_comandLengthList[] PROGMEM = {WRF_L,WRFLCA_L,WRLCA_L,WRA_L,SETMODE_L,SETOTP_L,READALLFLASH_L,
 											WRITEDATATOFLASH_L,ERASEFLASH_L,READA_L,SETCOEF_L,SAVECOEF_L,SAVEDETCOEF_L,
-											FINDDEVICE_L,READALLDETCOEF_L};
+											FINDDEVICE_L,READALLDETCOEF_L,WRFZAH_L};
 //массив указателей на функции соответствующие каждой команде
 void  (* const g_commandFunc[])(unsigned char*)  PROGMEM = {WriteFFunc,WriteFLCAFunc,WriteLCAFunc,WriteAFunc,WriteMode,WriteOtp,
 	  ReadAllFlash,WriteData2Flash,WriteEraseFlash,ReadAmpl,SetCoef,SaveCoef,SaveDetectorCoef,
-	  FindDevice,ReadDetectorCoef};
+	  FindDevice,ReadDetectorCoef,WriteFZahFunc};
 
 
 #define COM_BUFF_SIZE 32
@@ -305,6 +311,7 @@ void WriteMode(unsigned char * data)//пока заглушка
 
 void WriteOtp(unsigned char * data)// отпирание/запирание
 {
+
 	SetnOTP((char)data[1] & 0x0F);
 	SendOk();
 }
@@ -412,4 +419,31 @@ void FindDevice(unsigned char*){
 	SendCOMBytes(&end,1);
 	
 }
+//----------------------------------------
+
+ void WriteFZahFunc( unsigned char * data)
+{
+		for (unsigned char i = 0; i < WRFZAH_L; i++)
+		{
+			g_plateState.freq[i] = data[i + 1] & 0x0F;
+		}
+		WriteFreqToPrk(g_plateState.freq);
+		
+		_delay_ms(10);
+			int freq = g_plateState.freq[0]* 1000 + g_plateState.freq[1]* 100 +g_plateState.freq [2]*10 + g_plateState.freq[3];
+			bool tempMode = g_plateState.mode;
+			g_plateState.mode = false;
+			ChangeModePrk(&g_plateState);
+						
+			SetZselFreq(freq, &g_plateState.zSelParam);
+			g_plateState.mode = tempMode;
+			ChangeModePrk(&g_plateState);
+		_delay_ms(10);
+		
+			TuneZselAtten(&g_plateState.zSelParam);
+		
+		
+		SendOk();
+}
+
 #endif
