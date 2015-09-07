@@ -175,6 +175,11 @@ void SetOTPLines(){
 	
 }
 //////////////////////////////////////////////////////////////////////////
+
+
+//#include "OneWire.h"
+
+
 int main(void)
 {
 	Init_LCD();
@@ -185,6 +190,63 @@ int main(void)
 	InitSelPort();
 	IICInit();
 	InitUart();
+	
+	
+// 	----------------------------------------
+//Ёкспериментальный кусок, эксперименты с ключами от домофона
+// 	while (1)
+// 	{
+// 	
+// 	therm_reset();
+// 	_delay_ms(50);
+// 	therm_write_byte(0x33);
+// 	char temp[8];
+// 	for (char i = 0; i< 8; i++)
+// 	{
+// 		temp[i] = therm_read_byte();
+// 	}
+// 	LCD_Clear();
+// 		for (char i = 0; i< 8; i++)
+// 		{
+// 			LCD_DisplayCharacter(g_hexOut[(temp[i] & 0xF0)>>4]);
+// 			LCD_DisplayCharacter(g_hexOut[(temp[i] & 0x0F)>>0]);
+// 			
+// 		}
+// 		_delay_ms(1000);
+// 		char data[4];
+// 		char key_to_write[] = {0x01,0xff,0xff,0xff,0xff,0x00,0x00,0x9b};
+// 		if (temp[7] != 0xFF)
+// 		{
+// 			LCD_Clear();
+// 			for (char i = 0 ; i < 8; i++)
+// 			{
+// 			
+// 			therm_reset();
+// 			    data[0] = 0x3C; // "WRITE" command
+// 			    data[1] = i; // programming i-th byte
+// 			    data[2] = 0;
+// 			    data[3] = key_to_write[i];
+// 				for (char j = 0; j < 4; j++)
+// 				{
+// 					therm_write_byte(data[j]);
+// 				}
+// 				char crc = therm_read_byte();
+// 				LCD_DisplayCharacter(g_hexOut[(crc & 0xF0)>>4]);
+// 				LCD_DisplayCharacter(g_hexOut[(crc & 0x0F)>>0]);
+// 				//_delay_ms(100);
+// 				send_programming_impulse();
+// 			}
+// 			LCD_DisplayCharacter('!');
+// 			_delay_ms(1000);
+// 		}
+// 						
+// 	}
+// 	//----------------------------------------
+	
+	
+	
+	
+	
 	 g_currentItem = &g_mainMenuItem;
 	//g_currentItem = & g_prkSettingMenuItem;
 	#ifdef DDC_BOARD
