@@ -13,11 +13,11 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-
-#define port_lcd            PORTA
-#define ddr_lcd             DDRA
-#define pin_lcd             PINA
-#include "lcd_knk.h"
+#include "lcd.h"
+// #define port_lcd            PORTA
+// #define ddr_lcd             DDRA
+// #define pin_lcd             PINA
+// #include "lcd_knk.h"
 
 #define KEY_PORT	PORTF	//порт клавиатуры
 #define KEY_REG		DDRF	//регистр порта клавиатуры
