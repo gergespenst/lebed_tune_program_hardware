@@ -21,6 +21,8 @@ extern CMenuItem g_mainMenuItem;
 extern CMenuItem g_prkSettingMenuItem;
 extern CMenuItem g_zselSettingMenuItem;
 extern CMenuItem g_lcaMenuItem;
+
+#define NUM_OF_CHARS_PER_STR 20
 //строка для вывода
 uchar g_drawingString[NUM_OF_CHARS_PER_STR*2+1] = {"testovaja figna fghj kjhgdfsertyuhnmklfd"};
 //
@@ -141,11 +143,9 @@ void Str2DrawStr(uchar* s1, uchar* s2, uchar* sDraw){
 }
 
 void DrawOnLCD(uchar* str){
-	LCD_Clear();
-	LCD_DisplayDrawLongString((char*)str);
-	LCD_Cursor((g_currentItem->getCursorPosition()).row,(g_currentItem->getCursorPosition()).column);
-	LCD_Cursor_On();
-	//	SendCOMBytes((uchar*)"draw finish",11);
+	lcd_clrscr();
+	lcd_put_long_s((char*)str);
+	lcd_gotoxy((g_currentItem->getCursorPosition()).column - 1,(g_currentItem->getCursorPosition()).row - 1);
 }
 
 /************************************************************************/

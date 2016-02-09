@@ -19,16 +19,21 @@
 // #define pin_lcd             PINA
 // #include "lcd_knk.h"
 
-#define KEY_PORT	PORTF	//порт клавиатуры
-#define KEY_REG		DDRF	//регистр порта клавиатуры
-#define KEY_IN_PORT PINF
+#define KEY_OUT_PORT	PORTC	//порт клавиатуры
+#define KEY_OUT_REG		DDRC	//регистр порта клавиатуры
+#define KEY_OUT_PIN		PINC
 
-#define BLINK_PIN	PF7		//пин светодиода
-#define EDR_PIN		PF1		//пин вывода для кнопок Enter, Down, Right
-#define EUL_PIN		PF0		//пин вывода для кнопок Esc, Up, Left
-#define EE_IN_PIN	PINF2		//пин ввода для кнопок Enter/Esc
-#define DU_IN_PIN	PINF3		//пин ввода для кнопок Down/Up
-#define LR_IN_PIN	PINF4		//пин ввода для кнопок Left/Right
+#define KEY_IN_PORT PORTD
+#define KEY_IN_REG  DDRD
+#define KEY_IN_PIN	 PIND
+
+#define BLINK_PIN	PC7		//пин светодиода
+#define EDR_PIN		PD6		//пин вывода для кнопок Enter, Down, Right
+#define EUL_PIN		PD7	//пин вывода для кнопок Esc, Up, Left
+
+#define EE_IN_PIN	PINC0		//пин ввода для кнопок Enter/Esc
+#define DU_IN_PIN	PINC1		//пин ввода для кнопок Down/Up
+#define LR_IN_PIN	PINC2		//пин ввода для кнопок Left/Right
 #include "keyboard.h"
 
 

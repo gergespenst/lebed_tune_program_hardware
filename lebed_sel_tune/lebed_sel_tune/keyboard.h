@@ -10,10 +10,13 @@
 #ifndef KEYBOARD_H_
 #define KEYBOARD_H_
 //описания портов перенесены в файл main.h
-//#define KEY_PORT	PORTF	//порт клавиатуры
-//#define KEY_REG		DDRF	//регистр порта клавиатуры
+//#define KEY_IN_PORT	PORTF	//порт клавиатуры
+//#define KEY_IN_REG		DDRF	//регистр порта клавиатуры
 //#define KEY_IN_PORT PINF
-//
+
+// #define KEY_OUT_PORT PORTD
+// #define KEY_OUT_REG  DDRD
+// #define KEY_OUT_PIN	 PIND
 //#define BLINK_PIN	PF5		//пин светодиода
 //#define EDR_PIN		PF0		//пин вывода для кнопок Enter, Down, Right
 //#define EUL_PIN		PF4		//пин вывода для кнопок Esc, Up, Left
@@ -32,7 +35,7 @@
 
 #endif
 
-#define CLK_STAT  ((KEY_IN_PORT&_BV(EDR_PIN)) == _BV(EDR_PIN))
+#define CLK_STAT  ((KEY_OUT_PIN&_BV(EDR_PIN)) == _BV(EDR_PIN))
 void InitKeyboard();
 void Blink(unsigned long t);
 void ScanKeyboard( void (*operation)(unsigned char));

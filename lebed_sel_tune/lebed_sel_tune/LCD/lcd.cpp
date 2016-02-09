@@ -29,7 +29,7 @@
 #include "lcd.h"
 
 
-
+  const unsigned char  ascii_lcd[64]  PROGMEM={0x41,  0xa0,  0x42,  0xa1,  0xe0,  0x45,  0xa3,  0xa4,  0xa5,  0xa6,  0x4b,  0xa7,  0x4d,  0x48,  0x4f,  0xa8,  0x50,  0x43,  0x54,  0xa9,  0xaa,  0x58,  0xe1,  0xab,  0xac,  0xe2,  0xad,  0xae,  0x62,  0xaf,  0xb0,  0xb1,  0x61,  0xb2,  0xb3,  0xb4,  0xe3,  0x65,  0xb6,  0xb7,  0xb8,  0xb9,  0xba,  0xbb,  0xbc,  0xbd,  0x6f,  0xbe,  0x70,  0x63,  0xbf,  0x79,  0xe4,  0x78,  0xe5,  0xc0,  0xc1,  0xe6,  0xc2,  0xc3,  0xc4,  0xc5,  0xc6,  0xc7};
 /* 
 ** constants/macros 
 */
@@ -453,7 +453,10 @@ void lcd_putc(char c)
 #endif
         lcd_waitbusy();
 #endif
-        lcd_write(c, 1);
+	if (c>=0xc0)  lcd_write(pgm_read_byte(&ascii_lcd[c-0xc0]), 1);
+	if (c<0xc0)  lcd_write(c, 1);
+
+    //    lcd_write(c, 1);
     }
 
 }/* lcd_putc */
@@ -605,3 +608,24 @@ void lcd_init(uint8_t dispAttr)
     lcd_command(dispAttr);                  /* display/cursor control       */
 
 }/* lcd_init */
+
+/*************************************************************************
+Display string with auto linefeed
+Input:    string to be displayed
+Returns:  none
+*************************************************************************/
+void lcd_put_long_s(const char *s)
+/* print string on lcd (no auto linefeed) */
+{
+	register char c,i = 0;
+	lcd_gotoxy(0,0);
+	while ( (c = *s++) ) {
+		if (i == LCD_DISP_LENGTH) lcd_gotoxy(0,1);
+		
+		lcd_putc(c);
+		i++;
+	}
+
+	}/* lcd_puts */
+
+  

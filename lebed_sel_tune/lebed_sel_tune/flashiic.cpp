@@ -156,8 +156,8 @@ unsigned int CharFtoInd(unsigned char* f){//зависит от длины частоты
 
 void ErrorFlash()
 {
-	LCD_Clear();
-	LCD_DisplayStringRus(0,0,"   SEL FLASH ERROR  ");
+	lcd_clrscr();
+	lcd_puts("   SEL FLASH ERROR  ");
 	_delay_ms(500);
 }
 

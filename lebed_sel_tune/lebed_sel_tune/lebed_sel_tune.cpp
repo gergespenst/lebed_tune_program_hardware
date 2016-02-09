@@ -9,14 +9,17 @@
 #include "uart.h"
 void SetOutLevelFromFreq();
 //////////////////////////////////////////////////////////////////////////
+char g_hex[] ="0123456789ABCDEF";	
 void KeySelect(unsigned char a){//эту функцию следует перенести в класс меню
+
 	switch (a){
-		case 0x01:g_currentItem->escFunction(g_currentItem);break;
-		case 0x02:g_currentItem->okFunction(g_currentItem);break;
-		case 0x03:g_currentItem->upFunction(g_currentItem);break;
-		case 0x04:g_currentItem->downFunction(g_currentItem);break;
-		case 0x05:g_currentItem->leftFunction(g_currentItem);break;
-		case 0x06:g_currentItem->rightFunction(g_currentItem);break;
+		case 0x20:g_currentItem->escFunction(g_currentItem);break;
+		case 0x10:g_currentItem->okFunction(g_currentItem);break;
+		case 0x21:g_currentItem->upFunction(g_currentItem);break;
+		case 0x11:g_currentItem->downFunction(g_currentItem);break;
+		case 0x22:g_currentItem->leftFunction(g_currentItem);break;
+		case 0x12:g_currentItem->rightFunction(g_currentItem);break;
+		
 	}
 }
 //////////////////////////////////////////////////////////////////////////
@@ -177,24 +180,26 @@ void SetOTPLines(){
 //////////////////////////////////////////////////////////////////////////
 int main(void)
 {
-	Init_LCD();
-	LCD_Clear();
-	LCD_DisplayStringRus(0,0,"      ЗАГРУЗКА      ");
-	InitKeyboard();
-	InitPrk();
-	InitSelPort();
-	IICInit();
-	InitUart();
-	 g_currentItem = &g_mainMenuItem;
-	//g_currentItem = & g_prkSettingMenuItem;
-	#ifdef DDC_BOARD
-		g_currentItem = &g_zselSettingMenuItem;
-	#endif
-	g_currentItem->draw();
-
-	SendCOMBytes((uchar*)"REBOOT",7);
-	DDRB |= _BV(7);//Вывод отпирания для платы предкорректора
+	lcd_init(LCD_DISP_ON_CURSOR_BLINK);
 	
+	lcd_puts("      ЗАГРУЗКА      ");
+
+		
+	InitKeyboard();
+	//InitPrk();
+// 	InitSelPort();
+// 	IICInit();
+// 	InitUart();
+ 	 g_currentItem = &g_mainMenuItem;
+// 	//g_currentItem = & g_prkSettingMenuItem;
+// 	#ifdef DDC_BOARD
+// 		g_currentItem = &g_zselSettingMenuItem;
+// 	#endif
+ 	g_currentItem->draw();
+// 
+// 	SendCOMBytes((uchar*)"REBOOT",7);
+// 	DDRB |= _BV(7);//Вывод отпирания для платы предкорректора
+// 	
     while(1)
     {
 // 		char a = read_adc(ADC_UPAS_OUT_PIN);
