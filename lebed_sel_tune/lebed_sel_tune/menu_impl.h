@@ -54,7 +54,8 @@ typedef struct StateOfPlate{
 
  STATEOFPLATE g_plateState;
  //требуется прописать в свойствах проекта для секции с++  -std=c++11
- STATEOFPLATE EEMEM g_eepromPlateState = {bool(0),bool(0),{1,0,0,0,0,0,0}, 
+ STATEOFPLATE  __attribute__((section(".sel_tune_eeprom"))) g_eepromPlateState
+											  = {bool(0),bool(0),{1,0,0,0,0,0,0}, 
 												{{0x0A,0x0C,0x03,0x4B},
 												{0x14,0x00,0xB3,0xC4},
 												{0x07,0x00,0x00,0x30},

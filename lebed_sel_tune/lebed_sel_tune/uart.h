@@ -19,8 +19,8 @@
 #define DATA_REGISTER_EMPTY (1<<UDRE)
 #define RX_COMPLETE         (1<<RXC)
 //должен быть в файле main.h
-//#define BAUD_RATE0 115200
-#define BAUD_RATE1 115200
+#define BAUD_RATE0 115200
+//#define BAUD_RATE1 115200
 #ifdef BAUD_RATE0
 	#define UBRR0 (F_CPU/(BAUD_RATE0*16L) - 1 )
 	#define SET_BAUD_UART0 (UBRR0H = ((UBRR0 >> 8) & 0xFF));(UBRR0L = ((UBRR0) & 0xFF));
@@ -36,18 +36,39 @@
 
 #include <avr/interrupt.h>
 #include <string.h>
+	// разрешение на передачу по RS-485
+	#define ENABLE_485_UART0        0x40
+	#define ON_485_UART0			0x20
+	#define HF_485_UART0			0x10
+	#define PORT_DIRECT_485_UART0   DDRF
+	#define PORT_ENABLE_485_UART0   PORTF
 
 void InitUart(){
 	// USART0 initialization
-	// Communication Parameters: 8 Data, 1 Stop, No Parity
+	// Communication Parameters: 8 Data, 1 Stop, Even
 	// USART0 Receiver: On
 	// USART0 Transmitter: On
 	// USART0 Mode: Asynchronous
 	// USART0 Baud Rate: BAUD_RATE0
-	UCSR1A=0x00;
-	UCSR1B=0x98;
-	UCSR1C=0x26;
-	SET_BAUD_UART1;
+	
+// 	 DDRF=0xf0; PORTF=0xf7; //F3..F0   => input; F3=0
+// 	 
+	 PORT_ENABLE_485_UART0 |= ENABLE_485_UART0;//&= ~ENABLE_485_UART0; //включение выхода микросхемы
+	 PORT_DIRECT_485_UART0 |= ENABLE_485_UART0;
+	 
+	 PORT_DIRECT_485_UART0 |= ON_485_UART0;//включение микросхемы
+	 PORT_ENABLE_485_UART0 &= ~ON_485_UART0;
+	 
+	 PORT_DIRECT_485_UART0 |= HF_485_UART0;//включение микросхемы на полный дуплекс
+	 PORT_ENABLE_485_UART0 &= ~HF_485_UART0;
+	 
+	 PORT_DIRECT_485_UART0 |= 0x80;
+	 PORT_ENABLE_485_UART0 |= 0x80;
+
+	UCSR0A=0x00;
+	UCSR0B=0x98;
+	UCSR0C=0x26;
+	SET_BAUD_UART0;
 	}
 //---------UART0--порт-общения-с-компьютером-------
 //-------------------------------------------------
@@ -147,10 +168,11 @@ int g_comNumOfByte = 0;
 
 void SendCOMBytes(unsigned char* data,char n){
 	cli();
-	//a("asd");
 	for(unsigned char t = 0; t < n; t++){
-		while( (UCSR1A & DATA_REGISTER_EMPTY) == 0 );//ожидаем окончания передачи символа
-		UDR1 = data[t];
+		
+	
+	while( (UCSR0A & DATA_REGISTER_EMPTY) == 0 );//ожидаем окончания передачи символа
+	UDR0 = data[t];
 	}
 	sei();
 }
@@ -180,14 +202,15 @@ void SendOk(){//обертка для квитанции ок
 
  
 
-ISR (USART1_RX_vect)
+ISR (USART0_RX_vect)
 {
 	cli();
-	unsigned char data = UDR1;
+	unsigned char data = UDR0;
+	//SendCOMBytes(&data,1);//ОТЛАДКА*/
 	if ( memchr_P(g_comandList,data,sizeof(g_comandList)) != NULL){//если получили символ из списка команд то начинаем прием команды
 		g_comBufCnt = 0;//сбрасываем счетчик принятых байт
 		
-		//SendCOMBytes(&data,1);//ОТЛАДКА
+	//	SendCOMBytes(&data,1);//ОТЛАДКА
 	}
 	
 	//заполняем  буфер
@@ -195,7 +218,7 @@ ISR (USART1_RX_vect)
 
 	g_comBuff[g_comBufCnt] = data;
 	g_comBufCnt++;
-	
+	//SendCOMBytes(&data,1);
 	if((data == ENDL) && (memchr_P(g_comandList,g_comBuff[0],sizeof(g_comandList)) != NULL) )//если получен конец сообщения и команда есть в списке то обрабатываем
 	{	
 		//вычисляем индекс команды в массиве как разность адресов элемента и нулевого элемента

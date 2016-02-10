@@ -178,6 +178,10 @@ void SetOTPLines(){
 	
 }
 //////////////////////////////////////////////////////////////////////////
+
+
+
+	
 int main(void)
 {
 	lcd_init(LCD_DISP_ON_CURSOR_BLINK);
@@ -186,10 +190,13 @@ int main(void)
 
 		
 	InitKeyboard();
+	//ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
 	//InitPrk();
 // 	InitSelPort();
 // 	IICInit();
-// 	InitUart();
+ 	InitUart();
+
+	 sei();
  	 g_currentItem = &g_mainMenuItem;
 // 	//g_currentItem = & g_prkSettingMenuItem;
 // 	#ifdef DDC_BOARD
@@ -197,7 +204,7 @@ int main(void)
 // 	#endif
  	g_currentItem->draw();
 // 
-// 	SendCOMBytes((uchar*)"REBOOT",7);
+ 	SendCOMBytes((uchar*)"REBOOT",7);
 // 	DDRB |= _BV(7);//Вывод отпирания для платы предкорректора
 // 	
     while(1)
