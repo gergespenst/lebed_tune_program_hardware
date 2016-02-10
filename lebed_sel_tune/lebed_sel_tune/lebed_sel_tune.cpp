@@ -26,6 +26,7 @@ void KeySelect(unsigned char a){//эту функцию следует перенести в класс меню
 //******************************************************************************//
 //**  Функции управления формирователем сигналов				*//
 //*****************************************************************************//
+
 void WriteFreqToPrk(uchar* freq){
 	uchar datatmp[13]={0x00,0x00,0x00,0x00,
 						freq[0]*16 + freq[1],
@@ -46,6 +47,7 @@ void WriteFreqToPrk(uchar* freq){
 	SetOutLevelFromFreq();
 }
 //////////////////////////////////////////////////////////////////////////
+
 void ChangeModePrk(STATEOFPLATE* state){
 		Read_Controll(0x0FFE, state->C_R[1]);
 		if (state->mode == 0)
@@ -55,22 +57,40 @@ void ChangeModePrk(STATEOFPLATE* state){
 		Write_Controll(0x07FE, state->C_R[1]);	
 }
 //////////////////////////////////////////////////////////////////////////
-// Изменение выходного напряжения платы
-/////////////////////////////////
-//от 1,5 до 28,5 через 0,5 МГц
-void SetOutLevel(uchar lvl){
-	lvl = lvl & 0x7F;
-	Read_Controll(0x0FFD, g_plateState.C_R[2]);
-		g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | lvl;
+void InitPrk(){
+	ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
+	InitAltera();
+	
+	Write_Controll(0x07FF, g_plateState.C_R[0]);
+	Write_Controll(0x07FE, g_plateState.C_R[1]);
 	Write_Controll(0x07FD, g_plateState.C_R[2]);
+	Write_Controll(0x07FC, g_plateState.C_R[3]);
+	
+	delay_ms(10);
+	SET_ALTERA_RESET(0);
+	delay_ms(5);
+	SET_ALTERA_ENABLE(1);
+	_delay_ms(10);
+	WriteFreqToPrk(g_plateState.freq);
+	ChangeModePrk(&g_plateState);
+}
+///////////////////////////////////////////////////////////////////////////
+//************* Изменение выходного напряжения платы**********//
+//////////////////////////////////////////////////////////////////////////
+//от 1,5 до 28,5 через 0,5 МГц
+//установка уровня для текущей частоты
+void SetOutLevel(uchar lvl){
+// 	lvl = lvl & 0x7F;
+// 	g_plateState.corr_coef[SolveFreqIndCorrCoef()] = lvl & 0x7F;
+	SetAtt(lvl & 0x7F,SolveFreqIndCorrCoef());
+	
 }
 //вычисление адреса частоты для установки 1 вольта на выходе
 unsigned int SolveFreqIndCorrCoef(){
 	return (g_plateState.freq[0]*100 + g_plateState.freq[1] *10 + g_plateState.freq[2] - 15) /5;
 }
 void SetOutLevelFromFreq(){
-	g_plateState.C_R[2][3] = (g_plateState.C_R[2][3] & 0x80) | g_plateState.corr_coef[SolveFreqIndCorrCoef()];
-	Write_Controll(0x07FD, g_plateState.C_R[2]);
+	SetAttFromInd(SolveFreqIndCorrCoef())	;
 }
 //////////////////////////////////////////////////////////////////////////
 /************************************************************************/
@@ -135,24 +155,9 @@ void TuneLvlLebedSel(){
 	}
 		
 }
-//////////////////////////////////////////////////////////////////////////
-void InitPrk(){
-	ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
-	InitAltera();
-	
-	Write_Controll(0x07FF, g_plateState.C_R[0]);
-	Write_Controll(0x07FE, g_plateState.C_R[1]);
-	Write_Controll(0x07FD, g_plateState.C_R[2]);
-	Write_Controll(0x07FC, g_plateState.C_R[3]);
-	
-	delay_ms(10);
-	SET_ALTERA_RESET(0);
-	delay_ms(5);
-	SET_ALTERA_ENABLE(1);
-	_delay_ms(10);
-	WriteFreqToPrk(g_plateState.freq);
-	ChangeModePrk(&g_plateState);
-}
+
+//----------------------------------------
+#include "PWC.h"
 //////////////////////////////////////////////////////////////////////////
 void SetnOTP(char val){
 // 		if (val == 0)
@@ -160,7 +165,8 @@ void SetnOTP(char val){
 // 			PORTB &= ~_BV(7);
 // 		}else
 // 			PORTB |= _BV(7);
-// 			
+// 		
+		OpenPwc(val == 0)	;
 		if (g_plateState.selType == LEBED_TYPE)
 		{
 			SET_SEL_nOTP(val);
@@ -184,19 +190,20 @@ void SetOTPLines(){
 
 
 
-	
 int main(void)
 {
 	lcd_init(LCD_DISP_ON_CURSOR_BLINK);
-	
+
 	lcd_puts("      ЗАГРУЗКА      ");
 
-		
+	    
+				    
 	InitKeyboard();
 	ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
 	//InitPrk();
+	InitPwc();
 	InitSelPort();
-// 	IICInit();
+ 	IICInit();
  	InitUart();
 
 	 sei();
@@ -205,6 +212,7 @@ int main(void)
 // 	#ifdef DDC_BOARD
 // 		g_currentItem = &g_zselSettingMenuItem;
 // 	#endif
+//g_currentItem->okFunction(g_currentItem);
  	g_currentItem->draw();
 // 
  	SendCOMBytes((uchar*)"REBOOT",7);

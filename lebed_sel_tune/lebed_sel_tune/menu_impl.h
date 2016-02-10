@@ -183,7 +183,7 @@ uchar Mode[2][3] ={"1T","2T"};
 //строки для типа селектора
 uchar Seltype[2] = {'L','Z'};
 //////////////////////////////////////////////////////////////////////////
-extern void WriteFreqToPrk(uchar* freq);//функция установки частоты в предкорректор, должна быть определена в другом месте
+extern void SetPwcFreq(uchar* freq);//функция установки частоты в предкорректор, должна быть определена в другом месте
 extern void ChangeModePrk(STATEOFPLATE*);//функция смены режима с одного тона на два
 extern void outLCA2LCA(unsigned int *C1,unsigned char *L1,unsigned int *C2,unsigned char *L2,unsigned char *A,unsigned int* IN);
 extern unsigned char ReadDetCoef();
@@ -215,7 +215,7 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 
 			 //TODO :: Здесь должна быть функция установки частоты
 			 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
-		//	 WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
+			 SetPwcFreq(g_plateState.freq);//устанавлвиается частота генератора
 			
 			if (g_plateState.selType == LEBED_TYPE)
 			{
@@ -291,7 +291,7 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 void upFuncMainMenu(CMenuItem* item){
 
 		if ( (item->getCurRow() == 2) && (item->getCurPos() == 0 ) ) {
-						g_plateState.output = !g_plateState.output;
+						g_plateState.output = !(g_plateState.output & 0x01);
 						SetnOTP(g_plateState.output);}
 		if ( (item->getCurRow() == 2) && (item->getCurPos() == 1) ){
 								g_plateState.mode = !(g_plateState.mode);
@@ -313,7 +313,7 @@ void upFuncMainMenu(CMenuItem* item){
 void downFuncMainMenu(CMenuItem* item){
 			
 		if ( (item->getCurRow() == 2) && (item->getCurPos() == 0 ) ){
-						g_plateState.output = !g_plateState.output;
+						g_plateState.output = !(g_plateState.output & 0x01);
 						SetnOTP(g_plateState.output);}
 						
 		if ( (item->getCurRow() == 2) && (item->getCurPos() == 1) ){
@@ -668,7 +668,7 @@ void okFuncZselMenu( CMenuItem* item )
 	}else
 	if ((item->getCurRow() == 2) && (item->getCursorPosition().column/FREQ_ZSEL_POS == 1))//если курсор на частоте
 	{
-		WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
+		SetPwcFreq(g_plateState.freq);//устанавлвиается частота генератора
 		SetZselFreq(g_plateState.freq[0]* 1000 + g_plateState.freq[1]* 100 + g_plateState.freq[2]* 10 + g_plateState.freq[3] ,&g_plateState.zSelParam);
 		
 	}	else	

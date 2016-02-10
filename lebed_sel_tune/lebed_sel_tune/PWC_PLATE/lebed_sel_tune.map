@@ -26,10 +26,12 @@ c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-t
                               lebed_sel_tune.o (strchr)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
                               lebed_sel_tune.o (__eerd_block_m128)
+c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+                              PWC.o (__eerd_byte_m128)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
                               lebed_sel_tune.o (__eeupd_block_m128)
 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
-                              c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o) (__eeupd_r18_m128)
+                              PWC.o (__eeupd_byte_m128)
 
 Discarded input sections
 
@@ -49,8 +51,6 @@ Discarded input sections
  .text          0x00000000        0x0 i2c.o
  .data          0x00000000        0x0 i2c.o
  .bss           0x00000000        0x0 i2c.o
- .text._Z7IICInitv
-                0x00000000        0xe i2c.o
  .text          0x00000000        0x0 keyboard.o
  .data          0x00000000        0x0 keyboard.o
  .bss           0x00000000        0x0 keyboard.o
@@ -106,6 +106,10 @@ Discarded input sections
                 0x00000000        0xc lebed_sel_tune.o
  .text._ZN9CMenuItem11setDownFuncEPFvPS_E
                 0x00000000        0xc lebed_sel_tune.o
+ .text._Z19SetOutLevelFromFreqv
+                0x00000000        0x8 lebed_sel_tune.o
+ .text._Z14WriteFreqToPrkPh
+                0x00000000       0xb8 lebed_sel_tune.o
  .text._Z7InitPrkv
                 0x00000000       0x78 lebed_sel_tune.o
  .text._Z11SetOTPLinesv
@@ -118,13 +122,8 @@ Discarded input sections
  .text          0x00000000        0x0 PWC.o
  .data          0x00000000        0x0 PWC.o
  .bss           0x00000000        0x0 PWC.o
- .debug_info    0x00000000       0x70 PWC.o
- .debug_abbrev  0x00000000       0x2d PWC.o
- .debug_aranges
+ .text._Z7rd_bytev
                 0x00000000       0x18 PWC.o
- .debug_line    0x00000000       0x1a PWC.o
- .debug_str     0x00000000      0x1cb PWC.o
- .comment       0x00000000       0x31 PWC.o
  .text          0x00000000        0x0 selector_control.o
  .data          0x00000000        0x0 selector_control.o
  .bss           0x00000000        0x0 selector_control.o
@@ -288,6 +287,9 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
@@ -425,7 +427,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x38f2
+.text           0x00000000     0x3b72
  *(.vectors)
  .vectors       0x00000000       0x8c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51/crtm128.o
                 0x00000000                __vector_default
@@ -579,352 +581,391 @@ END GROUP
  .text._Z17ReadDetCalInFlashjPh
                 0x0000061a       0x22 flashiic.o
                 0x0000061a                _Z17ReadDetCalInFlashjPh
+ .text._Z7IICInitv
+                0x0000063c        0xe i2c.o
+                0x0000063c                _Z7IICInitv
  .text._Z8IICStartv
-                0x0000063c       0x24 i2c.o
-                0x0000063c                _Z8IICStartv
+                0x0000064a       0x24 i2c.o
+                0x0000064a                _Z8IICStartv
  .text._Z7IICStopv
-                0x00000660       0x24 i2c.o
-                0x00000660                _Z7IICStopv
+                0x0000066e       0x24 i2c.o
+                0x0000066e                _Z7IICStopv
  .text._Z6IICBitc
-                0x00000684       0x40 i2c.o
-                0x00000684                _Z6IICBitc
+                0x00000692       0x40 i2c.o
+                0x00000692                _Z6IICBitc
  .text._Z12IICByteWritec
-                0x000006c4       0x10 i2c.o
-                0x000006c4                _Z12IICByteWritec
+                0x000006d2       0x10 i2c.o
+                0x000006d2                _Z12IICByteWritec
  .text._Z11IICByteReadc
-                0x000006d4       0x2a i2c.o
-                0x000006d4                _Z11IICByteReadc
+                0x000006e2       0x2a i2c.o
+                0x000006e2                _Z11IICByteReadc
  .text._Z12InitKeyboardv
-                0x000006fe        0x2 keyboard.o
-                0x000006fe                _Z12InitKeyboardv
+                0x0000070c        0x2 keyboard.o
+                0x0000070c                _Z12InitKeyboardv
  .text._Z12ScanKeyboardPFvhE
-                0x00000700       0x84 keyboard.o
-                0x00000700                _Z12ScanKeyboardPFvhE
+                0x0000070e       0x84 keyboard.o
+                0x0000070e                _Z12ScanKeyboardPFvhE
  .text._ZL8toggle_ev
-                0x00000784        0xc lcd.o
+                0x00000792        0xc lcd.o
  .text._ZL9lcd_writehh
-                0x00000790       0x48 lcd.o
+                0x0000079e       0x48 lcd.o
  .text._ZL8lcd_readh.constprop.0
-                0x000007d8       0x32 lcd.o
+                0x000007e6       0x32 lcd.o
  .text._ZL12lcd_waitbusyv
-                0x0000080a        0xe lcd.o
- .text._Z11lcd_commandh
                 0x00000818        0xe lcd.o
-                0x00000818                _Z11lcd_commandh
+ .text._Z11lcd_commandh
+                0x00000826        0xe lcd.o
+                0x00000826                _Z11lcd_commandh
  .text._Z10lcd_gotoxyhh
-                0x00000826        0xc lcd.o
-                0x00000826                _Z10lcd_gotoxyhh
+                0x00000834        0xc lcd.o
+                0x00000834                _Z10lcd_gotoxyhh
  .text._Z10lcd_clrscrv
-                0x00000832        0x4 lcd.o
-                0x00000832                _Z10lcd_clrscrv
+                0x00000840        0x4 lcd.o
+                0x00000840                _Z10lcd_clrscrv
  .text._Z8lcd_putcc
-                0x00000836       0x34 lcd.o
-                0x00000836                _Z8lcd_putcc
+                0x00000844       0x34 lcd.o
+                0x00000844                _Z8lcd_putcc
  .text._Z8lcd_putsPKc
-                0x0000086a       0x16 lcd.o
-                0x0000086a                _Z8lcd_putsPKc
+                0x00000878       0x16 lcd.o
+                0x00000878                _Z8lcd_putsPKc
  .text._Z8lcd_inith
-                0x00000880       0x56 lcd.o
-                0x00000880                _Z8lcd_inith
+                0x0000088e       0x56 lcd.o
+                0x0000088e                _Z8lcd_inith
  .text._Z14lcd_put_long_sPKc
-                0x000008d6       0x4e lcd.o
-                0x000008d6                _Z14lcd_put_long_sPKc
+                0x000008e4       0x4e lcd.o
+                0x000008e4                _Z14lcd_put_long_sPKc
  .text._Z11noEventMenuP9CMenuItem
-                0x00000924        0x2 lebed_sel_tune.o
-                0x00000924                _Z11noEventMenuP9CMenuItem
+                0x00000932        0x2 lebed_sel_tune.o
+                0x00000932                _Z11noEventMenuP9CMenuItem
  .text._Z9KeySelecth
-                0x00000926       0x84 lebed_sel_tune.o
-                0x00000926                _Z9KeySelecth
+                0x00000934       0x84 lebed_sel_tune.o
+                0x00000934                _Z9KeySelecth
  .text._ZN9CMenuItem9initClassEPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_cS0_cS0_
-                0x000009aa      0x1b6 lebed_sel_tune.o
-                0x000009aa                _ZN9CMenuItem9initClassEPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_cS0_cS0_
+                0x000009b8      0x1b6 lebed_sel_tune.o
+                0x000009b8                _ZN9CMenuItem9initClassEPcS0_PS_PS1_cPFvS1_ES4_S4_S4_S4_S4_S4_cS0_cS0_
  .text._Z41__static_initialization_and_destruction_0ii.part.5
-                0x00000b60      0x476 lebed_sel_tune.o
+                0x00000b6e      0x476 lebed_sel_tune.o
  .text._ZN9CMenuItem17getCursorPositionEv
-                0x00000fd6       0x32 lebed_sel_tune.o
-                0x00000fd6                _ZN9CMenuItem17getCursorPositionEv
+                0x00000fe4       0x32 lebed_sel_tune.o
+                0x00000fe4                _ZN9CMenuItem17getCursorPositionEv
  .text._ZN9CMenuItem10incrCurPosEv
-                0x00001008       0x34 lebed_sel_tune.o
-                0x00001008                _ZN9CMenuItem10incrCurPosEv
+                0x00001016       0x34 lebed_sel_tune.o
+                0x00001016                _ZN9CMenuItem10incrCurPosEv
  .text._ZN9CMenuItem10decrCurPosEv
-                0x0000103c       0x2c lebed_sel_tune.o
-                0x0000103c                _ZN9CMenuItem10decrCurPosEv
+                0x0000104a       0x2c lebed_sel_tune.o
+                0x0000104a                _ZN9CMenuItem10decrCurPosEv
  .text._ZN9CMenuItem9changeRowEv
-                0x00001068       0x3e lebed_sel_tune.o
-                0x00001068                _ZN9CMenuItem9changeRowEv
+                0x00001076       0x3e lebed_sel_tune.o
+                0x00001076                _ZN9CMenuItem9changeRowEv
  .text._ZN9CMenuItem4drawEv
-                0x000010a6        0xe lebed_sel_tune.o
-                0x000010a6                _ZN9CMenuItem4drawEv
+                0x000010b4        0xe lebed_sel_tune.o
+                0x000010b4                _ZN9CMenuItem4drawEv
  .text._Z9rightFuncP9CMenuItem
-                0x000010b4       0x40 lebed_sel_tune.o
-                0x000010b4                _Z9rightFuncP9CMenuItem
+                0x000010c2       0x40 lebed_sel_tune.o
+                0x000010c2                _Z9rightFuncP9CMenuItem
  .text._Z17rightFuncZselItemP9CMenuItem
-                0x000010f4       0x5c lebed_sel_tune.o
-                0x000010f4                _Z17rightFuncZselItemP9CMenuItem
+                0x00001102       0x5c lebed_sel_tune.o
+                0x00001102                _Z17rightFuncZselItemP9CMenuItem
  .text._Z8leftFuncP9CMenuItem
-                0x00001150       0x22 lebed_sel_tune.o
-                0x00001150                _Z8leftFuncP9CMenuItem
+                0x0000115e       0x22 lebed_sel_tune.o
+                0x0000115e                _Z8leftFuncP9CMenuItem
  .text._Z16leftFuncZselItemP9CMenuItem
-                0x00001172       0x5c lebed_sel_tune.o
-                0x00001172                _Z16leftFuncZselItemP9CMenuItem
+                0x00001180       0x5c lebed_sel_tune.o
+                0x00001180                _Z16leftFuncZselItemP9CMenuItem
  .text._Z7escFuncP9CMenuItem
-                0x000011ce       0xfe lebed_sel_tune.o
-                0x000011ce                _Z7escFuncP9CMenuItem
+                0x000011dc       0xfe lebed_sel_tune.o
+                0x000011dc                _Z7escFuncP9CMenuItem
  .text._Z14escFuncPrkMenuP9CMenuItem
-                0x000012cc       0x60 lebed_sel_tune.o
-                0x000012cc                _Z14escFuncPrkMenuP9CMenuItem
+                0x000012da       0x60 lebed_sel_tune.o
+                0x000012da                _Z14escFuncPrkMenuP9CMenuItem
  .text._Z13upFuncPrkMenuP9CMenuItem
-                0x0000132c       0x8a lebed_sel_tune.o
-                0x0000132c                _Z13upFuncPrkMenuP9CMenuItem
+                0x0000133a       0x8a lebed_sel_tune.o
+                0x0000133a                _Z13upFuncPrkMenuP9CMenuItem
  .text._Z15downFuncPrkMenuP9CMenuItem
-                0x000013b6       0x8c lebed_sel_tune.o
-                0x000013b6                _Z15downFuncPrkMenuP9CMenuItem
+                0x000013c4       0x8c lebed_sel_tune.o
+                0x000013c4                _Z15downFuncPrkMenuP9CMenuItem
  .text._Z10escFuncLCAP9CMenuItem
-                0x00001442       0x10 lebed_sel_tune.o
-                0x00001442                _Z10escFuncLCAP9CMenuItem
+                0x00001450       0x10 lebed_sel_tune.o
+                0x00001450                _Z10escFuncLCAP9CMenuItem
  .text._Z15escFuncZselMenuP9CMenuItem
-                0x00001452       0x44 lebed_sel_tune.o
-                0x00001452                _Z15escFuncZselMenuP9CMenuItem
+                0x00001460       0x44 lebed_sel_tune.o
+                0x00001460                _Z15escFuncZselMenuP9CMenuItem
  .text._Z17SaveStateToEEPROMP12StateOfPlatePv
-                0x00001496        0x8 lebed_sel_tune.o
-                0x00001496                _Z17SaveStateToEEPROMP12StateOfPlatePv
+                0x000014a4        0x8 lebed_sel_tune.o
+                0x000014a4                _Z17SaveStateToEEPROMP12StateOfPlatePv
  .text._Z13okFuncPrkMenuP9CMenuItem
-                0x0000149e       0x3a lebed_sel_tune.o
-                0x0000149e                _Z13okFuncPrkMenuP9CMenuItem
- .text._Z14upFuncZselMenuP9CMenuItem
-                0x000014d8      0x1aa lebed_sel_tune.o
-                0x000014d8                _Z14upFuncZselMenuP9CMenuItem
- .text._Z16downFuncZselMenuP9CMenuItem
-                0x00001682      0x1b0 lebed_sel_tune.o
-                0x00001682                _Z16downFuncZselMenuP9CMenuItem
- .text._Z19ReadStateFromEEPROMP12StateOfPlatePv
-                0x00001832        0x8 lebed_sel_tune.o
-                0x00001832                _Z19ReadStateFromEEPROMP12StateOfPlatePv
- .text._Z11Str2DrawStrPhS_S_
-                0x0000183a       0x54 lebed_sel_tune.o
-                0x0000183a                _Z11Str2DrawStrPhS_S_
- .text._Z9DrawOnLCDPh
-                0x0000188e       0x44 lebed_sel_tune.o
-                0x0000188e                _Z9DrawOnLCDPh
- .text._Z16drawFuncMainMenuP9CMenuItem
-                0x000018d2      0x136 lebed_sel_tune.o
-                0x000018d2                _Z16drawFuncMainMenuP9CMenuItem
- .text._Z15drawFuncPrkMenuP9CMenuItem
-                0x00001a08      0x184 lebed_sel_tune.o
-                0x00001a08                _Z15drawFuncPrkMenuP9CMenuItem
- .text._Z16drawFuncZselMenuP9CMenuItem
-                0x00001b8c      0x2da lebed_sel_tune.o
-                0x00001b8c                _Z16drawFuncZselMenuP9CMenuItem
- .text._Z11reverseBitsjPj
-                0x00001e66       0x4e lebed_sel_tune.o
-                0x00001e66                _Z11reverseBitsjPj
- .text._Z7LCA2outjhjhhPj
-                0x00001eb4       0xcc lebed_sel_tune.o
-                0x00001eb4                _Z7LCA2outjhjhhPj
- .text._Z10outLCA2LCAPjPhS_S0_S0_S_
-                0x00001f80       0xba lebed_sel_tune.o
-                0x00001f80                _Z10outLCA2LCAPjPhS_S0_S0_S_
- .text._Z15drawFuncLCAMenuP9CMenuItem
-                0x0000203a      0x304 lebed_sel_tune.o
-                0x0000203a                _Z15drawFuncLCAMenuP9CMenuItem
- .text._Z8InitUartv
-                0x0000233e       0x4e lebed_sel_tune.o
-                0x0000233e                _Z8InitUartv
- .text._Z12SendCOMBytesPhc
-                0x0000238c       0x1c lebed_sel_tune.o
-                0x0000238c                _Z12SendCOMBytesPhc
- .text._Z9WriteModePh
-                0x000023a8        0x4 lebed_sel_tune.o
-                0x000023a8                _Z9WriteModePh
- .text._Z15WriteEraseFlashPh
-                0x000023ac        0x8 lebed_sel_tune.o
-                0x000023ac                _Z15WriteEraseFlashPh
- .text._Z8ReadAmplPh
-                0x000023b4       0x42 lebed_sel_tune.o
-                0x000023b4                _Z8ReadAmplPh
- .text._Z16ReadDetectorCoefPh
-                0x000023f6       0x54 lebed_sel_tune.o
-                0x000023f6                _Z16ReadDetectorCoefPh
- .text._Z10FindDevicePh
-                0x0000244a       0x32 lebed_sel_tune.o
-                0x0000244a                _Z10FindDevicePh
- .text._Z17CheckComandFormatic
-                0x0000247c       0x22 lebed_sel_tune.o
-                0x0000247c                _Z17CheckComandFormatic
- .text._Z7SendERRv
-                0x0000249e       0x24 lebed_sel_tune.o
-                0x0000249e                _Z7SendERRv
- .text._Z6SendOkv
-                0x000024c2       0x24 lebed_sel_tune.o
-                0x000024c2                _Z6SendOkv
- .text._Z10WriteAFuncPh
-                0x000024e6       0x48 lebed_sel_tune.o
-                0x000024e6                _Z10WriteAFuncPh
- .text._Z8SaveCoefPh
-                0x0000252e        0xe lebed_sel_tune.o
-                0x0000252e                _Z8SaveCoefPh
- .text.__vector_18
-                0x0000253c       0xe0 lebed_sel_tune.o
-                0x0000253c                __vector_18
- .text._Z8data2LCAPh
-                0x0000261c       0xa4 lebed_sel_tune.o
-                0x0000261c                _Z8data2LCAPh
- .text._Z12WriteLCAFuncPh
-                0x000026c0        0xc lebed_sel_tune.o
-                0x000026c0                _Z12WriteLCAFuncPh
- .text._Z12ReadAllFlashPh
-                0x000026cc       0x76 lebed_sel_tune.o
-                0x000026cc                _Z12ReadAllFlashPh
- .text._Z15WriteData2FlashPh
-                0x00002742       0x80 lebed_sel_tune.o
-                0x00002742                _Z15WriteData2FlashPh
- .text._Z13ChangeModePrkP12StateOfPlate
-                0x000027c2       0x3e lebed_sel_tune.o
-                0x000027c2                _Z13ChangeModePrkP12StateOfPlate
- .text._Z11SetOutLevelh
-                0x00002800       0x2e lebed_sel_tune.o
-                0x00002800                _Z11SetOutLevelh
- .text._Z20SolveFreqIndCorrCoefv
-                0x0000282e       0x2e lebed_sel_tune.o
-                0x0000282e                _Z20SolveFreqIndCorrCoefv
- .text._Z7SetCoefPh
-                0x0000285c       0x24 lebed_sel_tune.o
-                0x0000285c                _Z7SetCoefPh
- .text._Z19SetOutLevelFromFreqv
-                0x00002880       0x24 lebed_sel_tune.o
-                0x00002880                _Z19SetOutLevelFromFreqv
- .text._Z14WriteFreqToPrkPh
-                0x000028a4       0xb6 lebed_sel_tune.o
-                0x000028a4                _Z14WriteFreqToPrkPh
+                0x000014ac       0x3a lebed_sel_tune.o
+                0x000014ac                _Z13okFuncPrkMenuP9CMenuItem
  .text._Z14okFuncZselMenuP9CMenuItem
-                0x0000295a       0xc2 lebed_sel_tune.o
-                0x0000295a                _Z14okFuncZselMenuP9CMenuItem
+                0x000014e6       0xc2 lebed_sel_tune.o
+                0x000014e6                _Z14okFuncZselMenuP9CMenuItem
+ .text._Z14upFuncZselMenuP9CMenuItem
+                0x000015a8      0x1aa lebed_sel_tune.o
+                0x000015a8                _Z14upFuncZselMenuP9CMenuItem
+ .text._Z16downFuncZselMenuP9CMenuItem
+                0x00001752      0x1b0 lebed_sel_tune.o
+                0x00001752                _Z16downFuncZselMenuP9CMenuItem
+ .text._Z19ReadStateFromEEPROMP12StateOfPlatePv
+                0x00001902        0x8 lebed_sel_tune.o
+                0x00001902                _Z19ReadStateFromEEPROMP12StateOfPlatePv
+ .text._Z11Str2DrawStrPhS_S_
+                0x0000190a       0x54 lebed_sel_tune.o
+                0x0000190a                _Z11Str2DrawStrPhS_S_
+ .text._Z9DrawOnLCDPh
+                0x0000195e       0x46 lebed_sel_tune.o
+                0x0000195e                _Z9DrawOnLCDPh
+ .text._Z16drawFuncMainMenuP9CMenuItem
+                0x000019a4      0x136 lebed_sel_tune.o
+                0x000019a4                _Z16drawFuncMainMenuP9CMenuItem
+ .text._Z15drawFuncPrkMenuP9CMenuItem
+                0x00001ada      0x184 lebed_sel_tune.o
+                0x00001ada                _Z15drawFuncPrkMenuP9CMenuItem
+ .text._Z16drawFuncZselMenuP9CMenuItem
+                0x00001c5e      0x2da lebed_sel_tune.o
+                0x00001c5e                _Z16drawFuncZselMenuP9CMenuItem
+ .text._Z11reverseBitsjPj
+                0x00001f38       0x4e lebed_sel_tune.o
+                0x00001f38                _Z11reverseBitsjPj
+ .text._Z7LCA2outjhjhhPj
+                0x00001f86       0xcc lebed_sel_tune.o
+                0x00001f86                _Z7LCA2outjhjhhPj
+ .text._Z10outLCA2LCAPjPhS_S0_S0_S_
+                0x00002052       0xba lebed_sel_tune.o
+                0x00002052                _Z10outLCA2LCAPjPhS_S0_S0_S_
+ .text._Z15drawFuncLCAMenuP9CMenuItem
+                0x0000210c      0x304 lebed_sel_tune.o
+                0x0000210c                _Z15drawFuncLCAMenuP9CMenuItem
+ .text._Z8InitUartv
+                0x00002410       0x4e lebed_sel_tune.o
+                0x00002410                _Z8InitUartv
+ .text._Z12SendCOMBytesPhc
+                0x0000245e       0x1c lebed_sel_tune.o
+                0x0000245e                _Z12SendCOMBytesPhc
+ .text._Z9WriteModePh
+                0x0000247a        0x4 lebed_sel_tune.o
+                0x0000247a                _Z9WriteModePh
+ .text._Z15WriteEraseFlashPh
+                0x0000247e        0x8 lebed_sel_tune.o
+                0x0000247e                _Z15WriteEraseFlashPh
+ .text._Z8ReadAmplPh
+                0x00002486       0x42 lebed_sel_tune.o
+                0x00002486                _Z8ReadAmplPh
+ .text._Z16ReadDetectorCoefPh
+                0x000024c8       0x54 lebed_sel_tune.o
+                0x000024c8                _Z16ReadDetectorCoefPh
+ .text._Z10FindDevicePh
+                0x0000251c       0x32 lebed_sel_tune.o
+                0x0000251c                _Z10FindDevicePh
+ .text._Z17CheckComandFormatic
+                0x0000254e       0x22 lebed_sel_tune.o
+                0x0000254e                _Z17CheckComandFormatic
+ .text._Z7SendERRv
+                0x00002570       0x24 lebed_sel_tune.o
+                0x00002570                _Z7SendERRv
+ .text._Z6SendOkv
+                0x00002594       0x24 lebed_sel_tune.o
+                0x00002594                _Z6SendOkv
  .text._Z10WriteFFuncPh
-                0x00002a1c       0x1e lebed_sel_tune.o
-                0x00002a1c                _Z10WriteFFuncPh
+                0x000025b8       0x1e lebed_sel_tune.o
+                0x000025b8                _Z10WriteFFuncPh
  .text._Z13WriteFLCAFuncPh
-                0x00002a3a      0x156 lebed_sel_tune.o
-                0x00002a3a                _Z13WriteFLCAFuncPh
+                0x000025d6      0x156 lebed_sel_tune.o
+                0x000025d6                _Z13WriteFLCAFuncPh
+ .text._Z10WriteAFuncPh
+                0x0000272c       0x48 lebed_sel_tune.o
+                0x0000272c                _Z10WriteAFuncPh
+ .text._Z8SaveCoefPh
+                0x00002774       0x10 lebed_sel_tune.o
+                0x00002774                _Z8SaveCoefPh
+ .text.__vector_18
+                0x00002784       0xe0 lebed_sel_tune.o
+                0x00002784                __vector_18
+ .text._Z8data2LCAPh
+                0x00002864       0xa4 lebed_sel_tune.o
+                0x00002864                _Z8data2LCAPh
+ .text._Z12WriteLCAFuncPh
+                0x00002908        0xc lebed_sel_tune.o
+                0x00002908                _Z12WriteLCAFuncPh
+ .text._Z12ReadAllFlashPh
+                0x00002914       0x76 lebed_sel_tune.o
+                0x00002914                _Z12ReadAllFlashPh
+ .text._Z15WriteData2FlashPh
+                0x0000298a       0x80 lebed_sel_tune.o
+                0x0000298a                _Z15WriteData2FlashPh
+ .text._Z13ChangeModePrkP12StateOfPlate
+                0x00002a0a       0x3e lebed_sel_tune.o
+                0x00002a0a                _Z13ChangeModePrkP12StateOfPlate
  .text._Z13WriteFZahFuncPh
-                0x00002b90       0x9e lebed_sel_tune.o
-                0x00002b90                _Z13WriteFZahFuncPh
+                0x00002a48       0x9e lebed_sel_tune.o
+                0x00002a48                _Z13WriteFZahFuncPh
+ .text._Z20SolveFreqIndCorrCoefv
+                0x00002ae6       0x2e lebed_sel_tune.o
+                0x00002ae6                _Z20SolveFreqIndCorrCoefv
+ .text._Z11SetOutLevelh
+                0x00002b14       0x10 lebed_sel_tune.o
+                0x00002b14                _Z11SetOutLevelh
+ .text._Z7SetCoefPh
+                0x00002b24       0x24 lebed_sel_tune.o
+                0x00002b24                _Z7SetCoefPh
  .text._Z10DetFreqIndPh
-                0x00002c2e       0x34 lebed_sel_tune.o
-                0x00002c2e                _Z10DetFreqIndPh
+                0x00002b48       0x34 lebed_sel_tune.o
+                0x00002b48                _Z10DetFreqIndPh
  .text._Z16SaveSelectorSignv
-                0x00002c62       0x2c lebed_sel_tune.o
-                0x00002c62                _Z16SaveSelectorSignv
+                0x00002b7c       0x2c lebed_sel_tune.o
+                0x00002b7c                _Z16SaveSelectorSignv
  .text._Z11SaveDetCoefv
-                0x00002c8e       0x1c lebed_sel_tune.o
-                0x00002c8e                _Z11SaveDetCoefv
+                0x00002ba8       0x1c lebed_sel_tune.o
+                0x00002ba8                _Z11SaveDetCoefv
  .text._Z16SaveDetectorCoefPh
-                0x00002caa        0x4 lebed_sel_tune.o
-                0x00002caa                _Z16SaveDetectorCoefPh
+                0x00002bc4        0x4 lebed_sel_tune.o
+                0x00002bc4                _Z16SaveDetectorCoefPh
  .text._Z11ReadDetCoefv
-                0x00002cae       0x26 lebed_sel_tune.o
-                0x00002cae                _Z11ReadDetCoefv
+                0x00002bc8       0x26 lebed_sel_tune.o
+                0x00002bc8                _Z11ReadDetCoefv
  .text._Z7SetnOTPc
-                0x00002cd4       0x22 lebed_sel_tune.o
-                0x00002cd4                _Z7SetnOTPc
+                0x00002bee       0x2e lebed_sel_tune.o
+                0x00002bee                _Z7SetnOTPc
  .text._Z22SetLebedSelFreqInFlashv
-                0x00002cf6       0x54 lebed_sel_tune.o
-                0x00002cf6                _Z22SetLebedSelFreqInFlashv
+                0x00002c1c       0x54 lebed_sel_tune.o
+                0x00002c1c                _Z22SetLebedSelFreqInFlashv
  .text._Z14okFuncMainMenuP9CMenuItem
-                0x00002d4a      0x12a lebed_sel_tune.o
-                0x00002d4a                _Z14okFuncMainMenuP9CMenuItem
+                0x00002c70      0x130 lebed_sel_tune.o
+                0x00002c70                _Z14okFuncMainMenuP9CMenuItem
  .text._Z15TuneLvlLebedSelv
-                0x00002e74       0xb6 lebed_sel_tune.o
-                0x00002e74                _Z15TuneLvlLebedSelv
+                0x00002da0       0xb4 lebed_sel_tune.o
+                0x00002da0                _Z15TuneLvlLebedSelv
  .text._Z14upFuncMainMenuP9CMenuItem
-                0x00002f2a       0xd0 lebed_sel_tune.o
-                0x00002f2a                _Z14upFuncMainMenuP9CMenuItem
+                0x00002e54       0xd0 lebed_sel_tune.o
+                0x00002e54                _Z14upFuncMainMenuP9CMenuItem
  .text._Z16downFuncMainMenuP9CMenuItem
-                0x00002ffa       0xd0 lebed_sel_tune.o
-                0x00002ffa                _Z16downFuncMainMenuP9CMenuItem
+                0x00002f24       0xd0 lebed_sel_tune.o
+                0x00002f24                _Z16downFuncMainMenuP9CMenuItem
  .text._Z8WriteOtpPh
-                0x000030ca        0xa lebed_sel_tune.o
-                0x000030ca                _Z8WriteOtpPh
+                0x00002ff4        0xa lebed_sel_tune.o
+                0x00002ff4                _Z8WriteOtpPh
  .text.startup.main
-                0x000030d4       0x46 lebed_sel_tune.o
-                0x000030d4                main
+                0x00002ffe       0x5e lebed_sel_tune.o
+                0x00002ffe                main
  .text.startup._GLOBAL__sub_I__Z11noEventMenuP9CMenuItem
-                0x0000311a        0x4 lebed_sel_tune.o
+                0x0000305c        0x4 lebed_sel_tune.o
+ .text._Z7wr_bytec
+                0x00003060       0x16 PWC.o
+                0x00003060                _Z7wr_bytec
+ .text._Z10wr_par_setv
+                0x00003076       0x4c PWC.o
+                0x00003076                _Z10wr_par_setv
+ .text._Z10wr_par_stmv
+                0x000030c2       0x3c PWC.o
+                0x000030c2                _Z10wr_par_stmv
+ .text._Z10wr_par_stkv
+                0x000030fe       0x3c PWC.o
+                0x000030fe                _Z10wr_par_stkv
+ .text._Z10wr_par_stpv
+                0x0000313a       0x34 PWC.o
+                0x0000313a                _Z10wr_par_stpv
+ .text._Z22ReadPwcParamFromEEPROMP9TPWCPARAM
+                0x0000316e       0xb2 PWC.o
+                0x0000316e                _Z22ReadPwcParamFromEEPROMP9TPWCPARAM
+ .text._Z7InitPwcv
+                0x00003220       0x86 PWC.o
+                0x00003220                _Z7InitPwcv
+ .text._Z7OpenPwcc
+                0x000032a6       0x1e PWC.o
+                0x000032a6                _Z7OpenPwcc
+ .text._Z20SolveFreqIndCorrCoefPh
+                0x000032c4       0x2a PWC.o
+                0x000032c4                _Z20SolveFreqIndCorrCoefPh
+ .text._Z8SaveAttsv
+                0x000032ee       0x2e PWC.o
+                0x000032ee                _Z8SaveAttsv
+ .text._Z6SetAtthh
+                0x0000331c       0x10 PWC.o
+                0x0000331c                _Z6SetAtthh
+ .text._Z13SetAttFromIndh
+                0x0000332c       0x10 PWC.o
+                0x0000332c                _Z13SetAttFromIndh
+ .text._Z10SetPwcFreqPh
+                0x0000333c       0x52 PWC.o
+                0x0000333c                _Z10SetPwcFreqPh
  .text._Z11InitSelPortv
-                0x0000311e       0x32 selector_control.o
-                0x0000311e                _Z11InitSelPortv
+                0x0000338e       0x32 selector_control.o
+                0x0000338e                _Z11InitSelPortv
  .text._Z5SendAPj
-                0x00003150       0x80 selector_control.o
-                0x00003150                _Z5SendAPj
+                0x000033c0       0x80 selector_control.o
+                0x000033c0                _Z5SendAPj
  .text._Z11SendLCA2SelPh
-                0x000031d0      0x124 selector_control.o
-                0x000031d0                _Z11SendLCA2SelPh
+                0x00003440      0x124 selector_control.o
+                0x00003440                _Z11SendLCA2SelPh
  .text._Z9ChangeReg7regAddr
-                0x000032f4       0x74 ZSelControl.o
-                0x000032f4                _Z9ChangeReg7regAddr
+                0x00003564       0x74 ZSelControl.o
+                0x00003564                _Z9ChangeReg7regAddr
  .text._Z11SetZselCap1i
-                0x00003368      0x116 ZSelControl.o
-                0x00003368                _Z11SetZselCap1i
+                0x000035d8      0x116 ZSelControl.o
+                0x000035d8                _Z11SetZselCap1i
  .text._Z9WriteBytec
-                0x0000347e       0x84 ZSelControl.o
-                0x0000347e                _Z9WriteBytec
+                0x000036ee       0x84 ZSelControl.o
+                0x000036ee                _Z9WriteBytec
  .text._Z12SetZselParamP9ZSELPARAM7regAddr
-                0x00003502       0x60 ZSelControl.o
-                0x00003502                _Z12SetZselParamP9ZSELPARAM7regAddr
+                0x00003772       0x60 ZSelControl.o
+                0x00003772                _Z12SetZselParamP9ZSELPARAM7regAddr
  .text._Z11SetZselOpenb
-                0x00003562       0x22 ZSelControl.o
-                0x00003562                _Z11SetZselOpenb
+                0x000037d2       0x22 ZSelControl.o
+                0x000037d2                _Z11SetZselOpenb
  .text._Z13FindFreqParamiP9ZSELPARAM
-                0x00003584       0x72 ZSelControl.o
-                0x00003584                _Z13FindFreqParamiP9ZSELPARAM
+                0x000037f4       0x72 ZSelControl.o
+                0x000037f4                _Z13FindFreqParamiP9ZSELPARAM
  .text._Z11TuneZselCapP9ZSELPARAM
-                0x000035f6       0x98 ZSelControl.o
-                0x000035f6                _Z11TuneZselCapP9ZSELPARAM
+                0x00003866       0x98 ZSelControl.o
+                0x00003866                _Z11TuneZselCapP9ZSELPARAM
  .text._Z11SetZselFreqiP9ZSELPARAM
-                0x0000368e       0x4e ZSelControl.o
-                0x0000368e                _Z11SetZselFreqiP9ZSELPARAM
+                0x000038fe       0x4e ZSelControl.o
+                0x000038fe                _Z11SetZselFreqiP9ZSELPARAM
  .text._Z13TuneZselAttenP9ZSELPARAM
-                0x000036dc       0xe8 ZSelControl.o
-                0x000036dc                _Z13TuneZselAttenP9ZSELPARAM
+                0x0000394c       0xe8 ZSelControl.o
+                0x0000394c                _Z13TuneZselAttenP9ZSELPARAM
  .text.libgcc.div
-                0x000037c4       0x18 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodqi4.o)
-                0x000037c4                __udivmodqi4
+                0x00003a34       0x18 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodqi4.o)
+                0x00003a34                __udivmodqi4
  .text.libgcc.div
-                0x000037dc       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
-                0x000037dc                __udivmodhi4
+                0x00003a4c       0x28 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_udivmodhi4.o)
+                0x00003a4c                __udivmodhi4
  .text.libgcc.div
-                0x00003804       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
-                0x00003804                _div
-                0x00003804                __divmodhi4
- .text.libgcc   0x0000382a        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
-                0x0000382a                __tablejump_elpm__
+                0x00003a74       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_divmodhi4.o)
+                0x00003a74                _div
+                0x00003a74                __divmodhi4
+ .text.libgcc   0x00003a9a        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_tablejump_elpm.o)
+                0x00003a9a                __tablejump_elpm__
  .text.avr-libc
-                0x00003832       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
-                0x00003832                memchr_P
+                0x00003aa2       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memchr_P.o)
+                0x00003aa2                memchr_P
  .text.avr-libc
-                0x0000384c       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
-                0x0000384c                memcmp
+                0x00003abc       0x1a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcmp.o)
+                0x00003abc                memcmp
  .text.avr-libc
-                0x00003866       0x12 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
-                0x00003866                memcpy
+                0x00003ad6       0x12 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(memcpy.o)
+                0x00003ad6                memcpy
  .text.avr-libc
-                0x00003878       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
-                0x00003878                strchr
+                0x00003ae8       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(strchr.o)
+                0x00003ae8                strchr
  .text.avr-libc
-                0x0000388e       0x20 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
-                0x0000388e                __eerd_block_m128
-                0x00003892                __eerd_blraw_m128
+                0x00003afe       0x20 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_block_atmega128.o)
+                0x00003afe                __eerd_block_m128
+                0x00003b02                __eerd_blraw_m128
  .text.avr-libc
-                0x000038ae       0x1e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
-                0x000038ae                __eeupd_block_m128
+                0x00003b1e       0x10 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eerd_byte_atmega128.o)
+                0x00003b1e                __eerd_byte_m128
  .text.avr-libc
-                0x000038cc       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
-                0x000038cc                __eeupd_byte_m128
-                0x000038ce                __eeupd_r18_m128
-                0x000038ee                . = ALIGN (0x2)
+                0x00003b2e       0x1e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_block_atmega128.o)
+                0x00003b2e                __eeupd_block_m128
+ .text.avr-libc
+                0x00003b4c       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr51\libc.a(eeupd_byte_atmega128.o)
+                0x00003b4c                __eeupd_byte_m128
+                0x00003b4e                __eeupd_r18_m128
+                0x00003b6e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000038ee        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
-                0x000038ee                _exit
-                0x000038ee                exit
+ .fini9         0x00003b6e        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+                0x00003b6e                _exit
+                0x00003b6e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -943,11 +984,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000038ee        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
+ .fini0         0x00003b6e        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x000038f2                _etext = .
+                0x00003b72                _etext = .
 
-.data           0x00800100      0x272 load address 0x000038f2
+.data           0x00800100      0x272 load address 0x00003b72
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1012,7 +1053,7 @@ END GROUP
                 0x00800372                _edata = .
                 0x00800372                PROVIDE (__data_end, .)
 
-.bss            0x00800372      0x1f1
+.bss            0x00800372      0x299
                 0x00800372                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -1049,17 +1090,23 @@ END GROUP
  .bss.g_currentItem
                 0x00800561        0x2 lebed_sel_tune.o
                 0x00800561                g_currentItem
+ .bss.g_lev_att
+                0x00800563        0x1 PWC.o
+                0x00800563                g_lev_att
+ .bss.g_pwcParam
+                0x00800564       0xa7 PWC.o
+                0x00800564                g_pwcParam
  *(COMMON)
-                0x00800563                PROVIDE (__bss_end, .)
-                0x000038f2                __data_load_start = LOADADDR (.data)
-                0x00003b64                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080060b                PROVIDE (__bss_end, .)
+                0x00003b72                __data_load_start = LOADADDR (.data)
+                0x00003de4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800563        0x0
-                0x00800563                PROVIDE (__noinit_start, .)
+.noinit         0x0080060b        0x0
+                0x0080060b                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800563                PROVIDE (__noinit_end, .)
-                0x00800563                _end = .
-                0x00800563                PROVIDE (__heap_start, .)
+                0x0080060b                PROVIDE (__noinit_end, .)
+                0x0080060b                _end = .
+                0x0080060b                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -1108,6 +1155,7 @@ END GROUP
  .comment       0x00000000       0x31 keyboard.o
  .comment       0x00000000       0x31 lcd.o
  .comment       0x00000000       0x31 lebed_sel_tune.o
+ .comment       0x00000000       0x31 PWC.o
  .comment       0x00000000       0x31 selector_control.o
  .comment       0x00000000       0x31 ZSelControl.o
  .comment       0x00000000       0x31 _StackInstrument.o
@@ -1127,7 +1175,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x5c0
+.debug_aranges  0x00000000      0x648
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 adc.o
@@ -1144,16 +1192,18 @@ END GROUP
  .debug_aranges
                 0x000001e0      0x308 lebed_sel_tune.o
  .debug_aranges
-                0x000004e8       0x48 selector_control.o
+                0x000004e8       0x88 PWC.o
  .debug_aranges
-                0x00000530       0x70 ZSelControl.o
+                0x00000570       0x48 selector_control.o
  .debug_aranges
-                0x000005a0       0x20 _StackInstrument.o
+                0x000005b8       0x70 ZSelControl.o
+ .debug_aranges
+                0x00000628       0x20 _StackInstrument.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x8b69
+.debug_info     0x00000000     0x94c3
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x1da adc.o
  .debug_info    0x000001da      0x612 altera.o
@@ -1161,12 +1211,13 @@ END GROUP
  .debug_info    0x00000ee3      0x42d i2c.o
  .debug_info    0x00001310      0x236 keyboard.o
  .debug_info    0x00001546      0x97d lcd.o
- .debug_info    0x00001ec3     0x59c2 lebed_sel_tune.o
- .debug_info    0x00007885      0x48e selector_control.o
- .debug_info    0x00007d13      0xd59 ZSelControl.o
- .debug_info    0x00008a6c       0xfd _StackInstrument.o
+ .debug_info    0x00001ec3     0x5a50 lebed_sel_tune.o
+ .debug_info    0x00007913      0x8cc PWC.o
+ .debug_info    0x000081df      0x48e selector_control.o
+ .debug_info    0x0000866d      0xd59 ZSelControl.o
+ .debug_info    0x000093c6       0xfd _StackInstrument.o
 
-.debug_abbrev   0x00000000     0x18aa
+.debug_abbrev   0x00000000     0x1aed
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x15f adc.o
  .debug_abbrev  0x0000015f      0x1ee altera.o
@@ -1175,11 +1226,12 @@ END GROUP
  .debug_abbrev  0x00000794      0x1a9 keyboard.o
  .debug_abbrev  0x0000093d      0x328 lcd.o
  .debug_abbrev  0x00000c65      0x6ec lebed_sel_tune.o
- .debug_abbrev  0x00001351      0x199 selector_control.o
- .debug_abbrev  0x000014ea      0x325 ZSelControl.o
- .debug_abbrev  0x0000180f       0x9b _StackInstrument.o
+ .debug_abbrev  0x00001351      0x243 PWC.o
+ .debug_abbrev  0x00001594      0x199 selector_control.o
+ .debug_abbrev  0x0000172d      0x325 ZSelControl.o
+ .debug_abbrev  0x00001a52       0x9b _StackInstrument.o
 
-.debug_line     0x00000000     0x3d00
+.debug_line     0x00000000     0x42e9
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x192 adc.o
  .debug_line    0x00000192      0x369 altera.o
@@ -1187,12 +1239,13 @@ END GROUP
  .debug_line    0x00000892      0x2b9 i2c.o
  .debug_line    0x00000b4b      0x1cd keyboard.o
  .debug_line    0x00000d18      0x4c6 lcd.o
- .debug_line    0x000011de     0x1f7b lebed_sel_tune.o
- .debug_line    0x00003159      0x38f selector_control.o
- .debug_line    0x000034e8      0x73c ZSelControl.o
- .debug_line    0x00003c24       0xdc _StackInstrument.o
+ .debug_line    0x000011de     0x1fac lebed_sel_tune.o
+ .debug_line    0x0000318a      0x5b8 PWC.o
+ .debug_line    0x00003742      0x38f selector_control.o
+ .debug_line    0x00003ad1      0x73c ZSelControl.o
+ .debug_line    0x0000420d       0xdc _StackInstrument.o
 
-.debug_frame    0x00000000     0x1204
+.debug_frame    0x00000000     0x1374
  *(.debug_frame)
  .debug_frame   0x00000000       0x44 adc.o
  .debug_frame   0x00000044       0xe4 altera.o
@@ -1200,12 +1253,13 @@ END GROUP
  .debug_frame   0x00000244       0x8c i2c.o
  .debug_frame   0x000002d0       0x4c keyboard.o
  .debug_frame   0x0000031c      0x190 lcd.o
- .debug_frame   0x000004ac      0xb24 lebed_sel_tune.o
- .debug_frame   0x00000fd0       0x88 selector_control.o
- .debug_frame   0x00001058      0x188 ZSelControl.o
- .debug_frame   0x000011e0       0x24 _StackInstrument.o
+ .debug_frame   0x000004ac      0xb2c lebed_sel_tune.o
+ .debug_frame   0x00000fd8      0x168 PWC.o
+ .debug_frame   0x00001140       0x88 selector_control.o
+ .debug_frame   0x000011c8      0x188 ZSelControl.o
+ .debug_frame   0x00001350       0x24 _StackInstrument.o
 
-.debug_str      0x00000000     0x2017
+.debug_str      0x00000000     0x21ec
  *(.debug_str)
  .debug_str     0x00000000      0x1fc adc.o
                                 0x23c (size before relaxing)
@@ -1213,22 +1267,24 @@ END GROUP
                                 0x315 (size before relaxing)
  .debug_str     0x00000321      0x232 flashiic.o
                                 0x427 (size before relaxing)
- .debug_str     0x00000553       0x44 i2c.o
+ .debug_str     0x00000553       0x3f i2c.o
                                 0x28c (size before relaxing)
- .debug_str     0x00000597       0x90 keyboard.o
+ .debug_str     0x00000592       0x90 keyboard.o
                                 0x27b (size before relaxing)
- .debug_str     0x00000627      0x1ae lcd.o
+ .debug_str     0x00000622      0x1ae lcd.o
                                 0x3d8 (size before relaxing)
- .debug_str     0x000007d5     0x155b lebed_sel_tune.o
-                               0x1aa1 (size before relaxing)
- .debug_str     0x00001d30       0x5d selector_control.o
+ .debug_str     0x000007d0     0x15e9 lebed_sel_tune.o
+                               0x1b43 (size before relaxing)
+ .debug_str     0x00001db9      0x14c PWC.o
+                                0x43e (size before relaxing)
+ .debug_str     0x00001f05       0x5d selector_control.o
                                 0x29f (size before relaxing)
- .debug_str     0x00001d8d      0x19b ZSelControl.o
+ .debug_str     0x00001f62      0x19b ZSelControl.o
                                 0x594 (size before relaxing)
- .debug_str     0x00001f28       0xef _StackInstrument.o
+ .debug_str     0x000020fd       0xef _StackInstrument.o
                                 0x1ca (size before relaxing)
 
-.debug_loc      0x00000000     0x5ca5
+.debug_loc      0x00000000     0x6303
  *(.debug_loc)
  .debug_loc     0x00000000      0x16a adc.o
  .debug_loc     0x0000016a      0x36b altera.o
@@ -1236,10 +1292,11 @@ END GROUP
  .debug_loc     0x00000c4d      0x25b i2c.o
  .debug_loc     0x00000ea8      0x12c keyboard.o
  .debug_loc     0x00000fd4      0x6ed lcd.o
- .debug_loc     0x000016c1     0x3675 lebed_sel_tune.o
- .debug_loc     0x00004d36      0x3f2 selector_control.o
- .debug_loc     0x00005128      0xb65 ZSelControl.o
- .debug_loc     0x00005c8d       0x18 _StackInstrument.o
+ .debug_loc     0x000016c1     0x364e lebed_sel_tune.o
+ .debug_loc     0x00004d0f      0x685 PWC.o
+ .debug_loc     0x00005394      0x3f2 selector_control.o
+ .debug_loc     0x00005786      0xb65 ZSelControl.o
+ .debug_loc     0x000062eb       0x18 _StackInstrument.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1259,7 +1316,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x740
+.debug_ranges   0x00000000      0x7b8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 adc.o
  .debug_ranges  0x00000018       0x50 altera.o
@@ -1268,9 +1325,10 @@ END GROUP
  .debug_ranges  0x00000128       0x20 keyboard.o
  .debug_ranges  0x00000148       0xc0 lcd.o
  .debug_ranges  0x00000208      0x418 lebed_sel_tune.o
- .debug_ranges  0x00000620       0x38 selector_control.o
- .debug_ranges  0x00000658       0xd8 ZSelControl.o
- .debug_ranges  0x00000730       0x10 _StackInstrument.o
+ .debug_ranges  0x00000620       0x78 PWC.o
+ .debug_ranges  0x00000698       0x38 selector_control.o
+ .debug_ranges  0x000006d0       0xd8 ZSelControl.o
+ .debug_ranges  0x000007a8       0x10 _StackInstrument.o
 
 .debug_macro
  *(.debug_macro)

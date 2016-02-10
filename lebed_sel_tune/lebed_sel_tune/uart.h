@@ -36,6 +36,7 @@
 
 #include <avr/interrupt.h>
 #include <string.h>
+#include "PWC.h"
 	// разрешение на передачу по RS-485
 	#define ENABLE_485_UART0        0x40
 	#define ON_485_UART0			0x20
@@ -235,7 +236,7 @@ ISR (USART0_RX_vect)
 ////////// Функции соответствующие командам //////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 	/* Функции и переменные определяемые в файле предкорректора*/
-	extern void WriteFreqToPrk(unsigned char* F);
+	extern void SetPwcFreq(unsigned char* F);
 	extern unsigned int CharFtoInd(uchar* f);
 	extern void SetnOTP(char val);
 	extern void SetOutLevel(uchar lvl);
@@ -257,7 +258,7 @@ void WriteFFunc(unsigned char * data)// функция записи частоты без чтения из фле
 	{
 	 g_plateState.freq[i] = data[i + 1] & 0x0F;
 	}
-	WriteFreqToPrk(g_plateState.freq);
+	SetPwcFreq(g_plateState.freq);
 	SendOk();
 }
 
@@ -267,7 +268,7 @@ void WriteFLCAFunc(unsigned char * data)//запись частоты с чтением из памяти >[ 
 	{
 		g_plateState.freq[i] = data[i + 1] & 0x0F;
 	}
-	WriteFreqToPrk(g_plateState.freq);//записываем частоту в предкорректор
+	SetPwcFreq(g_plateState.freq);//записываем частоту в предкорректор
 	ReadLCAoutFromFlash(CharFtoInd(g_plateState.freq),(uchar*)g_plateState.outLCA);//читаем из флешки комбинацию
 	SendLCA2Sel((uchar*)g_plateState.outLCA);// отправляем в селектор
 	SendOk();
@@ -409,6 +410,7 @@ extern unsigned int SolveFreqIndCorrCoef();
 
 void SaveCoef(unsigned char* data){
 	SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);
+	SaveAtts();
 	 SendOk();
 }
 //////////////////////////////////////////////////////////////////////////
@@ -450,7 +452,7 @@ void FindDevice(unsigned char*){
 		{
 			g_plateState.freq[i] = data[i + 1] & 0x0F;
 		}
-		WriteFreqToPrk(g_plateState.freq);
+		SetPwcFreq(g_plateState.freq);
 		
 		_delay_ms(10);
 			int freq = g_plateState.freq[0]* 1000 + g_plateState.freq[1]* 100 +g_plateState.freq [2]*10 + g_plateState.freq[3];
