@@ -8,12 +8,12 @@
 //»Õ»÷»¿À»«¿÷»ﬂ œŒ–“¿ ƒÀﬂ IIC
 
 void IICInit(){
-	IICPORT &= ~_BV(IICDataPin);
-	IICPORT &= ~_BV(IICCcPip);
-	IICDDR |= _BV(IICDataPin);
-	IICDDR |= _BV(IICCcPip);
-	IICDDR &= ~_BV(IICDataPin);
-	IICDDR &= ~_BV(IICCcPip);
+	IICPORT &= ~_BV(IICSDAPin);
+	IICPORT &= ~_BV(IICSDLPin);
+	IICDDR |= _BV(IICSDAPin);
+	IICDDR |= _BV(IICSDLPin);
+	IICDDR &= ~_BV(IICSDAPin);
+	IICDDR &= ~_BV(IICSDLPin);
 	//IICPORT = 0x00;
 	//IICDDR = 0x00;
 }

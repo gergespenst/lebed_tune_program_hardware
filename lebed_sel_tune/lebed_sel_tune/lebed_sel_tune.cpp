@@ -22,7 +22,10 @@ void KeySelect(unsigned char a){//эту функцию следует перенести в класс меню
 		
 	}
 }
-//////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+//******************************************************************************//
+//**  Функции управления формирователем сигналов				*//
+//*****************************************************************************//
 void WriteFreqToPrk(uchar* freq){
 	uchar datatmp[13]={0x00,0x00,0x00,0x00,
 						freq[0]*16 + freq[1],
@@ -152,12 +155,12 @@ void InitPrk(){
 }
 //////////////////////////////////////////////////////////////////////////
 void SetnOTP(char val){
-		if (val == 0)
-		{
-			PORTB &= ~_BV(7);
-		}else
-			PORTB |= _BV(7);
-			
+// 		if (val == 0)
+// 		{
+// 			PORTB &= ~_BV(7);
+// 		}else
+// 			PORTB |= _BV(7);
+// 			
 		if (g_plateState.selType == LEBED_TYPE)
 		{
 			SET_SEL_nOTP(val);
@@ -190,9 +193,9 @@ int main(void)
 
 		
 	InitKeyboard();
-	//ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
+	ReadStateFromEEPROM(&g_plateState,(void*)&g_eepromPlateState);
 	//InitPrk();
-// 	InitSelPort();
+	InitSelPort();
 // 	IICInit();
  	InitUart();
 

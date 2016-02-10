@@ -36,14 +36,38 @@
 #define LR_IN_PIN	PINC2		//пин ввода для кнопок Left/Right
 #include "keyboard.h"
 
+#define PortReg(port) (*(port))
+#define DirReg(port)  (*((port) - 1))
+#define PinReg(port)  (*((port) - 2))
 
-
-#ifndef DDC_BOARD//настройка порта IIC
+#ifdef PWC_PLATE//настройка порта IIC
 	#define IICDDR                DDRB					/*порт управления I2C*/
 	#define IICPORT               PORTB					/*порт вывода данных на линию I2C*/
 	#define IICPIN                PINB					/*порт ввода данных с линий I2C*/
-	#define IICDataPin			  6
-	#define IICCcPip              5
+	#define IICSDAPin			  4
+	#define IICSDLPin              7
+
+	#define SEL_PORT		PORTG
+	#define SEL_PORT_DDR	DDRG
+	#define CLKK_PIN		1
+	#define CLKS_PIN		3
+	#define SEL_DATA_PIN	0
+	
+	#define SEL_nOTP_PORT	PORTB
+	#define SEN_nOTP_DDR	DirReg(&SEL_nOTP_PORT)
+	#define SEL_nOTP_PIN	5
+
+	#define ADC_UPAS_OUT_PIN 3
+#endif
+
+
+
+#ifdef KNK_PRK_PLATE//настройка порта IIC
+	#define IICDDR                DDRB					/*порт управления I2C*/
+	#define IICPORT               PORTB					/*порт вывода данных на линию I2C*/
+	#define IICPIN                PINB					/*порт ввода данных с линий I2C*/
+	#define IICSDAPin			  6
+	#define IICSDLPin              5
 	
 	#define SEL_PORT PORTE
 	#define SEL_PORT_DDR DDRE
@@ -60,8 +84,8 @@
 		#define IICDDR                DDRB					/*порт управления I2C*/
 		#define IICPORT               PORTB					/*порт вывода данных на линию I2C*/
 		#define IICPIN                PINB					/*порт ввода данных с линий I2C*/
-		#define IICDataPin			  3
-		#define IICCcPip              4
+		#define IICSDAPin			  3
+		#define IICSDLPin              4
 		
 	#define SEL_PORT PORTB
 	#define SEL_PORT_DDR DDRB

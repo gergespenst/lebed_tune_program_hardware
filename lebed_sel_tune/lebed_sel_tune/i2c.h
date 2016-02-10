@@ -28,8 +28,8 @@
 //#define IICDataPin			  4
 //#define IICCcPip              5
 
-#define IICData               _BV(IICDataPin)                /*линия DATA*/
-#define IICClc                _BV(IICCcPip)                /*линия CLC*/
+#define IICData               _BV(IICSDAPin)                /*линия DATA*/
+#define IICClc                _BV(IICSDLPin)                /*линия CLC*/
 #define IICPause				3					/*длительность импульсов в мкс*/
 
 void IICInit(void);

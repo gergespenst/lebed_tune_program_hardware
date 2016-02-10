@@ -215,7 +215,7 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 
 			 //TODO :: Здесь должна быть функция установки частоты
 			 SaveStateToEEPROM(&g_plateState,&g_eepromPlateState);//сохраняется частота в eeprom
-			 WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
+		//	 WriteFreqToPrk(g_plateState.freq);//устанавлвиается частота генератора
 			
 			if (g_plateState.selType == LEBED_TYPE)
 			{
@@ -229,11 +229,11 @@ void okFuncMainMenu(CMenuItem* item){ // Обработка нажатия ОК
 				int freq = g_plateState.freq[0]* 1000 + g_plateState.freq[1]* 100 +g_plateState.freq [2]*10 + g_plateState.freq[3]; 
 				bool tempMode = g_plateState.mode; 
 				g_plateState.mode = false;
-				ChangeModePrk(&g_plateState);
+				//ChangeModePrk(&g_plateState);
 				
 				SetZselFreq(freq, &g_plateState.zSelParam);
 				g_plateState.mode = tempMode;
-				ChangeModePrk(&g_plateState);
+			//	ChangeModePrk(&g_plateState);
 				
 			}		
 			

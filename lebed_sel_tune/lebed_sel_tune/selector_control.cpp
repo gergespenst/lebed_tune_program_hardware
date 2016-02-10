@@ -32,7 +32,9 @@ void InitSelPort(){//начальные установки порта
 	SEL_PORT_DDR |= _BV(CLKK_PIN);
 	SEL_PORT_DDR |= _BV(CLKS_PIN);
 	SEL_PORT_DDR |= _BV(SEL_DATA_PIN);
-	SEL_PORT_DDR |= _BV(SEL_nOTP_PIN);
+	SEN_nOTP_DDR |= _BV(SEL_nOTP_PIN);
+	
+	//SEN_nOTP_DDR |= _BV()
 	SETCLKK(0);
 	SETCLKS(0);
 	SETDATA(0);

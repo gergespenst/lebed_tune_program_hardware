@@ -30,7 +30,7 @@
 #define SETCLKK(a) SET_LINE(SEL_PORT,CLKK_PIN,a)
 #define SETCLKS(a) SET_LINE(SEL_PORT,CLKS_PIN,a)
 #define SETDATA(a) SET_LINE(SEL_PORT,SEL_DATA_PIN,a)
-#define SET_SEL_nOTP(a)		SET_LINE(SEL_PORT,SEL_nOTP_PIN,a)
+#define SET_SEL_nOTP(a)		SET_LINE(SEL_nOTP_PORT,SEL_nOTP_PIN,a)
 
 void SendLCA2Sel(unsigned char* LCAout);
 void SendA(unsigned int* LCAout);

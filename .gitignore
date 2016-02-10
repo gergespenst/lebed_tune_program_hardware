@@ -33,3 +33,9 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+lebed_sel_tune/lebed_sel_tune/PWC_PLATE/lebed_sel_tune.eep
+*.elf
+*.hex
+*.lss
+lebed_sel_tune/lebed_sel_tune/PWC_PLATE/lebed_sel_tune.map
+lebed_sel_tune/lebed_sel_tune/PWC_PLATE/lebed_sel_tune.srec

@@ -16,6 +16,8 @@ LCD\lcd.cpp
 
 lebed_sel_tune.cpp
 
+PWC.cpp
+
 selector_control.cpp
 
 uart.cpp
